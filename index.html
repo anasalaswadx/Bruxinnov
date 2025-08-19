@@ -15,7 +15,6 @@
     <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
     <meta property="og:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
     <meta property="og:description" content="We help enterprises unlock growth with AI & data.">
-    <!-- NOTE: Replace with the final URL to your preview image in the GitHub repo -->
     <meta property="og:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/preview-image.webp">
     <meta property="og:url" content="https://anasalaswadx.github.io/Bruxinnov/">
     <meta property="og:type" content="website">
@@ -24,7 +23,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
     <meta name="twitter:description" content="We help enterprises unlock growth with AI & data.">
-    <!-- NOTE: Replace with the final URL to your preview image in the GitHub repo -->
     <meta name="twitter:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/preview-image.webp">
 
     <!-- Tailwind CSS for styling -->
@@ -196,18 +194,20 @@
                         <a href="#contact" class="px-6 py-2 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="navContact">Let's Talk</a>
                     </div>
                     <!-- Language Switcher -->
-                    <div id="lang-switcher" class="ml-8 text-sm font-medium cursor-pointer">
-                        <span id="lang-en" class="text-[#00C9FF] font-bold">EN</span>
-                        <span class="text-gray-400">/</span>
-                        <span id="lang-ar" class="text-gray-500 hover:text-[#00C9FF]">AR</span>
+                    <div class="ml-8 relative">
+                        <button id="lang-switcher-btn" class="flex items-center text-sm font-medium text-gray-600 hover:text-[#00C9FF]">
+                            <span id="current-lang">EN</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div id="lang-dropdown" class="absolute right-0 mt-2 w-24 bg-white rounded-md shadow-lg hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ar">العربية</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="fr">Français</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="nl">Nederlands</a>
+                        </div>
                     </div>
                 </div>
                 <div class="md:hidden flex items-center">
-                     <div id="lang-switcher-mobile" class="mr-4 text-sm font-medium cursor-pointer">
-                        <span id="lang-en-mobile" class="text-[#00C9FF] font-bold">EN</span>
-                        <span class="text-gray-400">/</span>
-                        <span id="lang-ar-mobile" class="text-gray-500 hover:text-[#00C9FF]">AR</span>
-                    </div>
                     <button id="mobile-menu-button" class="text-[#0A192F] focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -224,6 +224,12 @@
                 <a href="#case-studies" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navCaseStudiesMobile">Case Studies</a>
                 <a href="#insights" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navInsightsMobile">Insights</a>
                 <a href="#contact" class="mobile-nav-link block px-3 py-2 text-base font-medium text-white gradient-bg rounded-full text-center" data-lang-key="navContactMobile">Let's Talk</a>
+                 <div class="border-t border-gray-200 mt-4 pt-4">
+                    <a href="#" class="block px-3 py-2 text-base font-medium text-gray-500" data-lang="en">English</a>
+                    <a href="#" class="block px-3 py-2 text-base font-medium text-gray-500" data-lang="ar">العربية</a>
+                    <a href="#" class="block px-3 py-2 text-base font-medium text-gray-500" data-lang="fr">Français</a>
+                    <a href="#" class="block px-3 py-2 text-base font-medium text-gray-500" data-lang="nl">Nederlands</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -590,11 +596,91 @@
                     footerDesc: "استشارات متميزة للشركات الكبرى والناشئة عند تقاطع البيانات والذكاء الاصطناعي والتحول الرقمي.",
                     footerLinks: "روابط سريعة", footerServices: "الخدمات", footerAbout: "حولنا", footerCaseStudies: "دراسات الحالة", footerInsights: "الرؤى", footerContact: "اتصل بنا",
                     footerLegal: "قانوني", footerPrivacy: "سياسة الخصوصية", footerTerms: "شروط الخدمة", footerDesigned: "صُمم في بروكسل"
+                },
+                fr: {
+                    navServices: "Services", navAbout: "À propos", navCaseStudies: "Études de cas", navInsights: "Analyses", navContact: "Contact",
+                    navServicesMobile: "Services", navAboutMobile: "À propos", navCaseStudiesMobile: "Études de cas", navInsightsMobile: "Analyses", navContactMobile: "Contact",
+                    heroTitle: 'Permettre des décisions plus intelligentes avec <span class="gradient-text">les données, l\'IA et la transformation numérique</span>',
+                    heroSubtitle: "Nous aidons les entreprises et les scale-ups à exploiter l'intelligence décisionnelle, les agents IA et Microsoft Azure Fabric pour débloquer la croissance, l'efficacité et l'innovation.",
+                    heroProof: "Approuvé par des entreprises des secteurs de l'automobile, des télécommunications, des produits de grande consommation et de la fintech pour stimuler la croissance avec l'IA et les données.",
+                    heroBtnTalk: "Parlons-en", heroBtnWork: "Voir nos réalisations",
+                    trustTitle: "Approuvé par les leaders de l'industrie",
+                    testimonialsTitle: "Ce que disent nos partenaires",
+                    testimonial1Text: `"Anas a une capacité unique à traduire des défis de données complexes en stratégies claires et exploitables. Son leadership empathique et son expertise technique ont été essentiels au succès de notre projet."`,
+                    testimonial1Name: "Sarah M.", testimonial1Role: "Responsable de l'analytique",
+                    testimonial2Text: `"Travailler avec BRUXINNOV a accéléré notre feuille de route de transformation numérique de plusieurs mois. Leurs connaissances sur Microsoft Fabric et les modèles de livraison agiles ont été inestimables."`,
+                    testimonial2Name: "Emma R.", testimonial2Role: "Directrice de la technologie (CTO)",
+                    servicesTitle: 'Des conseils axés sur les résultats pour faire le pont entre <span class="gradient-text">la stratégie et l\'exécution</span>',
+                    service1Title: "IA & Intelligence Décisionnelle", service1Desc: "Débloquez des informations prédictives et prescriptives avec des agents IA et l'apprentissage automatique.", service1Outcome: "Résultats : Décisions plus rapides, gains d'efficacité de 20 à 40%.",
+                    service2Title: "Stratégie & Transformation Numérique", service2Desc: "Alignez les objectifs commerciaux avec les feuilles de route technologiques pour une croissance durable.", service2Outcome: "Résultats : Feuille de route claire, meilleur retour sur investissement technologique.",
+                    service3Title: "Solutions Cloud & Ingénierie de Plateforme", service3Desc: "Créez des systèmes évolutifs avec Microsoft Azure et Microsoft Fabric.", service3Outcome: "Résultats : Coûts réduits, sécurité et évolutivité améliorées.",
+                    service4Title: "Analyse du Marketing Numérique", service4Desc: "Stimulez la croissance avec des analyses marketing prêtes à la décision, reliant les canaux aux revenus avec Power BI et des pipelines de données propres.", service4Outcome: "Résultats : Augmente le trafic qualifié et relie le marketing aux revenus.",
+                    aboutTitle: 'Mener l\'innovation à la croisée des <span class="gradient-text">affaires et de la technologie</span>',
+                    aboutMission: `"J'ai fondé BRUXINNOV pour combler le fossé entre la stratégie et l'exécution. Trop de projets numériques échouent parce que la vision ne se traduit pas en impact — notre mission est de changer cela."`,
+                    founderTitle: "Anas Alaswad - Leader de la transformation numérique et de l'analyse de données", founderExperience: "Expérience:", founderEducation: "Formation:", founderBtnConsult: "Réserver une consultation",
+                    caseStudiesTitle: 'Défi → Solution → <span class="gradient-text">Résultat</span>',
+                    caseStudyChallenge: "DÉFI", caseStudySolution: "SOLUTION", caseStudyOutcome: "RÉSULTAT",
+                    caseStudy1Title: "Télécommunications", caseStudy1Challenge: "Flux de travail opérationnels fragmentés et rapports lents.", caseStudy1Solution: "Épine dorsale de données Azure Fabric + modèle opérationnel Scrum.", caseStudy1Outcome: `+<span class="count-up" data-target="25">0</span>% d'efficacité, -<span class="count-up" data-target="15">0</span>% de coûts`,
+                    caseStudy2Title: "Biens de consommation", caseStudy2Challenge: "Données marketing et commerciales cloisonnées limitant les informations.", caseStudy2Solution: "Modèle sémantique unifié dans Power BI + agent de prévision IA.", caseStudy2Outcome: `+<span class="count-up" data-target="18">0</span>% d'efficacité, +<span class="count-up" data-target="7">0</span>% de revenus`,
+                    caseStudy3Title: "Fintech", caseStudy3Challenge: "Évaluation manuelle des risques et contrôles de conformité.", caseStudy3Solution: "Pipeline d'agents IA automatisé avec intervention humaine.", caseStudy3Outcome: `-<span class="count-up" data-target="40">0</span>% de temps de décision, +<span class="count-up" data-target="12">0</span>% de réduction des risques`,
+                    insightsTitle: 'Leadership éclairé <span class="gradient-text">depuis le terrain</span>',
+                    blog1Title: "Comment les entreprises de l'UE peuvent tirer parti de Microsoft Fabric en 2025", blog1Desc: "Un aperçu des applications pratiques et des avantages stratégiques de l'adoption de la plateforme de données unifiée de Microsoft.",
+                    blog2Title: "Intelligence Décisionnelle vs. Intelligence d'Affaires", blog2Desc: "Comprendre l'évolution du reporting rétrospectif à la prise de décision proactive et pilotée par l'IA.",
+                    blog3Title: "Agents IA : Cas d'utilisation en finance et chaîne d'approvisionnement", blog3Desc: "Explorer comment les agents IA autonomes révolutionnent l'efficacité et la précision dans les fonctions commerciales critiques.",
+                    blogReadMore: "Lire la suite &rarr;",
+                    contactTitle: 'Prêt à accélérer votre <span class="gradient-text">parcours numérique</span> ?',
+                    contactSubtitle: "Parlez-nous de vos objectifs. Nous vous répondrons dans un délai d'un jour ouvrable.",
+                    contactAddressTitle: "Adresse", contactEmailTitle: "Email", contactBtnWhatsapp: "Discuter instantanément",
+                    formTitle: "Réserver une consultation", formName: "Nom complet", formEmail: "Email professionnel", formCompany: "Entreprise", formRole: "Poste", formMessage: "Quel défi pouvons-nous vous aider à relever ?", formButton: "Réserver une consultation",
+                    footerDesc: "Conseil premium pour les entreprises et les scale-ups à l'intersection des données, de l'IA et de la transformation numérique.",
+                    footerLinks: "Liens rapides", footerServices: "Services", footerAbout: "À propos", footerCaseStudies: "Études de cas", footerInsights: "Analyses", footerContact: "Contact",
+                    footerLegal: "Légal", footerPrivacy: "Politique de confidentialité", footerTerms: "Conditions d'utilisation", footerDesigned: "Conçu à Bruxelles"
+                },
+                nl: {
+                    navServices: "Diensten", navAbout: "Over ons", navCaseStudies: "Casestudy's", navInsights: "Inzichten", navContact: "Neem contact op",
+                    navServicesMobile: "Diensten", navAboutMobile: "Over ons", navCaseStudiesMobile: "Casestudy's", navInsightsMobile: "Inzichten", navContactMobile: "Neem contact op",
+                    heroTitle: 'Slimmere beslissingen mogelijk maken met <span class="gradient-text">data, AI & digitale transformatie</span>',
+                    heroSubtitle: "Wij helpen ondernemingen en scale-ups om besluitintelligentie, AI-agenten en Microsoft Azure Fabric te benutten om groei, efficiëntie en innovatie te ontsluiten.",
+                    heroProof: "Vertrouwd door ondernemingen in de automobiel-, telecom-, FMCG- en fintech-sector om groei te realiseren met AI en data.",
+                    heroBtnTalk: "Neem contact op", heroBtnWork: "Bekijk ons werk",
+                    trustTitle: "Vertrouwd door marktleiders",
+                    testimonialsTitle: "Wat onze partners zeggen",
+                    testimonial1Text: `"Anas heeft het unieke vermogen om complexe data-uitdagingen te vertalen naar duidelijke, uitvoerbare strategieën. Zijn empathisch leiderschap en technische expertise waren cruciaal voor het succes van ons project."`,
+                    testimonial1Name: "Sarah M.", testimonial1Role: "Hoofd Analytics",
+                    testimonial2Text: `"De samenwerking met BRUXINNOV heeft onze digitale transformatie-roadmap met maanden versneld. Hun inzichten in Microsoft Fabric en agile leveringsmodellen waren van onschatbare waarde."`,
+                    testimonial2Name: "Emma R.", testimonial2Role: "CTO",
+                    servicesTitle: 'Resultaatgerichte consulting om de kloof tussen <span class="gradient-text">strategie en uitvoering</span> te overbruggen',
+                    service1Title: "AI & Besluitintelligentie", service1Desc: "Ontsluit voorspellende en prescriptieve inzichten met AI-agenten en machine learning.", service1Outcome: "Resultaten: Snellere beslissingen, 20-40% efficiëntiewinst.",
+                    service2Title: "Digitale Strategie & Transformatie", service2Desc: "Lijn bedrijfsdoelen uit met technologische roadmaps voor duurzame groei.", service2Outcome: "Resultaten: Duidelijke roadmap, verbeterde ROI op tech-uitgaven.",
+                    service3Title: "Cloudoplossingen & Platform Engineering", service3Desc: "Bouw schaalbare systemen met Microsoft Azure & Microsoft Fabric.", service3Outcome: "Resultaten: Lagere kosten, verbeterde beveiliging en schaalbaarheid.",
+                    service4Title: "Digitale Marketinganalyse", service4Desc: "Stimuleer groei met besluitklare marketinganalyses, waarbij kanalen worden gekoppeld aan omzet met Power BI en schone datapijplijnen.", service4Outcome: "Resultaten: Verhoogt gekwalificeerd verkeer en verbindt marketing met omzet.",
+                    aboutTitle: 'Innovatie stimuleren op het kruispunt van <span class="gradient-text">business en technologie</span>',
+                    aboutMission: `"Ik heb BRUXINNOV opgericht om de kloof tussen strategie en uitvoering te overbruggen. Te veel digitale projecten mislukken omdat inzicht niet wordt vertaald in impact — onze missie is om dat te veranderen."`,
+                    founderTitle: "Anas Alaswad - Leider Digitale Transformatie & Data-analyse", founderExperience: "Ervaring:", founderEducation: "Opleiding:", founderBtnConsult: "Boek een consult",
+                    caseStudiesTitle: 'Uitdaging → Oplossing → <span class="gradient-text">Resultaat</span>',
+                    caseStudyChallenge: "UITDAGING", caseStudySolution: "OPLOSSING", caseStudyOutcome: "RESULTAAT",
+                    caseStudy1Title: "Telecom", caseStudy1Challenge: "Gefragmenteerde operationele workflows en trage rapportage.", caseStudy1Solution: "Azure Fabric-dataruggengraat + Scrum-werkmodel.", caseStudy1Outcome: `+<span class="count-up" data-target="25">0</span>% efficiëntie, -<span class="count-up" data-target="15">0</span>% kosten`,
+                    caseStudy2Title: "FMCG", caseStudy2Challenge: "Geïsoleerde marketing- en verkoopgegevens beperken inzichten.", caseStudy2Solution: "Geünificeerd semantisch model in Power BI + AI-voorspellingsagent.", caseStudy2Outcome: `+<span class="count-up" data-target="18">0</span>% efficiëntie, +<span class="count-up" data-target="7">0</span>% omzet`,
+                    caseStudy3Title: "Fintech", caseStudy3Challenge: "Handmatige risicobeoordeling en nalevingscontroles.", caseStudy3Solution: "Geautomatiseerde AI-agentpijplijn met menselijke tussenkomst.", caseStudy3Outcome: `-<span class="count-up" data-target="40">0</span>% beslissingstijd, +<span class="count-up" data-target="12">0</span>% risicovermindering`,
+                    insightsTitle: 'Thought leadership <span class="gradient-text">uit het veld</span>',
+                    blog1Title: "Hoe EU-ondernemingen Microsoft Fabric kunnen benutten in 2025", blog1Desc: "Een kijkje in de praktische toepassingen en strategische voordelen van het adopteren van Microsoft's uniforme dataplatform.",
+                    blog2Title: "Besluitintelligentie vs. Business Intelligence", blog2Desc: "Het begrijpen van de evolutie van retrospectieve rapportage naar proactieve, AI-gestuurde besluitvorming.",
+                    blog3Title: "AI-agenten: Use cases in financiën & toeleveringsketen", blog3Desc: "Onderzoeken hoe autonome AI-agenten de efficiëntie en nauwkeurigheid in kritieke bedrijfsfuncties revolutioneren.",
+                    blogReadMore: "Lees meer &rarr;",
+                    contactTitle: 'Klaar om uw <span class="gradient-text">digitale reis</span> te versnellen?',
+                    contactSubtitle: "Vertel ons over uw doelen. We nemen binnen 1 werkdag contact met u op.",
+                    contactAddressTitle: "Adres", contactEmailTitle: "E-mail", contactBtnWhatsapp: "Chat direct",
+                    formTitle: "Boek een consult", formName: "Volledige naam", formEmail: "Zakelijke e-mail", formCompany: "Bedrijf", formRole: "Functie", formMessage: "Met welke uitdaging kunnen we helpen?", formButton: "Boek een consult",
+                    footerDesc: "Premium consulting voor ondernemingen en scale-ups op het snijvlak van data, AI en digitale transformatie.",
+                    footerLinks: "Snelle links", footerServices: "Diensten", footerAbout: "Over ons", footerCaseStudies: "Casestudy's", footerInsights: "Inzichten", footerContact: "Contact",
+                    footerLegal: "Juridisch", footerPrivacy: "Privacybeleid", footerTerms: "Servicevoorwaarden", footerDesigned: "Ontworpen in Brussel"
                 }
             };
 
             // --- LANGUAGE SWITCHER LOGIC ---
-            const langSwitchers = [document.getElementById('lang-switcher'), document.getElementById('lang-switcher-mobile')];
+            const langSwitcherBtn = document.getElementById('lang-switcher-btn');
+            const langDropdown = document.getElementById('lang-dropdown');
+            const currentLangSpan = document.getElementById('current-lang');
             const allElementsToTranslate = document.querySelectorAll('[data-lang-key]');
             const ogLocaleMeta = document.getElementById('og-locale');
 
@@ -608,23 +694,8 @@
 
                 document.documentElement.setAttribute('lang', lang);
                 document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-                ogLocaleMeta.setAttribute('content', lang === 'ar' ? 'ar_AR' : 'en_US');
-
-                langSwitchers.forEach(switcher => {
-                    const en = switcher.querySelector('[id^="lang-en"]');
-                    const ar = switcher.querySelector('[id^="lang-ar"]');
-                    if (lang === 'ar') {
-                        ar.classList.add('text-[#00C9FF]', 'font-bold');
-                        ar.classList.remove('text-gray-500');
-                        en.classList.remove('text-[#00C9FF]', 'font-bold');
-                        en.classList.add('text-gray-500');
-                    } else {
-                        en.classList.add('text-[#00C9FF]', 'font-bold');
-                        en.classList.remove('text-gray-500');
-                        ar.classList.remove('text-[#00C9FF]', 'font-bold');
-                        ar.classList.add('text-gray-500');
-                    }
-                });
+                ogLocaleMeta.setAttribute('content', {en: 'en_US', ar: 'ar_AR', fr: 'fr_FR', nl: 'nl_NL'}[lang]);
+                currentLangSpan.textContent = lang.toUpperCase();
             };
             
             const translatePage = (lang) => {
@@ -635,14 +706,32 @@
                 }
             };
 
-            langSwitchers.forEach(switcher => {
-                switcher.addEventListener('click', (e) => {
-                    if (e.target.id.includes('lang-ar')) {
-                        translatePage('ar');
-                    } else if (e.target.id.includes('lang-en')) {
-                        translatePage('en');
-                    }
-                });
+            langSwitcherBtn.addEventListener('click', () => {
+                langDropdown.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!langSwitcherBtn.contains(e.target)) {
+                    langDropdown.classList.add('hidden');
+                }
+            });
+
+            langDropdown.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                if (lang) {
+                    translatePage(lang);
+                    langDropdown.classList.add('hidden');
+                }
+            });
+            
+            document.getElementById('mobile-menu').addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                if(lang){
+                    e.preventDefault();
+                    translatePage(lang);
+                    mobileMenu.classList.add('hidden');
+                }
             });
 
 
