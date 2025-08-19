@@ -25,7 +25,9 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts for typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Custom CSS variables and styles */
         :root {
@@ -40,6 +42,11 @@
             scroll-behavior: smooth;
         }
         
+        /* Apply Arabic font when RTL is active */
+        html[dir="rtl"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
         .gradient-text {
             background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
             -webkit-background-clip: text;
@@ -105,6 +112,13 @@
         .fade-in-section.visible {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* RTL Specific styles */
+        html[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(2rem * var(--tw-space-x-reverse));
+            margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -115,16 +129,27 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-2xl font-bold text-[#0A192F]">BRUX<span class="gradient-text">INNOV</span></a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#services" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium">Services</a>
-                        <a href="#about" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium">About</a>
-                        <a href="#case-studies" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium">Case Studies</a>
-                        <a href="#insights" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium">Insights</a>
-                        <a href="#contact" class="px-6 py-2 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">Let's Talk</a>
+                <div class="hidden md:flex items-center">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#services" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navServices">Services</a>
+                        <a href="#about" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navAbout">About</a>
+                        <a href="#case-studies" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navCaseStudies">Case Studies</a>
+                        <a href="#insights" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navInsights">Insights</a>
+                        <a href="#contact" class="px-6 py-2 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="navContact">Let's Talk</a>
+                    </div>
+                    <!-- Language Switcher -->
+                    <div id="lang-switcher" class="ml-8 text-sm font-medium cursor-pointer">
+                        <span id="lang-en" class="text-[#00C9FF] font-bold">EN</span>
+                        <span class="text-gray-400">/</span>
+                        <span id="lang-ar" class="text-gray-500 hover:text-[#00C9FF]">AR</span>
                     </div>
                 </div>
-                <div class="md:hidden">
+                <div class="md:hidden flex items-center">
+                     <div id="lang-switcher-mobile" class="mr-4 text-sm font-medium cursor-pointer">
+                        <span id="lang-en-mobile" class="text-[#00C9FF] font-bold">EN</span>
+                        <span class="text-gray-400">/</span>
+                        <span id="lang-ar-mobile" class="text-gray-500 hover:text-[#00C9FF]">AR</span>
+                    </div>
                     <button id="mobile-menu-button" class="text-[#0A192F] focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -136,11 +161,11 @@
         <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#services" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]">Services</a>
-                <a href="#about" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]">About</a>
-                <a href="#case-studies" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]">Case Studies</a>
-                <a href="#insights" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]">Insights</a>
-                <a href="#contact" class="mobile-nav-link block px-3 py-2 text-base font-medium text-white gradient-bg rounded-full text-center">Let's Talk</a>
+                <a href="#services" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navServicesMobile">Services</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navAboutMobile">About</a>
+                <a href="#case-studies" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navCaseStudiesMobile">Case Studies</a>
+                <a href="#insights" class="mobile-nav-link block px-3 py-2 text-base font-medium text-[#0A192F] hover:text-[#00C9FF]" data-lang-key="navInsightsMobile">Insights</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 text-base font-medium text-white gradient-bg rounded-full text-center" data-lang-key="navContactMobile">Let's Talk</a>
             </div>
         </div>
     </nav>
@@ -149,18 +174,18 @@
     <section class="hero-bg text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" data-lang-key="heroTitle">
                     Empowering Smarter Decisions with <span class="gradient-text">Data, AI & Digital Transformation</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-3xl mx-auto" data-lang-key="heroSubtitle">
                     We help enterprises and scale-ups harness decision intelligence, AI agents, and Microsoft Azure Fabric to unlock growth, efficiency, and innovation.
                 </p>
-                <p class="text-md text-gray-400 mb-8 max-w-3xl mx-auto font-light">
+                <p class="text-md text-gray-400 mb-8 max-w-3xl mx-auto font-light" data-lang-key="heroProof">
                     Trusted by enterprises across automobile, telecom, FMCG, and fintech to unlock growth with AI & data.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 text-center">Let’s Talk</a>
-                    <a href="#case-studies" class="px-8 py-3 rounded-full bg-transparent border-2 border-[#00C9FF] text-[#00C9FF] font-medium hover:bg-[#00C9FF] hover:bg-opacity-10 transition-colors duration-300 text-center">See Our Work</a>
+                    <a href="#contact" class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 text-center" data-lang-key="heroBtnTalk">Let’s Talk</a>
+                    <a href="#case-studies" class="px-8 py-3 rounded-full bg-transparent border-2 border-[#00C9FF] text-[#00C9FF] font-medium hover:bg-[#00C9FF] hover:bg-opacity-10 transition-colors duration-300 text-center" data-lang-key="heroBtnWork">See Our Work</a>
                 </div>
             </div>
         </div>
@@ -169,7 +194,7 @@
     <!-- Trust Bar -->
     <section class="py-12 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-gray-500 mb-8 text-sm font-medium tracking-wider uppercase">Trusted by industry leaders</p>
+            <p class="text-center text-gray-500 mb-8 text-sm font-medium tracking-wider uppercase" data-lang-key="trustTitle">Trusted by industry leaders</p>
             <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-16">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" alt="Azure Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
@@ -184,21 +209,21 @@
     <section class="py-20 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">What Our Partners Say</h2>
+                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="testimonialsTitle">What Our Partners Say</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <p class="text-gray-600 mb-6">"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."</p>
+                    <p class="text-gray-600 mb-6" data-lang-key="testimonial1Text">"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."</p>
                     <div>
-                        <p class="font-bold text-[#0A192F]">Sarah M.</p>
-                        <p class="text-sm text-gray-500">Head of Analytics</p>
+                        <p class="font-bold text-[#0A192F]" data-lang-key="testimonial1Name">Sarah M.</p>
+                        <p class="text-sm text-gray-500" data-lang-key="testimonial1Role">Head of Analytics</p>
                     </div>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <p class="text-gray-600 mb-6">"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."</p>
+                    <p class="text-gray-600 mb-6" data-lang-key="testimonial2Text">"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."</p>
                     <div>
-                        <p class="font-bold text-[#0A192F]">Emma R.</p>
-                        <p class="text-sm text-gray-500">CTO</p>
+                        <p class="font-bold text-[#0A192F]" data-lang-key="testimonial2Name">Emma R.</p>
+                        <p class="text-sm text-gray-500" data-lang-key="testimonial2Role">CTO</p>
                     </div>
                 </div>
             </div>
@@ -209,34 +234,34 @@
     <section id="services" class="py-20 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="servicesTitle">Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span></h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Service Cards -->
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-brain text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">AI & Decision Intelligence</h3>
-                    <p class="text-gray-600 mb-4">Unlock predictive & prescriptive insights with AI agents and machine learning.</p>
-                    <p class="text-sm font-bold text-gray-800">Outcomes: Faster decisions, 20-40% efficiency gains.</p>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service1Title">AI & Decision Intelligence</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="service1Desc">Unlock predictive & prescriptive insights with AI agents and machine learning.</p>
+                    <p class="text-sm font-bold text-gray-800" data-lang-key="service1Outcome">Outcomes: Faster decisions, 20-40% efficiency gains.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-route text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Strategy & Transformation</h3>
-                    <p class="text-gray-600 mb-4">Align business goals with technology roadmaps for sustainable growth.</p>
-                    <p class="text-sm font-bold text-gray-800">Outcomes: Clear roadmap, improved ROI on tech spend.</p>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service2Title">Digital Strategy & Transformation</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="service2Desc">Align business goals with technology roadmaps for sustainable growth.</p>
+                    <p class="text-sm font-bold text-gray-800" data-lang-key="service2Outcome">Outcomes: Clear roadmap, improved ROI on tech spend.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-cloud text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Cloud Solutions & Platform Engineering</h3>
-                    <p class="text-gray-600 mb-4">Build scalable systems with Microsoft Azure & Microsoft Fabric.</p>
-                    <p class="text-sm font-bold text-gray-800">Outcomes: Reduced costs, enhanced security & scalability.</p>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service3Title">Cloud Solutions & Platform Engineering</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="service3Desc">Build scalable systems with Microsoft Azure & Microsoft Fabric.</p>
+                    <p class="text-sm font-bold text-gray-800" data-lang-key="service3Outcome">Outcomes: Reduced costs, enhanced security & scalability.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-bullhorn text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Marketing Analytics</h3>
-                    <p class="text-gray-600 mb-4">Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.</p>
-                    <p class="text-sm font-bold text-gray-800">Outcomes: Increases qualified traffic and connects marketing to revenue.</p>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service4Title">Digital Marketing Analytics</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="service4Desc">Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.</p>
+                    <p class="text-sm font-bold text-gray-800" data-lang-key="service4Outcome">Outcomes: Increases qualified traffic and connects marketing to revenue.</p>
                 </div>
             </div>
         </div>
@@ -259,16 +284,16 @@
                          onerror="this.onerror=null;this.src='https://placehold.co/320x320/0A192F/FFFFFF?text=Anas+Alaswad';">
                 </div>
                 <div class="lg:w-3/5">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-6">Driving Innovation at the Crossroads of <span class="gradient-text">Business and Technology</span></h2>
-                    <p class="text-gray-600 mb-6 italic">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-6" data-lang-key="aboutTitle">Driving Innovation at the Crossroads of <span class="gradient-text">Business and Technology</span></h2>
+                    <p class="text-gray-600 mb-6 italic" data-lang-key="aboutMission">
                         “I founded BRUXINNOV to bridge the gap between strategy and execution. Too many digital projects fail because insight doesn’t translate into impact — our mission is to change that.”
                     </p>
                     <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
-                        <h3 class="text-xl font-bold text-[#0A192F] mb-1">Anas Alaswad - <span class="text-lg font-medium text-gray-500">Digital Transformation & Data Analytics Lead</span></h3>
-                        <p class="text-gray-600 text-sm mb-3"><strong>Experience:</strong> Stellantis, Clarivate, AB InBev, BICS, TopCompare</p>
-                        <p class="text-gray-600 text-sm mb-4"><strong>Education:</strong> Dual Masters - KU Leuven (Information Management), VUB (International Business)</p>
+                        <h3 class="text-xl font-bold text-[#0A192F] mb-1" data-lang-key="founderTitle">Anas Alaswad - <span class="text-lg font-medium text-gray-500">Digital Transformation & Data Analytics Lead</span></h3>
+                        <p class="text-gray-600 text-sm mb-3"><strong data-lang-key="founderExperience">Experience:</strong> Stellantis, Clarivate, AB InBev, BICS, TopCompare</p>
+                        <p class="text-gray-600 text-sm mb-4"><strong data-lang-key="founderEducation">Education:</strong> Dual Masters - KU Leuven (Information Management), VUB (International Business)</p>
                         <div class="mt-4 flex gap-4">
-                           <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">Book a Consultation</a>
+                           <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="founderBtnConsult">Book a Consultation</a>
                            <a href="https://linkedin.com/in/aalaswad" target="_blank" class="px-6 py-2 text-sm rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
@@ -281,27 +306,27 @@
     <section id="case-studies" class="py-20 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Challenge → Solution → <span class="gradient-text">Outcome</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudiesTitle">Challenge → Solution → <span class="gradient-text">Outcome</span></h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Case Study Cards -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-4">Telecom</h3>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">CHALLENGE</h4><p class="text-gray-700">Fragmented operational workflows and slow reporting.</p></div>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">SOLUTION</h4><p class="text-gray-700">Azure Fabric data backbone + Scrum operating model.</p></div>
-                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">OUTCOME</h4><p class="text-2xl font-bold gradient-text">+<span class="count-up" data-target="25">0</span>% Efficiency, -<span class="count-up" data-target="15">0</span>% Costs</p></div>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy1Title">Telecom</h3>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy1Challenge">Fragmented operational workflows and slow reporting.</p></div>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy1Solution">Azure Fabric data backbone + Scrum operating model.</p></div>
+                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyOutcome">OUTCOME</h4><p class="text-2xl font-bold gradient-text" data-lang-key="caseStudy1Outcome">+<span class="count-up" data-target="25">0</span>% Efficiency, -<span class="count-up" data-target="15">0</span>% Costs</p></div>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-4">FMCG</h3>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">CHALLENGE</h4><p class="text-gray-700">Siloed marketing and sales data limiting insights.</p></div>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">SOLUTION</h4><p class="text-gray-700">Unified semantic model in Power BI + AI forecasting agent.</p></div>
-                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">OUTCOME</h4><p class="text-2xl font-bold gradient-text">+<span class="count-up" data-target="18">0</span>% Efficiency, +<span class="count-up" data-target="7">0</span>% Revenue</p></div>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy2Title">FMCG</h3>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy2Challenge">Siloed marketing and sales data limiting insights.</p></div>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy2Solution">Unified semantic model in Power BI + AI forecasting agent.</p></div>
+                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyOutcome">OUTCOME</h4><p class="text-2xl font-bold gradient-text" data-lang-key="caseStudy2Outcome">+<span class="count-up" data-target="18">0</span>% Efficiency, +<span class="count-up" data-target="7">0</span>% Revenue</p></div>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-4">Fintech</h3>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">CHALLENGE</h4><p class="text-gray-700">Manual risk scoring and compliance checks.</p></div>
-                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">SOLUTION</h4><p class="text-gray-700">Automated AI agent pipeline with human-in-the-loop.</p></div>
-                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1">OUTCOME</h4><p class="text-2xl font-bold gradient-text">-<span class="count-up" data-target="40">0</span>% Time to decision, +<span class="count-up" data-target="12">0</span>% Risk reduction</p></div>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy3Title">Fintech</h3>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy3Challenge">Manual risk scoring and compliance checks.</p></div>
+                    <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy3Solution">Automated AI agent pipeline with human-in-the-loop.</p></div>
+                    <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyOutcome">OUTCOME</h4><p class="text-2xl font-bold gradient-text" data-lang-key="caseStudy3Outcome">-<span class="count-up" data-target="40">0</span>% Time to decision, +<span class="count-up" data-target="12">0</span>% Risk reduction</p></div>
                 </div>
             </div>
         </div>
@@ -311,26 +336,26 @@
     <section id="insights" class="py-20 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Thought leadership <span class="gradient-text">from the field</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="insightsTitle">Thought leadership <span class="gradient-text">from the field</span></h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
                 <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">How EU Enterprises Can Leverage Microsoft Fabric in 2025</h3>
-                    <p class="text-gray-600 mb-4">A look into the practical applications and strategic advantages of adopting Microsoft's unified data platform.</p>
-                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog1Title">How EU Enterprises Can Leverage Microsoft Fabric in 2025</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="blog1Desc">A look into the practical applications and strategic advantages of adopting Microsoft's unified data platform.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
                 </div>
                 <!-- Blog Post 2 -->
                 <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Decision Intelligence vs. Business Intelligence</h3>
-                    <p class="text-gray-600 mb-4">Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.</p>
-                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog2Title">Decision Intelligence vs. Business Intelligence</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="blog2Desc">Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
                 </div>
                 <!-- Blog Post 3 -->
                 <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">AI Agents: Use Cases in Finance & Supply Chain</h3>
-                    <p class="text-gray-600 mb-4">Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.</p>
-                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog3Title">AI Agents: Use Cases in Finance & Supply Chain</h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="blog3Desc">Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
                 </div>
             </div>
         </div>
@@ -341,45 +366,44 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to accelerate your <span class="gradient-text">digital journey</span>?</h2>
-                    <p class="text-lg text-gray-300 mb-8">Tell us about your goals. We’ll follow up within 1 business day.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-key="contactTitle">Ready to accelerate your <span class="gradient-text">digital journey</span>?</h2>
+                    <p class="text-lg text-gray-300 mb-8" data-lang-key="contactSubtitle">Tell us about your goals. We’ll follow up within 1 business day.</p>
                     <div class="space-y-6">
-                        <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-map-marker-alt text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold">Address</h3><p class="text-gray-300">Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels</p></div></div>
-                        <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold">Email</h3><a href="mailto:info@bruxinnov.com" class="text-gray-300 hover:text-white">info@bruxinnov.com</a></div></div>
+                        <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-map-marker-alt text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold" data-lang-key="contactAddressTitle">Address</h3><p class="text-gray-300">Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels</p></div></div>
+                        <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold" data-lang-key="contactEmailTitle">Email</h3><a href="mailto:info@bruxinnov.com" class="text-gray-300 hover:text-white">info@bruxinnov.com</a></div></div>
                     </div>
                      <div class="mt-8 flex gap-4">
-                        <a href="https://api.whatsapp.com/send?phone=32495477770&text" target="_blank" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2"><i class="fab fa-whatsapp"></i> Chat Instantly</a>
+                        <a href="https://api.whatsapp.com/send?phone=32495477770&text" target="_blank" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2"><i class="fab fa-whatsapp"></i> <span data-lang-key="contactBtnWhatsapp">Chat Instantly</span></a>
                     </div>
                 </div>
                 <div class="lg:w-1/2 bg-white rounded-xl p-8 shadow-xl w-full">
-                    <h3 class="text-2xl font-bold text-[#0A192F] mb-6">Book a Consultation</h3>
-                    <!-- UPDATED FORM for Google Apps Script -->
+                    <h3 class="text-2xl font-bold text-[#0A192F] mb-6" data-lang-key="formTitle">Book a Consultation</h3>
                     <form id="consultation-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <label for="name" class="block text-gray-700 font-medium mb-2" data-lang-key="formName">Full Name</label>
                                 <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                             <div>
-                                <label for="email" class="block text-gray-700 font-medium mb-2">Work Email</label>
+                                <label for="email" class="block text-gray-700 font-medium mb-2" data-lang-key="formEmail">Work Email</label>
                                 <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="company" class="block text-gray-700 font-medium mb-2">Company</label>
+                                <label for="company" class="block text-gray-700 font-medium mb-2" data-lang-key="formCompany">Company</label>
                                 <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                             <div>
-                                <label for="role" class="block text-gray-700 font-medium mb-2">Role</label>
+                                <label for="role" class="block text-gray-700 font-medium mb-2" data-lang-key="formRole">Role</label>
                                 <input type="text" id="role" name="role" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">What challenge can we help with?</label>
+                            <label for="message" class="block text-gray-700 font-medium mb-2" data-lang-key="formMessage">What challenge can we help with?</label>
                             <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required></textarea>
                         </div>
-                        <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">Book a Consultation</button>
+                        <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="formButton">Book a Consultation</button>
                     </form>
                     <div id="form-status" class="mt-4 text-center"></div>
                 </div>
@@ -393,7 +417,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-2xl font-bold text-white mb-4">BRUX<span class="gradient-text">INNOV</span></h3>
-                    <p class="mb-4 text-sm">Premium consulting for enterprises and scale-ups at the intersection of data, AI, and digital transformation.</p>
+                    <p class="mb-4 text-sm" data-lang-key="footerDesc">Premium consulting for enterprises and scale-ups at the intersection of data, AI, and digital transformation.</p>
                     <div class="flex space-x-4">
                         <a href="https://linkedin.com/company/bruxinnov" target="_blank" class="text-gray-300 hover:text-[#00C9FF] transition-colors duration-300"><i class="fab fa-linkedin-in text-lg"></i></a>
                         <a href="https://www.facebook.com/bruxinnov/" target="_blank" class="text-gray-300 hover:text-[#00C9FF] transition-colors duration-300"><i class="fab fa-facebook-f text-lg"></i></a>
@@ -402,51 +426,174 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold text-lg mb-4">Quick Links</h3>
+                    <h3 class="text-white font-semibold text-lg mb-4" data-lang-key="footerLinks">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-[#00C9FF] transition-colors duration-300">Services</a></li>
-                        <li><a href="#about" class="hover:text-[#00C9FF] transition-colors duration-300">About</a></li>
-                        <li><a href="#case-studies" class="hover:text-[#00C9FF] transition-colors duration-300">Case Studies</a></li>
-                        <li><a href="#insights" class="hover:text-[#00C9FF] transition-colors duration-300">Insights</a></li>
-                        <li><a href="#contact" class="hover:text-[#00C9FF] transition-colors duration-300">Contact</a></li>
+                        <li><a href="#services" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerServices">Services</a></li>
+                        <li><a href="#about" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerAbout">About</a></li>
+                        <li><a href="#case-studies" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerCaseStudies">Case Studies</a></li>
+                        <li><a href="#insights" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerInsights">Insights</a></li>
+                        <li><a href="#contact" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerContact">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold text-lg mb-4">Legal</h3>
+                    <h3 class="text-white font-semibold text-lg mb-4" data-lang-key="footerLegal">Legal</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#00C9FF] transition-colors duration-300">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-[#00C9FF] transition-colors duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerPrivacy">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerTerms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
-                <p>&copy; 2025 BRUXINNOV SRL &bull; BE 1002.714.833 &bull; Designed in Brussels</p>
+                <p>&copy; 2025 BRUXINNOV SRL &bull; BE 1002.714.833 &bull; <span data-lang-key="footerDesigned">Designed in Brussels</span></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // JavaScript for interactivity
+        // JavaScript for interactivity and translation
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
+            
+            // --- TRANSLATION DATA ---
+            const translations = {
+                en: {
+                    navServices: "Services", navAbout: "About", navCaseStudies: "Case Studies", navInsights: "Insights", navContact: "Let's Talk",
+                    navServicesMobile: "Services", navAboutMobile: "About", navCaseStudiesMobile: "Case Studies", navInsightsMobile: "Insights", navContactMobile: "Let's Talk",
+                    heroTitle: 'Empowering Smarter Decisions with <span class="gradient-text">Data, AI & Digital Transformation</span>',
+                    heroSubtitle: "We help enterprises and scale-ups harness decision intelligence, AI agents, and Microsoft Azure Fabric to unlock growth, efficiency, and innovation.",
+                    heroProof: "Trusted by enterprises across automobile, telecom, FMCG, and fintech to unlock growth with AI & data.",
+                    heroBtnTalk: "Let’s Talk", heroBtnWork: "See Our Work",
+                    trustTitle: "Trusted by industry leaders",
+                    testimonialsTitle: "What Our Partners Say",
+                    testimonial1Text: `"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."`,
+                    testimonial1Name: "Sarah M.", testimonial1Role: "Head of Analytics",
+                    testimonial2Text: `"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."`,
+                    testimonial2Name: "Emma R.", testimonial2Role: "CTO",
+                    servicesTitle: 'Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span>',
+                    service1Title: "AI & Decision Intelligence", service1Desc: "Unlock predictive & prescriptive insights with AI agents and machine learning.", service1Outcome: "Outcomes: Faster decisions, 20-40% efficiency gains.",
+                    service2Title: "Digital Strategy & Transformation", service2Desc: "Align business goals with technology roadmaps for sustainable growth.", service2Outcome: "Outcomes: Clear roadmap, improved ROI on tech spend.",
+                    service3Title: "Cloud Solutions & Platform Engineering", service3Desc: "Build scalable systems with Microsoft Azure & Microsoft Fabric.", service3Outcome: "Outcomes: Reduced costs, enhanced security & scalability.",
+                    service4Title: "Digital Marketing Analytics", service4Desc: "Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.", service4Outcome: "Outcomes: Increases qualified traffic and connects marketing to revenue.",
+                    aboutTitle: 'Driving Innovation at the Crossroads of <span class="gradient-text">Business and Technology</span>',
+                    aboutMission: `“I founded BRUXINNOV to bridge the gap between strategy and execution. Too many digital projects fail because insight doesn’t translate into impact — our mission is to change that.”`,
+                    founderTitle: "Anas Alaswad - Digital Transformation & Data Analytics Lead", founderExperience: "Experience:", founderEducation: "Education:", founderBtnConsult: "Book a Consultation",
+                    caseStudiesTitle: 'Challenge → Solution → <span class="gradient-text">Outcome</span>',
+                    caseStudyChallenge: "CHALLENGE", caseStudySolution: "SOLUTION", caseStudyOutcome: "OUTCOME",
+                    caseStudy1Title: "Telecom", caseStudy1Challenge: "Fragmented operational workflows and slow reporting.", caseStudy1Solution: "Azure Fabric data backbone + Scrum operating model.", caseStudy1Outcome: `+<span class="count-up" data-target="25">0</span>% Efficiency, -<span class="count-up" data-target="15">0</span>% Costs`,
+                    caseStudy2Title: "FMCG", caseStudy2Challenge: "Siloed marketing and sales data limiting insights.", caseStudy2Solution: "Unified semantic model in Power BI + AI forecasting agent.", caseStudy2Outcome: `+<span class="count-up" data-target="18">0</span>% Efficiency, +<span class="count-up" data-target="7">0</span>% Revenue`,
+                    caseStudy3Title: "Fintech", caseStudy3Challenge: "Manual risk scoring and compliance checks.", caseStudy3Solution: "Automated AI agent pipeline with human-in-the-loop.", caseStudy3Outcome: `-<span class="count-up" data-target="40">0</span>% Time to decision, +<span class="count-up" data-target="12">0</span>% Risk reduction`,
+                    insightsTitle: 'Thought leadership <span class="gradient-text">from the field</span>',
+                    blog1Title: "How EU Enterprises Can Leverage Microsoft Fabric in 2025", blog1Desc: "A look into the practical applications and strategic advantages of adopting Microsoft's unified data platform.",
+                    blog2Title: "Decision Intelligence vs. Business Intelligence", blog2Desc: "Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.",
+                    blog3Title: "AI Agents: Use Cases in Finance & Supply Chain", blog3Desc: "Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.",
+                    blogReadMore: "Read more &rarr;",
+                    contactTitle: 'Ready to accelerate your <span class="gradient-text">digital journey</span>?',
+                    contactSubtitle: "Tell us about your goals. We’ll follow up within 1 business day.",
+                    contactAddressTitle: "Address", contactEmailTitle: "Email", contactBtnWhatsapp: "Chat Instantly",
+                    formTitle: "Book a Consultation", formName: "Full Name", formEmail: "Work Email", formCompany: "Company", formRole: "Role", formMessage: "What challenge can we help with?", formButton: "Book a Consultation",
+                    footerDesc: "Premium consulting for enterprises and scale-ups at the intersection of data, AI, and digital transformation.",
+                    footerLinks: "Quick Links", footerServices: "Services", footerAbout: "About", footerCaseStudies: "Case Studies", footerInsights: "Insights", footerContact: "Contact",
+                    footerLegal: "Legal", footerPrivacy: "Privacy Policy", footerTerms: "Terms of Service", footerDesigned: "Designed in Brussels"
+                },
+                ar: {
+                    navServices: "الخدمات", navAbout: "حولنا", navCaseStudies: "دراسات الحالة", navInsights: "الرؤى", navContact: "لنتحدث",
+                    navServicesMobile: "الخدمات", navAboutMobile: "حولنا", navCaseStudiesMobile: "دراسات الحالة", navInsightsMobile: "الرؤى", navContactMobile: "لنتحدث",
+                    heroTitle: 'تمكين القرارات الذكية <span class="gradient-text">بالبيانات، الذكاء الاصطناعي والتحول الرقمي</span>',
+                    heroSubtitle: "نساعد الشركات الكبرى والناشئة على تسخير ذكاء القرار، وكلاء الذكاء الاصطناعي، ومنصة Microsoft Azure Fabric لإطلاق العنان للنمو والكفاءة والابتكار.",
+                    heroProof: "موثوق بنا من قبل الشركات في قطاعات السيارات، الاتصالات، السلع الاستهلاكية، والتكنولوجيا المالية لتحقيق النمو باستخدام الذكاء الاصطناعي والبيانات.",
+                    heroBtnTalk: "لنتحدث", heroBtnWork: "شاهد أعمالنا",
+                    trustTitle: "موثوق به من قبل رواد الصناعة",
+                    testimonialsTitle: "ماذا يقول شركاؤنا",
+                    testimonial1Text: `"يتمتع أنس بقدرة فريدة على ترجمة تحديات البيانات المعقدة إلى استراتيجيات واضحة وقابلة للتنفيذ. كانت قيادته المتعاطفة وخبرته التقنية حاسمة لنجاح مشروعنا."`,
+                    testimonial1Name: "سارة م.", testimonial1Role: "رئيسة قسم التحليلات",
+                    testimonial2Text: `"العمل مع BRUXINNOV سرّع خارطة طريق تحولنا الرقمي بأشهر. كانت رؤاهم حول Microsoft Fabric ونماذج التسليم السريع لا تقدر بثمن."`,
+                    testimonial2Name: "إيما ر.", testimonial2Role: "المديرة التقنية",
+                    servicesTitle: 'استشارات تركز على النتائج <span class="gradient-text">لسد الفجوة بين الاستراتيجية والتنفيذ</span>',
+                    service1Title: "الذكاء الاصطناعي وذكاء القرار", service1Desc: "أطلق العنان للرؤى التنبؤية والإرشادية مع وكلاء الذكاء الاصطناعي وتعلم الآلة.", service1Outcome: "النتائج: قرارات أسرع، زيادة في الكفاءة بنسبة 20-40%.",
+                    service2Title: "الاستراتيجية الرقمية والتحول", service2Desc: "وازن بين أهداف العمل وخرائط طريق التكنولوجيا لتحقيق نمو مستدام.", service2Outcome: "النتائج: خارطة طريق واضحة، تحسين عائد الاستثمار في التكنولوجيا.",
+                    service3Title: "الحلول السحابية وهندسة المنصات", service3Desc: "ابنِ أنظمة قابلة للتطوير باستخدام Microsoft Azure و Microsoft Fabric.", service3Outcome: "النتائج: تكاليف أقل، أمان وقابلية تطوير معززة.",
+                    service4Title: "تحليلات التسويق الرقمي", service4Desc: "عزز النمو بتحليلات تسويق جاهزة للقرار، وربط القنوات بالإيرادات باستخدام Power BI وخطوط بيانات نظيفة.", service4Outcome: "النتائج: زيادة في الزيارات المؤهلة وربط التسويق بالإيرادات.",
+                    aboutTitle: 'قيادة الابتكار عند <span class="gradient-text">تقاطع الأعمال والتكنولوجيا</span>',
+                    aboutMission: `"أسست BRUXINNOV لسد الفجوة بين الاستراتيجية والتنفيذ. تفشل الكثير من المشاريع الرقمية لأن الرؤية لا تترجم إلى تأثير — مهمتنا هي تغيير ذلك."`,
+                    founderTitle: "أنس الأسود - قائد التحول الرقمي وتحليلات البيانات", founderExperience: "الخبرة:", founderEducation: "التعليم:", founderBtnConsult: "احجز استشارة",
+                    caseStudiesTitle: 'التحدي ← الحل ← <span class="gradient-text">النتيجة</span>',
+                    caseStudyChallenge: "التحدي", caseStudySolution: "الحل", caseStudyOutcome: "النتيجة",
+                    caseStudy1Title: "الاتصالات", caseStudy1Challenge: "تدفقات عمل تشغيلية مجزأة وتقارير بطيئة.", caseStudy1Solution: "بنية بيانات Azure Fabric + نموذج تشغيل Scrum.", caseStudy1Outcome: `+<span class="count-up" data-target="25">0</span>% كفاءة, -<span class="count-up" data-target="15">0</span>% تكاليف`,
+                    caseStudy2Title: "السلع الاستهلاكية", caseStudy2Challenge: "بيانات تسويق ومبيعات معزولة تحد من الرؤى.", caseStudy2Solution: "نموذج دلالي موحد في Power BI + وكيل تنبؤ بالذكاء الاصطناعي.", caseStudy2Outcome: `+<span class="count-up" data-target="18">0</span>% كفاءة, +<span class="count-up" data-target="7">0</span>% إيرادات`,
+                    caseStudy3Title: "التكنولوجيا المالية", caseStudy3Challenge: "تقييم المخاطر اليدوي وفحوصات الامتثال.", caseStudy3Solution: "خط أنابيب وكيل ذكاء اصطناعي آلي مع تدخل بشري.", caseStudy3Outcome: `-<span class="count-up" data-target="40">0</span>% وقت اتخاذ القرار, +<span class="count-up" data-target="12">0</span>% تقليل المخاطر`,
+                    insightsTitle: 'قيادة فكرية <span class="gradient-text">من الميدان</span>',
+                    blog1Title: "كيف يمكن للشركات الأوروبية الاستفادة من Microsoft Fabric في 2025", blog1Desc: "نظرة على التطبيقات العملية والمزايا الاستراتيجية لاعتماد منصة البيانات الموحدة من مايكروسوفت.",
+                    blog2Title: "ذكاء القرار مقابل ذكاء الأعمال", blog2Desc: "فهم التطور من التقارير بأثر رجعي إلى اتخاذ القرارات الاستباقية القائمة على الذكاء الاصطناعي.",
+                    blog3Title: "وكلاء الذكاء الاصطناعي: حالات استخدام في المالية وسلسلة التوريد", blog3Desc: "استكشاف كيف يُحدث وكلاء الذكاء الاصطناعي المستقلون ثورة في الكفاءة والدقة في وظائف الأعمال الحيوية.",
+                    blogReadMore: "اقرأ المزيد &larr;",
+                    contactTitle: 'هل أنت مستعد لتسريع <span class="gradient-text">رحلتك الرقمية</span>؟',
+                    contactSubtitle: "أخبرنا عن أهدافك. سنتواصل معك خلال يوم عمل واحد.",
+                    contactAddressTitle: "العنوان", contactEmailTitle: "البريد الإلكتروني", contactBtnWhatsapp: "تحدث فوراً",
+                    formTitle: "احجز استشارة", formName: "الاسم الكامل", formEmail: "البريد الإلكتروني للعمل", formCompany: "الشركة", formRole: "المنصب", formMessage: "ما هو التحدي الذي يمكننا المساعدة فيه؟", formButton: "احجز استشارة",
+                    footerDesc: "استشارات متميزة للشركات الكبرى والناشئة عند تقاطع البيانات والذكاء الاصطناعي والتحول الرقمي.",
+                    footerLinks: "روابط سريعة", footerServices: "الخدمات", footerAbout: "حولنا", footerCaseStudies: "دراسات الحالة", footerInsights: "الرؤى", footerContact: "اتصل بنا",
+                    footerLegal: "قانوني", footerPrivacy: "سياسة الخصوصية", footerTerms: "شروط الخدمة", footerDesigned: "صُمم في بروكسل"
+                }
+            };
+
+            // --- LANGUAGE SWITCHER LOGIC ---
+            const langSwitchers = [document.getElementById('lang-switcher'), document.getElementById('lang-switcher-mobile')];
+            const allElementsToTranslate = document.querySelectorAll('[data-lang-key]');
+
+            const translatePage = (lang) => {
+                allElementsToTranslate.forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+
+                // Update HTML attributes
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+                // Update switcher styles
+                langSwitchers.forEach(switcher => {
+                    const en = switcher.querySelector('[id^="lang-en"]');
+                    const ar = switcher.querySelector('[id^="lang-ar"]');
+                    if (lang === 'ar') {
+                        ar.classList.add('text-[#00C9FF]', 'font-bold');
+                        ar.classList.remove('text-gray-500');
+                        en.classList.remove('text-[#00C9FF]', 'font-bold');
+                        en.classList.add('text-gray-500');
+                    } else {
+                        en.classList.add('text-[#00C9FF]', 'font-bold');
+                        en.classList.remove('text-gray-500');
+                        ar.classList.remove('text-[#00C9FF]', 'font-bold');
+                        ar.classList.add('text-gray-500');
+                    }
+                });
+            };
+
+            langSwitchers.forEach(switcher => {
+                switcher.addEventListener('click', (e) => {
+                    if (e.target.id.includes('lang-ar')) {
+                        translatePage('ar');
+                    } else if (e.target.id.includes('lang-en')) {
+                        translatePage('en');
+                    }
+                });
             });
 
-            // Smooth scrolling for all anchor links
+
+            // --- GENERAL INTERACTIVITY ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+                    const targetElement = document.querySelector(this.getAttribute('href'));
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Offset for fixed navbar height
+                            top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
-                        // Close mobile menu on link click
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
@@ -454,22 +601,17 @@
                 });
             });
 
-            // Intersection Observer for fade-in animations and counter
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        
-                        // Animate counters within the visible section
                         const counters = entry.target.querySelectorAll('.count-up');
                         counters.forEach(counter => {
-                            if (counter.getAttribute('data-animated')) return; // Prevent re-animating
+                            if (counter.getAttribute('data-animated')) return;
                             counter.setAttribute('data-animated', 'true');
-                            
                             const target = +counter.getAttribute('data-target');
                             let current = 0;
-                            const increment = target / (2000 / 16); // Animate over 2 seconds
-
+                            const increment = target / 100;
                             const updateCounter = () => {
                                 if (current < target) {
                                     current += increment;
@@ -486,34 +628,25 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.fade-in-section').forEach(section => {
-                observer.observe(section);
-            });
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
-            // --- GOOGLE APPS SCRIPT FORM SUBMISSION ---
             const consultationForm = document.getElementById('consultation-form');
             const formStatus = document.getElementById('form-status');
-
             consultationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const data = new FormData(consultationForm);
-                const action = "https://script.google.com/macros/s/AKfycbyFWtlEdgJns17g3U_eL5YioTNNZwGZJ_lXJqWGiRR8ypn885tmA_xVPXXe6O7ZGx1k/exec"; // <-- UPDATED URL
+                const action = "https://script.google.com/macros/s/AKfycbyFWtlEdgJns17g3U_eL5YioTNNZwGZJ_lXJqWGiRR8ypn885tmA_xVPXXe6O7ZGx1k/exec";
                 formStatus.innerHTML = '<p class="text-gray-700">Sending...</p>';
-
-                fetch(action, {
-                    method: 'POST',
-                    body: data,
-                })
-                .then(() => {
-                    formStatus.innerHTML = '<p class="text-green-600">Thank you! Your message has been sent successfully.</p>';
-                    consultationForm.reset();
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    formStatus.innerHTML = '<p class="text-red-600">Oops! There was a problem submitting your form. Please try again.</p>';
-                });
+                fetch(action, { method: 'POST', body: data })
+                    .then(() => {
+                        formStatus.innerHTML = '<p class="text-green-600">Thank you! Your message has been sent successfully.</p>';
+                        consultationForm.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        formStatus.innerHTML = '<p class="text-red-600">Oops! There was a problem. Please try again.</p>';
+                    });
             });
-
         });
     </script>
 </body>
