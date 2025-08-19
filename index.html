@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRUXINNOV | Digital Transformation & Data Consulting</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>BRUXINNOV | AI, Data & Digital Transformation Consulting</title>
+    <meta name="description" content="BRUXINNOV helps enterprises and scale-ups unlock growth with AI, data strategy, and digital transformation using Microsoft Azure Fabric and Power BI.">
+    <meta name="keywords" content="Digital Transformation, Data Consulting, AI Agents, Microsoft Azure, Power BI, Brussels, Decision Intelligence">
+
+    <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
+    <meta property="og:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
+    <meta property="og:description" content="We help enterprises unlock growth with AI & data.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp">
+    <meta property="og:url" content="https://anasalaswadx.github.io/Bruxinnov/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
+    <meta name="twitter:description" content="We help enterprises unlock growth with AI & data.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp">
+
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
@@ -36,10 +52,26 @@
         }
         
         .hero-bg {
-            /* UPDATED HERO IMAGE */
             background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp');
             background-size: cover;
             background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 201, 255, 0.1), rgba(46, 204, 113, 0.1), rgba(0, 201, 255, 0.1));
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         .service-card:hover {
@@ -55,10 +87,15 @@
             transform: scale(1.1);
         }
         
-        /* Animation for scroll-triggered fade-in effect */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .fade-in-section {
@@ -67,27 +104,6 @@
         
         .fade-in-section.visible {
             animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        /* Spinner for loading state */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 4px solid var(--accent-cyan);
-            width: 40px;
-            height: 40px;
-            -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-        }
-
-        @-webkit-keyframes spin {
-            0% { -webkit-transform: rotate(0deg); }
-            100% { -webkit-transform: rotate(360deg); }
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -131,13 +147,16 @@
 
     <!-- Hero Section -->
     <section class="hero-bg text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                     Empowering Smarter Decisions with <span class="gradient-text">Data, AI & Digital Transformation</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-3xl mx-auto">
                     We help enterprises and scale-ups harness decision intelligence, AI agents, and Microsoft Azure Fabric to unlock growth, efficiency, and innovation.
+                </p>
+                <p class="text-md text-gray-400 mb-8 max-w-3xl mx-auto font-light">
+                    Trusted by enterprises across automobile, telecom, FMCG, and fintech to unlock growth with AI & data.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#contact" class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 text-center">Let’s Talk</a>
@@ -161,56 +180,79 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">What Our Partners Say</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <p class="text-gray-600 mb-6">"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."</p>
+                    <div>
+                        <p class="font-bold text-[#0A192F]">Sarah M.</p>
+                        <p class="text-sm text-gray-500">Head of Analytics</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <p class="text-gray-600 mb-6">"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."</p>
+                    <div>
+                        <p class="font-bold text-[#0A192F]">Emma R.</p>
+                        <p class="text-sm text-gray-500">CTO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white fade-in-section">
+    <section id="services" class="py-20 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span></h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Service Cards -->
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-brain text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3">AI & Decision Intelligence</h3>
-                    <p class="text-gray-600">Unlock predictive & prescriptive insights with AI agents and machine learning.</p>
+                    <p class="text-gray-600 mb-4">Unlock predictive & prescriptive insights with AI agents and machine learning.</p>
+                    <p class="text-sm font-bold text-gray-800">Outcomes: Faster decisions, 20-40% efficiency gains.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-route text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Strategy & Transformation</h3>
-                    <p class="text-gray-600">Align business goals with technology roadmaps for sustainable growth.</p>
+                    <p class="text-gray-600 mb-4">Align business goals with technology roadmaps for sustainable growth.</p>
+                    <p class="text-sm font-bold text-gray-800">Outcomes: Clear roadmap, improved ROI on tech spend.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-cloud text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3">Cloud Solutions & Platform Engineering</h3>
-                    <p class="text-gray-600">Build scalable systems with Microsoft Azure & Microsoft Fabric.</p>
+                    <p class="text-gray-600 mb-4">Build scalable systems with Microsoft Azure & Microsoft Fabric.</p>
+                    <p class="text-sm font-bold text-gray-800">Outcomes: Reduced costs, enhanced security & scalability.</p>
                 </div>
                 <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
-                    <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-users text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Strategic Talent & Team Augmentation</h3>
-                    <p class="text-gray-600">Access specialized digital talent for flexible scaling.</p>
-                </div>
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
-                    <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-chart-line text-white text-2xl"></i></div>
-                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Marketing</h3>
-                    <p class="text-gray-600">Enhance visibility and engagement through data-driven campaigns.</p>
+                    <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-bullhorn text-white text-2xl"></i></div>
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Marketing Analytics</h3>
+                    <p class="text-gray-600 mb-4">Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.</p>
+                    <p class="text-sm font-bold text-gray-800">Outcomes: Increases qualified traffic and connects marketing to revenue.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-50 fade-in-section">
+    <section id="about" class="py-20 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <img src="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/line%20illustrations%20of%20dashboards.webp" 
-                     alt="Line illustration of data dashboards"
+                     alt="Line illustration of data dashboards and business intelligence charts"
                      class="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
                      onerror="this.onerror=null;this.src='https://placehold.co/1200x400/0A192F/FFFFFF?text=Innovation+in+Data';">
             </div>
             <div class="flex flex-col lg:flex-row items-center gap-12 mt-12">
                 <div class="lg:w-2/5 flex justify-center">
-                    <!-- RESIZED IMAGE -->
                     <img src="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/IMG_0585.webp" 
                          alt="Professional portrait of Anas Alaswad, Founder of BRUXINNOV" 
                          class="w-80 h-80 object-cover rounded-xl shadow-xl border-2 border-[#00C9FF] border-opacity-30"
@@ -218,25 +260,17 @@
                 </div>
                 <div class="lg:w-3/5">
                     <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-6">Driving Innovation at the Crossroads of <span class="gradient-text">Business and Technology</span></h2>
-                    <p class="text-gray-600 mb-6">
-                        Founded in Brussels, BRUXINNOV bridges technology, talent, and business transformation. With expertise in data analytics, AI, and cloud solutions, we translate complex challenges into clear, actionable outcomes.
+                    <p class="text-gray-600 mb-6 italic">
+                        “I founded BRUXINNOV to bridge the gap between strategy and execution. Too many digital projects fail because insight doesn’t translate into impact — our mission is to change that.”
                     </p>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
                         <h3 class="text-xl font-bold text-[#0A192F] mb-1">Anas Alaswad - <span class="text-lg font-medium text-gray-500">Digital Transformation & Data Analytics Lead</span></h3>
                         <p class="text-gray-600 text-sm mb-3"><strong>Experience:</strong> Stellantis, Clarivate, AB InBev, BICS, TopCompare</p>
                         <p class="text-gray-600 text-sm mb-4"><strong>Education:</strong> Dual Masters - KU Leuven (Information Management), VUB (International Business)</p>
-                        <p class="text-gray-600">Bridges strategy and execution with a global mindset and empathetic leadership.</p>
                         <div class="mt-4 flex gap-4">
                            <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">Book a Consultation</a>
                            <a href="https://linkedin.com/in/aalaswad" target="_blank" class="px-6 py-2 text-sm rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Decision Intelligence</span>
-                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Azure & Fabric</span>
-                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Power BI</span>
-                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Agile Delivery</span>
-                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Change Leadership</span>
                     </div>
                 </div>
             </div>
@@ -244,7 +278,7 @@
     </section>
 
     <!-- Case Studies -->
-    <section id="case-studies" class="py-20 bg-white fade-in-section">
+    <section id="case-studies" class="py-20 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Challenge → Solution → <span class="gradient-text">Outcome</span></h2>
@@ -274,17 +308,30 @@
     </section>
 
     <!-- Insights/Blog -->
-    <section id="insights" class="py-20 bg-gray-50 fade-in-section">
+    <section id="insights" class="py-20 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4">Thought leadership <span class="gradient-text">from the field</span></h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Insight Category Cards -->
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"><h3 class="text-xl font-bold text-[#0A192F] mb-3">Data & AI Strategy</h3><p class="text-gray-600">Pragmatic playbooks for decision intelligence at enterprise scale.</p></div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"><h3 class="text-xl font-bold text-[#0A192F] mb-3">Digital Transformation Journeys</h3><p class="text-gray-600">From vision to value: roadmaps, governance, change.</p></div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"><h3 class="text-xl font-bold text-[#0A192F] mb-3">Cloud & Platform Engineering</h3><p class="text-gray-600">Azure & Fabric architectures for scale and resilience.</p></div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"><h3 class="text-xl font-bold text-[#0A192F] mb-3">Agile Leadership & Change</h3><p class="text-gray-600">Operating models that ship value, not just features.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">How EU Enterprises Can Leverage Microsoft Fabric in 2025</h3>
+                    <p class="text-gray-600 mb-4">A look into the practical applications and strategic advantages of adopting Microsoft's unified data platform.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">Decision Intelligence vs. Business Intelligence</h3>
+                    <p class="text-gray-600 mb-4">Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-[#0A192F] mb-3">AI Agents: Use Cases in Finance & Supply Chain</h3>
+                    <p class="text-gray-600 mb-4">Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.</p>
+                    <a href="#" class="text-[#00C9FF] font-medium">Read more &rarr;</a>
+                </div>
             </div>
         </div>
     </section>
@@ -299,6 +346,9 @@
                     <div class="space-y-6">
                         <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-map-marker-alt text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold">Address</h3><p class="text-gray-300">Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels</p></div></div>
                         <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold">Email</h3><a href="mailto:info@bruxinnov.com" class="text-gray-300 hover:text-white">info@bruxinnov.com</a></div></div>
+                    </div>
+                     <div class="mt-8 flex gap-4">
+                        <a href="https://api.whatsapp.com/send?phone=32495477770&text" target="_blank" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2"><i class="fab fa-whatsapp"></i> Chat Instantly</a>
                     </div>
                 </div>
                 <div class="lg:w-1/2 bg-white rounded-xl p-8 shadow-xl w-full">
@@ -340,7 +390,7 @@
     <!-- Footer -->
     <footer class="bg-[#0A192F] text-gray-300 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-2xl font-bold text-white mb-4">BRUX<span class="gradient-text">INNOV</span></h3>
                     <p class="mb-4 text-sm">Premium consulting for enterprises and scale-ups at the intersection of data, AI, and digital transformation.</p>
