@@ -6,19 +6,26 @@
     
     <!-- SEO Meta Tags -->
     <title>BRUXINNOV | AI, Data & Digital Transformation Consulting</title>
-    <meta name="description" content="BRUXINNOV helps enterprises and scale-ups unlock growth with AI, data strategy, and digital transformation using Microsoft Azure Fabric and Power BI.">
+    <meta name="description" content="BRUXINNOV delivers expert AI, data, and digital transformation consulting in Brussels. We help enterprises unlock growth with Microsoft Azure and Power BI.">
     <meta name="keywords" content="Digital Transformation, Data Consulting, AI Agents, Microsoft Azure, Power BI, Brussels, Decision Intelligence">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300C9FF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%232ECC71;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%230A192F'/%3E%3Ctext x='50' y='65' font-family='Poppins, sans-serif' font-size='40' font-weight='bold' fill='url(%23grad)' text-anchor='middle'%3EBRUX%3C/text%3E%3C/svg%3E">
 
     <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
     <meta property="og:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
     <meta property="og:description" content="We help enterprises unlock growth with AI & data.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp">
+    <!-- NOTE: Replace with the final URL to your preview image in the GitHub repo -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/preview-image.webp">
     <meta property="og:url" content="https://anasalaswadx.github.io/Bruxinnov/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BRUXINNOV">
+    <meta property="og:locale" content="en_US" id="og-locale">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BRUXINNOV | AI, Data & Digital Transformation Consulting">
     <meta name="twitter:description" content="We help enterprises unlock growth with AI & data.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp">
+    <!-- NOTE: Replace with the final URL to your preview image in the GitHub repo -->
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/preview-image.webp">
 
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,12 +43,19 @@
             --accent-green: #2ECC71;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--primary);
-            scroll-behavior: smooth;
         }
         
+        section[id] {
+            scroll-margin-top: 80px; /* Offset for fixed navbar */
+        }
+
         /* Apply Arabic font when RTL is active */
         html[dir="rtl"] body {
             font-family: 'Tajawal', sans-serif;
@@ -70,10 +84,11 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 201, 255, 0.1), rgba(46, 204, 113, 0.1), rgba(0, 201, 255, 0.1));
+            background: linear-gradient(45deg, rgba(0, 201, 255, 0.05), rgba(46, 204, 113, 0.05), rgba(0, 201, 255, 0.05));
             background-size: 400% 400%;
             animation: gradient-animation 15s ease infinite;
             z-index: 1;
+            will-change: background-position;
         }
 
         .hero-content {
@@ -81,13 +96,9 @@
             z-index: 2;
         }
         
-        .service-card:hover {
+        .service-card:hover, .case-study-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .case-study-card:hover {
-            transform: scale(1.02);
         }
         
         .icon-hover:hover {
@@ -113,6 +124,53 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
+        /* Staggered animation for child elements */
+        .stagger-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-section.visible .stagger-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth underline for nav links */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-cyan);
+            transform-origin: bottom right;
+            transition: transform 0.2s ease-out;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        /* Button micro-lift effect */
+        .btn-lift {
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+        .btn-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .btn-lift:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
         /* RTL Specific styles */
         html[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
             --tw-space-x-reverse: 0;
@@ -131,11 +189,11 @@
                 </div>
                 <div class="hidden md:flex items-center">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#services" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navServices">Services</a>
-                        <a href="#about" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navAbout">About</a>
-                        <a href="#case-studies" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navCaseStudies">Case Studies</a>
-                        <a href="#insights" class="text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navInsights">Insights</a>
-                        <a href="#contact" class="px-6 py-2 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="navContact">Let's Talk</a>
+                        <a href="#services" class="nav-link text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navServices">Services</a>
+                        <a href="#about" class="nav-link text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navAbout">About</a>
+                        <a href="#case-studies" class="nav-link text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navCaseStudies">Case Studies</a>
+                        <a href="#insights" class="nav-link text-[#0A192F] hover:text-[#00C9FF] transition-colors duration-300 font-medium" data-lang-key="navInsights">Insights</a>
+                        <a href="#contact" class="px-6 py-2 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="navContact">Let's Talk</a>
                     </div>
                     <!-- Language Switcher -->
                     <div id="lang-switcher" class="ml-8 text-sm font-medium cursor-pointer">
@@ -171,7 +229,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section">
+    <section id="hero" class="hero-bg text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" data-lang-key="heroTitle">
@@ -184,8 +242,8 @@
                     Trusted by enterprises across automobile, telecom, FMCG, and fintech to unlock growth with AI & data.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 text-center" data-lang-key="heroBtnTalk">Let’s Talk</a>
-                    <a href="#case-studies" class="px-8 py-3 rounded-full bg-transparent border-2 border-[#00C9FF] text-[#00C9FF] font-medium hover:bg-[#00C9FF] hover:bg-opacity-10 transition-colors duration-300 text-center" data-lang-key="heroBtnWork">See Our Work</a>
+                    <a href="#contact" class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 text-center btn-lift" data-lang-key="heroBtnTalk">Let’s Talk</a>
+                    <a href="#case-studies" class="px-8 py-3 rounded-full bg-transparent border-2 border-[#00C9FF] text-[#00C9FF] font-medium hover:bg-[#00C9FF] hover:bg-opacity-10 transition-colors duration-300 text-center btn-lift" data-lang-key="heroBtnWork">See Our Work</a>
                 </div>
             </div>
         </div>
@@ -212,14 +270,14 @@
                  <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="testimonialsTitle">What Our Partners Say</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 stagger-child">
                     <p class="text-gray-600 mb-6" data-lang-key="testimonial1Text">"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."</p>
                     <div>
                         <p class="font-bold text-[#0A192F]" data-lang-key="testimonial1Name">Sarah M.</p>
                         <p class="text-sm text-gray-500" data-lang-key="testimonial1Role">Head of Analytics</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 stagger-child">
                     <p class="text-gray-600 mb-6" data-lang-key="testimonial2Text">"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."</p>
                     <div>
                         <p class="font-bold text-[#0A192F]" data-lang-key="testimonial2Name">Emma R.</p>
@@ -239,25 +297,25 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Service Cards -->
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-brain text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service1Title">AI & Decision Intelligence</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="service1Desc">Unlock predictive & prescriptive insights with AI agents and machine learning.</p>
                     <p class="text-sm font-bold text-gray-800" data-lang-key="service1Outcome">Outcomes: Faster decisions, 20-40% efficiency gains.</p>
                 </div>
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-route text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service2Title">Digital Strategy & Transformation</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="service2Desc">Align business goals with technology roadmaps for sustainable growth.</p>
                     <p class="text-sm font-bold text-gray-800" data-lang-key="service2Outcome">Outcomes: Clear roadmap, improved ROI on tech spend.</p>
                 </div>
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-cloud text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service3Title">Cloud Solutions & Platform Engineering</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="service3Desc">Build scalable systems with Microsoft Azure & Microsoft Fabric.</p>
                     <p class="text-sm font-bold text-gray-800" data-lang-key="service3Outcome">Outcomes: Reduced costs, enhanced security & scalability.</p>
                 </div>
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300"><i class="fas fa-bullhorn text-white text-2xl"></i></div>
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="service4Title">Digital Marketing Analytics</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="service4Desc">Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.</p>
@@ -293,8 +351,8 @@
                         <p class="text-gray-600 text-sm mb-3"><strong data-lang-key="founderExperience">Experience:</strong> Stellantis, Clarivate, AB InBev, BICS, TopCompare</p>
                         <p class="text-gray-600 text-sm mb-4"><strong data-lang-key="founderEducation">Education:</strong> Dual Masters - KU Leuven (Information Management), VUB (International Business)</p>
                         <div class="mt-4 flex gap-4">
-                           <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="founderBtnConsult">Book a Consultation</a>
-                           <a href="https://linkedin.com/in/aalaswad" target="_blank" class="px-6 py-2 text-sm rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                           <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="founderBtnConsult">Book a Consultation</a>
+                           <a href="https://linkedin.com/in/aalaswad" target="_blank" class="px-6 py-2 text-sm rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center gap-2 btn-lift"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -310,19 +368,19 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Case Study Cards -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy1Title">Telecom</h3>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy1Challenge">Fragmented operational workflows and slow reporting.</p></div>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy1Solution">Azure Fabric data backbone + Scrum operating model.</p></div>
                     <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyOutcome">OUTCOME</h4><p class="text-2xl font-bold gradient-text" data-lang-key="caseStudy1Outcome">+<span class="count-up" data-target="25">0</span>% Efficiency, -<span class="count-up" data-target="15">0</span>% Costs</p></div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy2Title">FMCG</h3>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy2Challenge">Siloed marketing and sales data limiting insights.</p></div>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy2Solution">Unified semantic model in Power BI + AI forecasting agent.</p></div>
                     <div class="border-t pt-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyOutcome">OUTCOME</h4><p class="text-2xl font-bold gradient-text" data-lang-key="caseStudy2Outcome">+<span class="count-up" data-target="18">0</span>% Efficiency, +<span class="count-up" data-target="7">0</span>% Revenue</p></div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden case-study-card transition-transform duration-300 p-6 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudy3Title">Fintech</h3>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudyChallenge">CHALLENGE</h4><p class="text-gray-700" data-lang-key="caseStudy3Challenge">Manual risk scoring and compliance checks.</p></div>
                     <div class="mb-4"><h4 class="text-sm font-semibold text-gray-500 mb-1" data-lang-key="caseStudySolution">SOLUTION</h4><p class="text-gray-700" data-lang-key="caseStudy3Solution">Automated AI agent pipeline with human-in-the-loop.</p></div>
@@ -340,19 +398,19 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog1Title">How EU Enterprises Can Leverage Microsoft Fabric in 2025</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="blog1Desc">A look into the practical applications and strategic advantages of adopting Microsoft's unified data platform.</p>
                     <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
                 </div>
                 <!-- Blog Post 2 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog2Title">Decision Intelligence vs. Business Intelligence</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="blog2Desc">Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.</p>
                     <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
                 </div>
                 <!-- Blog Post 3 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow duration-300 stagger-child">
                     <h3 class="text-xl font-bold text-[#0A192F] mb-3" data-lang-key="blog3Title">AI Agents: Use Cases in Finance & Supply Chain</h3>
                     <p class="text-gray-600 mb-4" data-lang-key="blog3Desc">Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.</p>
                     <a href="#" class="text-[#00C9FF] font-medium" data-lang-key="blogReadMore">Read more &rarr;</a>
@@ -373,7 +431,7 @@
                         <div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div><div class="ml-4"><h3 class="text-lg font-semibold" data-lang-key="contactEmailTitle">Email</h3><a href="mailto:info@bruxinnov.com" class="text-gray-300 hover:text-white">info@bruxinnov.com</a></div></div>
                     </div>
                      <div class="mt-8 flex gap-4">
-                        <a href="https://api.whatsapp.com/send?phone=32495477770&text" target="_blank" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2"><i class="fab fa-whatsapp"></i> <span data-lang-key="contactBtnWhatsapp">Chat Instantly</span></a>
+                        <a href="https://api.whatsapp.com/send?phone=32495477770&text" target="_blank" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2 btn-lift"><i class="fab fa-whatsapp"></i> <span data-lang-key="contactBtnWhatsapp">Chat Instantly</span></a>
                     </div>
                 </div>
                 <div class="lg:w-1/2 bg-white rounded-xl p-8 shadow-xl w-full">
@@ -403,7 +461,7 @@
                             <label for="message" class="block text-gray-700 font-medium mb-2" data-lang-key="formMessage">What challenge can we help with?</label>
                             <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required></textarea>
                         </div>
-                        <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300" data-lang-key="formButton">Book a Consultation</button>
+                        <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="formButton">Book a Consultation</button>
                     </form>
                     <div id="form-status" class="mt-4 text-center"></div>
                 </div>
@@ -538,8 +596,9 @@
             // --- LANGUAGE SWITCHER LOGIC ---
             const langSwitchers = [document.getElementById('lang-switcher'), document.getElementById('lang-switcher-mobile')];
             const allElementsToTranslate = document.querySelectorAll('[data-lang-key]');
+            const ogLocaleMeta = document.getElementById('og-locale');
 
-            const translatePage = (lang) => {
+            const updateDomForLang = (lang) => {
                 allElementsToTranslate.forEach(el => {
                     const key = el.getAttribute('data-lang-key');
                     if (translations[lang][key]) {
@@ -547,11 +606,10 @@
                     }
                 });
 
-                // Update HTML attributes
                 document.documentElement.setAttribute('lang', lang);
                 document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                ogLocaleMeta.setAttribute('content', lang === 'ar' ? 'ar_AR' : 'en_US');
 
-                // Update switcher styles
                 langSwitchers.forEach(switcher => {
                     const en = switcher.querySelector('[id^="lang-en"]');
                     const ar = switcher.querySelector('[id^="lang-ar"]');
@@ -567,6 +625,14 @@
                         ar.classList.add('text-gray-500');
                     }
                 });
+            };
+            
+            const translatePage = (lang) => {
+                if (document.startViewTransition) {
+                    document.startViewTransition(() => updateDomForLang(lang));
+                } else {
+                    updateDomForLang(lang);
+                }
             };
 
             langSwitchers.forEach(switcher => {
@@ -590,10 +656,7 @@
                     e.preventDefault();
                     const targetElement = document.querySelector(this.getAttribute('href'));
                     if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
@@ -605,23 +668,36 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        
+                        const children = entry.target.querySelectorAll('.stagger-child');
+                        children.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * 150}ms`;
+                        });
+
                         const counters = entry.target.querySelectorAll('.count-up');
                         counters.forEach(counter => {
                             if (counter.getAttribute('data-animated')) return;
                             counter.setAttribute('data-animated', 'true');
+                            
                             const target = +counter.getAttribute('data-target');
-                            let current = 0;
-                            const increment = target / 100;
+                            let frame = 0;
+                            const totalFrames = 100; // Animation duration
+                            const easeOutQuad = t => t * (2 - t);
+
                             const updateCounter = () => {
-                                if (current < target) {
-                                    current += increment;
-                                    counter.innerText = Math.ceil(current);
+                                frame++;
+                                const progress = easeOutQuad(frame / totalFrames);
+                                const currentCount = Math.round(target * progress);
+
+                                counter.innerText = currentCount;
+
+                                if (frame < totalFrames) {
                                     requestAnimationFrame(updateCounter);
                                 } else {
                                     counter.innerText = target;
                                 }
                             };
-                            updateCounter();
+                            requestAnimationFrame(updateCounter);
                         });
                         observer.unobserve(entry.target);
                     }
