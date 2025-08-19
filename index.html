@@ -37,7 +37,7 @@
         
         .hero-bg {
             /* UPDATED HERO IMAGE */
-            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/photo-1551288049-bebda4e38f71.webp');
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/Hero.webp');
             background-size: cover;
             background-position: center;
         }
@@ -150,13 +150,13 @@
     <!-- Trust Bar -->
     <section class="py-12 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 mb-8 text-sm font-medium tracking-wider uppercase">Trusted by industry leaders</p>
             <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-16">
-                <!-- UPDATED LOGOS -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="h-7 opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" alt="Azure Logo" class="h-7 opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI Logo" class="h-7 opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Databricks_Logo.png" alt="Databricks Logo" class="h-7 opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Odoo_logo_rgb.svg" alt="Odoo Logo" class="h-7 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" alt="Azure Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Databricks_Logo.png" alt="Databricks Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Odoo_logo_rgb.svg" alt="Odoo Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
             </div>
         </div>
     </section>
@@ -196,44 +196,19 @@
                     <p class="text-gray-600">Enhance visibility and engagement through data-driven campaigns.</p>
                 </div>
             </div>
-
-            <!-- GEMINI API FEATURE: AI STRATEGY GENERATOR -->
-            <div id="ai-strategy-generator" class="mt-24 p-8 rounded-xl bg-gray-50 border border-gray-200 fade-in-section">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-[#0A192F] mb-3">✨ Generate Your AI Strategy Blueprint</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Get an instant, high-level strategy for your business challenge, powered by Gemini.</p>
-                </div>
-                <div class="max-w-3xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="industry" class="block text-gray-700 font-medium mb-2">Your Industry</label>
-                            <input type="text" id="industry" placeholder="e.g., Fintech, Retail, Healthcare" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]">
-                        </div>
-                        <div>
-                            <label for="challenge" class="block text-gray-700 font-medium mb-2">Your Business Challenge</label>
-                            <input type="text" id="challenge" placeholder="e.g., High customer churn" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]">
-                        </div>
-                    </div>
-                    <button id="generate-strategy-btn" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">
-                        Generate Blueprint
-                    </button>
-                    <div id="strategy-result" class="mt-8 p-6 bg-white rounded-lg border border-gray-200 hidden">
-                        <!-- Loading spinner will appear here -->
-                        <div id="loading-spinner" class="flex justify-center items-center hidden">
-                            <div class="loader"></div>
-                        </div>
-                        <!-- AI-generated content will appear here -->
-                        <div id="strategy-content"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="text-center mb-12">
+                <img src="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/line%20illustrations%20of%20dashboards.webp" 
+                     alt="Line illustration of data dashboards"
+                     class="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1200x400/0A192F/FFFFFF?text=Innovation+in+Data';">
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12 mt-12">
                 <div class="lg:w-2/5 flex justify-center">
                     <!-- RESIZED IMAGE -->
                     <img src="https://raw.githubusercontent.com/anasalaswadx/Bruxinnov/main/images/IMG_0585.webp" 
@@ -333,26 +308,26 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]" required>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                             <div>
                                 <label for="email" class="block text-gray-700 font-medium mb-2">Work Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]" required>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="company" class="block text-gray-700 font-medium mb-2">Company</label>
-                                <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]">
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                             <div>
                                 <label for="role" class="block text-gray-700 font-medium mb-2">Role</label>
-                                <input type="text" id="role" name="role" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]">
+                                <input type="text" id="role" name="role" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                         </div>
                         <div class="mb-6">
                             <label for="message" class="block text-gray-700 font-medium mb-2">What challenge can we help with?</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF]" required></textarea>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required></textarea>
                         </div>
                         <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300">Book a Consultation</button>
                     </form>
@@ -472,7 +447,7 @@
             consultationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const data = new FormData(consultationForm);
-                const action = "https://script.google.com/macros/s/AKfycbyEH7QYS5X1nqOuysWGbwarsNPkfkVmLofzOe8wnZxJ1gJTG3pH_BHNUYYKurmQ7vjU/exec"; // <-- UPDATED URL
+                const action = "https://script.google.com/macros/s/AKfycbyFWtlEdgJns17g3U_eL5YioTNNZwGZJ_lXJqWGiRR8ypn885tmA_xVPXXe6O7ZGx1k/exec"; // <-- UPDATED URL
                 formStatus.innerHTML = '<p class="text-gray-700">Sending...</p>';
 
                 fetch(action, {
@@ -489,88 +464,6 @@
                 });
             });
 
-
-            // --- GEMINI API FEATURE SCRIPT ---
-            const generateBtn = document.getElementById('generate-strategy-btn');
-            const resultDiv = document.getElementById('strategy-result');
-            const contentDiv = document.getElementById('strategy-content');
-            const spinner = document.getElementById('loading-spinner');
-            const industryInput = document.getElementById('industry');
-            const challengeInput = document.getElementById('challenge');
-
-            generateBtn.addEventListener('click', handleStrategyGeneration);
-
-            async function handleStrategyGeneration() {
-                const industry = industryInput.value.trim();
-                const challenge = challengeInput.value.trim();
-
-                if (!industry || !challenge) {
-                    alert('Please fill in both your industry and business challenge.');
-                    return;
-                }
-
-                // Show loading state
-                resultDiv.classList.remove('hidden');
-                contentDiv.innerHTML = '';
-                spinner.classList.remove('hidden');
-
-                // Construct the prompt for the Gemini API
-                const prompt = `
-                    As a top-tier digital transformation consultant for a company called BRUXINNOV, create a high-level, 3-step strategic blueprint to address the following business challenge in the "${industry}" sector.
-                    
-                    Challenge: "${challenge}"
-
-                    For each step, provide a clear title starting with 'Step X:' and a 1-2 sentence description.
-                    The tone should be professional, confident, and actionable.
-                    Format the output clearly. Do not use markdown.
-                `;
-
-                try {
-                    // This is a simplified fetch call. In a real app, you would use a backend to securely handle API keys.
-                    const apiKey = ""; // Leave empty, will be handled by the environment
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                    const payload = { contents: chatHistory };
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`API Error: ${response.statusText}`);
-                    }
-
-                    const result = await response.json();
-                    
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        
-                        let text = result.candidates[0].content.parts[0].text;
-                        
-                        // Simple formatting to make it look nice
-                        text = text.replace(/Step (\d+):/g, '<h4 class="text-lg font-bold text-[#0A192F] mt-4 mb-2">Step $1:</h4>');
-                        contentDiv.innerHTML = `
-                            <h3 class="text-xl font-bold text-[#0A192F] mb-4">Your AI Strategy Blueprint</h3>
-                            ${text}
-                            <p class="text-sm text-gray-500 mt-6"><i>This blueprint was generated by AI and is intended as a starting point. For a detailed strategy, <a href="#contact" class="underline">contact our experts</a>.</i></p>
-                        `;
-
-                    } else {
-                        throw new Error('Unexpected API response structure.');
-                    }
-
-                } catch (error) {
-                    console.error("Error calling Gemini API:", error);
-                    contentDiv.innerHTML = '<p class="text-red-600">Sorry, we couldn\'t generate a strategy at this time. Please try again later.</p>';
-                } finally {
-                    // Hide loading spinner
-                    spinner.classList.add('hidden');
-                }
-            }
         });
     </script>
 </body>
