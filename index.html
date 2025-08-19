@@ -90,6 +90,8 @@
     {"@context":"https://schema.org","@type":"WebSite","name":"BRUXINNOV","url":"https://bruxinnov.com/"}
     </script>
 
+
+
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -216,24 +218,111 @@
             transform-origin: bottom left;
         }
         
-        /* Button micro-lift effect */
+        /* Enhanced Button micro-lift effect */
         .btn-lift {
-            transition: transform 150ms ease, box-shadow 150ms ease;
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0) scale(1);
         }
         .btn-lift:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 201, 255, 0.15);
         }
         .btn-lift:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 0 5px 15px rgba(0, 201, 255, 0.1);
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0) scale(1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image hover effects */
+        .image-hover {
+            transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1);
+        }
+        .image-hover:hover {
+            transform: scale(1.05);
+        }
+
+        /* Text hover effects */
+        .text-hover {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            color: inherit;
+        }
+        .text-hover:hover {
+            color: #00C9FF;
+            transform: translateX(4px);
+        }
+
+        /* Stagger animation for cards */
+        .stagger-container > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stagger-container.animate > *:nth-child(1) { transition-delay: 0ms; }
+        .stagger-container.animate > *:nth-child(2) { transition-delay: 100ms; }
+        .stagger-container.animate > *:nth-child(3) { transition-delay: 200ms; }
+        .stagger-container.animate > *:nth-child(4) { transition-delay: 300ms; }
+        .stagger-container.animate > *:nth-child(5) { transition-delay: 400ms; }
+        .stagger-container.animate > *:nth-child(6) { transition-delay: 500ms; }
+        .stagger-container.animate > * {
+            opacity: 1;
             transform: translateY(0);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Enhanced CSS Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Account for fixed nav */
+        }
+        
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00C9FF, #2ECC71);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #00B4E6, #27AE60);
         }
 
         /* RTL Specific styles */
         html[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
-            --tw-space-x-reverse: 0;
+            --tw-space-x-reverse: 1;
             margin-right: calc(2rem * var(--tw-space-x-reverse));
             margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        html[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        
+        /* RTL flex direction fix for footer social icons */
+        html[dir="rtl"] .flex.space-x-4 {
+            flex-direction: row-reverse;
         }
         .sr-only {
             position: absolute;
@@ -259,7 +348,7 @@
     </style>
 </head>
 <body class="bg-white">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white text-[#0A192F] rounded px-3 py-2 shadow z-50">Skip to content</a>
+        <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white text-[#0A192F] rounded px-3 py-2 shadow z-50">Skip to content</a>
     <!-- Navigation Bar -->
     <nav class="fixed w-full bg-white shadow-sm z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -319,7 +408,7 @@
     </nav>
 <main id="main">
     <!-- Hero Section -->
-    <section id="hero" class="relative text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section">
+    <section id="hero" class="relative text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section" >
         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" fetchpriority="high">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
              style="background:linear-gradient(rgba(10,25,47,.9),rgba(10,25,47,.95));"></div>
@@ -340,11 +429,11 @@
     </section>
 
      <!-- Credentials Bar -->
-    <section class="py-12 bg-gray-100 fade-in-section">
+    <section class="py-12 bg-gray-100 fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="stagger-child">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center stagger-container">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Fabric official SVG logo -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
                             <path fill="url(#a)" fill-rule="evenodd" d="m5.64 31.6-.586 2.144c-.218.685-.524 1.693-.689 2.59a5.629 5.629 0 0 0 4.638 7.588c.792.114 1.688.108 2.692-.04l4.613-.636a2.924 2.924 0 0 0 2.421-2.127l3.175-11.662L5.64 31.599Z" clip-rule="evenodd"/>
@@ -369,11 +458,11 @@
                             </defs>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-[#0A192F]" data-lang-key="cred1Title">Microsoft Fabric</h3>
-                    <p class="text-sm text-gray-600" data-lang-key="cred1Sub">Early Adopter & Expert</p>
+                    <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred1Title">Microsoft Fabric</h3>
+                    <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred1Sub">Early Adopter & Expert</p>
                 </div>
-                <div class="stagger-child">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Azure official SVG logo -->
                         <svg class="w-8 h-8" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
@@ -399,11 +488,11 @@
                             <path fill="url(#a7fee970-a784-4bb1-af8d-63d18e5f7db9)" d="M66.595 9.364a4.145 4.145 0 0 0-3.928-2.82H33.648a4.146 4.146 0 0 1 3.928 2.82l25.184 74.62a4.146 4.146 0 0 1-3.928 5.472h29.02a4.146 4.146 0 0 0 3.927-5.472z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-[#0A192F]" data-lang-key="cred2Title">Azure Certified</h3>
-                    <p class="text-sm text-gray-600" data-lang-key="cred2Sub">Data & AI Solutions</p>
+                    <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred2Title">Azure Certified</h3>
+                    <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred2Sub">Data & AI Solutions</p>
                 </div>
-                <div class="stagger-child">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Power BI official SVG logo -->
                         <svg class="w-8 h-8" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
@@ -451,11 +540,11 @@
                             </g>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-[#0A192F]" data-lang-key="cred3Title">Power BI</h3>
-                    <p class="text-sm text-gray-600" data-lang-key="cred3Sub">Advanced Analytics & Viz</p>
+                    <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred3Title">Power BI</h3>
+                    <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred3Sub">Advanced Analytics & Viz</p>
                 </div>
-                <div class="stagger-child">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Scrum.org Professional Scrum Master official SVG logo -->
                         <svg class="w-8 h-8" viewBox="-17.429084416588353 -9.362805561401416 334.8581688331767 514.3628055614014" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M82.43 182.42V505L150 437.36 217.56 505V182.42z" fill="#1599b5"/>
@@ -475,28 +564,38 @@
                             <path d="M103.54 134a11.29 11.29 0 0 0-5.26-3.63 19 19 0 0 0-6.28-1.18 16.67 16.67 0 0 0-3.58.41 14 14 0 0 0-3.47 1.28 7.62 7.62 0 0 0-2.66 2.3 5.84 5.84 0 0 0-1 3.48 5.75 5.75 0 0 0 2.45 5 23.32 23.32 0 0 0 6.19 3c2.48.82 5.16 1.63 8 2.45a33 33 0 0 1 8 3.48 19.05 19.05 0 0 1 6.19 6q2.45 3.78 2.45 10.12a23.27 23.27 0 0 1-2.25 10.53 21.33 21.33 0 0 1-6.08 7.46 25.7 25.7 0 0 1-8.89 4.39 40.65 40.65 0 0 1-23.77-.71 32.75 32.75 0 0 1-11.24-6.95L73.7 169a16.47 16.47 0 0 0 6.18 5 17.37 17.37 0 0 0 11.65 1.33 13.07 13.07 0 0 0 3.58-1.33 7.75 7.75 0 0 0 2.56-2.36 5.89 5.89 0 0 0 1-3.37 6.12 6.12 0 0 0-2.51-5.16 23.2 23.2 0 0 0-6.28-3.22c-2.53-.89-5.25-1.77-8.18-2.66a36.42 36.42 0 0 1-8.18-3.58 19.65 19.65 0 0 1-6.29-5.92Q64.69 144 64.7 138a21.8 21.8 0 0 1 2.3-10.24 22.23 22.23 0 0 1 6.13-7.36A26.93 26.93 0 0 1 82 116a36.14 36.14 0 0 1 10.33-1.49 40.57 40.57 0 0 1 11.86 1.74 27.38 27.38 0 0 1 10.29 5.75zM126.44 116.31h26.88a53.18 53.18 0 0 1 10.63 1 24.15 24.15 0 0 1 8.74 3.52 17.85 17.85 0 0 1 5.93 6.75 23 23 0 0 1 2.2 10.68 24.51 24.51 0 0 1-2 10.63 17.36 17.36 0 0 1-5.62 6.85 22.71 22.71 0 0 1-8.48 3.63 49.47 49.47 0 0 1-10.72 1.1h-11.62v28.22h-15.94zM142.38 147H153a20.76 20.76 0 0 0 4.14-.41 10.89 10.89 0 0 0 3.57-1.38 7.35 7.35 0 0 0 2.56-2.66 8.34 8.34 0 0 0 1-4.24 7.16 7.16 0 0 0-1.28-4.44 8.4 8.4 0 0 0-3.27-2.61 14.08 14.08 0 0 0-4.45-1.18 45.35 45.35 0 0 0-4.7-.25h-8.18zM226.61 134a11.29 11.29 0 0 0-5.26-3.63 19 19 0 0 0-6.29-1.18 16.67 16.67 0 0 0-3.58.41 14 14 0 0 0-3.47 1.28 7.62 7.62 0 0 0-2.66 2.3 5.84 5.84 0 0 0-1 3.48 5.75 5.75 0 0 0 2.45 5 23.32 23.32 0 0 0 6.19 3c2.48.82 5.16 1.63 8 2.45a33 33 0 0 1 8 3.48 19.05 19.05 0 0 1 6.19 6q2.45 3.78 2.45 10.12a23.27 23.27 0 0 1-2.25 10.53 21.33 21.33 0 0 1-6.08 7.46 25.79 25.79 0 0 1-8.89 4.39 40.65 40.65 0 0 1-23.77-.71 32.75 32.75 0 0 1-11.24-6.95L196.76 169a16.58 16.58 0 0 0 6.24 5 17.37 17.37 0 0 0 11.65 1.33 13.07 13.07 0 0 0 3.58-1.38 7.72 7.72 0 0 0 2.55-2.36 5.81 5.81 0 0 0 1-3.37 6.11 6.11 0 0 0-2.5-5.16 23.27 23.27 0 0 0-6.29-3.22c-2.52-.89-5.24-1.77-8.17-2.66a36.42 36.42 0 0 1-8.18-3.58 19.65 19.65 0 0 1-6.29-5.92q-2.51-3.69-2.5-9.71a21.8 21.8 0 0 1 2.3-10.23 22.23 22.23 0 0 1 6.13-7.36A26.83 26.83 0 0 1 205 116a36.14 36.14 0 0 1 10.33-1.49 40.46 40.46 0 0 1 11.85 1.74 27.34 27.34 0 0 1 10.37 5.75z" fill="#1599b5"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-[#0A192F]" data-lang-key="cred4Title">Professional Scrum Master™</h3>
-                    <p class="text-sm text-gray-600" data-lang-key="cred4Sub">Agile Project Delivery</p>
+                    <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred4Title">Professional Scrum Master™</h3>
+                    <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred4Sub">Agile Project Delivery</p>
+                </div>
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
+                        <!-- Databricks official SVG logo -->
+                        <svg class="w-8 h-8" viewBox="0 0 18 18" fill="#ff3621" aria-hidden="true">
+                            <path d="M1.155,4.93v.512L9,9.868l7.006-3.957,0,1.6L9,11.491,1.55,7.258l-.395.22V10.54L9,14.955l7.006-3.942,0,1.586L9,16.581,1.55,12.347l-.395.22v.519L9,17.5l7.845-4.414V10.021l-.4-.218L9,14.036,1.992,10.054V8.476L9,12.414,16.845,8V4.978l-.4-.219L9,8.993,2.352,5.215,9,1.46l5.476,3.094.479-.269V3.863L9,.5Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred5Title">Databricks</h3>
+                    <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred5Sub">Unified Analytics Platform</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-20 bg-white fade-in-section">
+    <section class="py-20 bg-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" >
                  <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="testimonialsTitle">What Our Partners Say</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 stagger-child">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-container">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 card-hover transition-all duration-500 hover:shadow-xl hover:border-[#00C9FF]" >
                     <p class="text-gray-600 mb-6" data-lang-key="testimonial1Text">"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."</p>
                     <div>
                         <p class="font-bold text-[#0A192F]" data-lang-key="testimonial1Name">Sarah M.</p>
                         <p class="text-sm text-gray-500" data-lang-key="testimonial1Role">Head of Analytics</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 stagger-child">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 card-hover transition-all duration-500 hover:shadow-xl hover:border-[#00C9FF]" >
                     <p class="text-gray-600 mb-6" data-lang-key="testimonial2Text">"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."</p>
                     <div>
                         <p class="font-bold text-[#0A192F]" data-lang-key="testimonial2Name">Emma R.</p>
@@ -508,15 +607,15 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50 fade-in-section">
+    <section id="services" class="py-20 bg-gray-50 fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" >
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="servicesTitle">Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span></h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 stagger-container">
                 <!-- Service Cards -->
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 card-hover transition-all duration-500 hover:border-[#00C9FF] hover:border-opacity-50 hover:shadow-2xl group" >
                     <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300">
                         <!-- AI/Brain circuit icon -->
                         <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -530,8 +629,8 @@
                     <p class="text-gray-600 mb-4" data-lang-key="service1Desc">Deploy decision agents on Microsoft Fabric that automate data prep, forecast demand, and surface prescriptive actions in Power BI.</p>
                     <p class="text-sm font-bold text-gray-800" data-lang-key="service1Outcome">Impact: time-to-insight ↓ 40%, forecast MAPE ↓ 12–18%, decision cycle time ↓ 30%</p>
                 </div>
-                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 service-card transition-all duration-300 hover:border-[#00C9FF] hover:border-opacity-30 stagger-child">
-                    <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 icon-hover transition-transform duration-300">
+                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 card-hover transition-all duration-500 hover:border-[#00C9FF] hover:border-opacity-50 hover:shadow-2xl group" >
+                    <div class="w-14 h-14 gradient-bg rounded-lg flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                         <!-- Digital transformation/strategy icon -->
                         <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -576,7 +675,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white fade-in-section">
+    <section id="about" class="py-20 bg-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="text-center mb-12">
                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
@@ -607,7 +706,17 @@
                            <a href="#contact" class="px-6 py-2 text-sm rounded-full gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="founderBtnConsult">Book a Consultation</a>
                            <a href="https://linkedin.com/in/aalaswad" target="_blank" rel="noopener" class="px-6 py-2 text-sm rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center gap-2 btn-lift">
                                <!-- LinkedIn -->
-                               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 8h2v13H3zM9 8h2v2h.03a3.25 3.25 0 0 1 2.97-1.64C17 8.36 18 10 18 12.7V21h-2v-7c0-1.66-.6-2.8-2.1-2.8-1.14 0-1.81.77-2.1 1.52-.11.27-.14.65-.14 1.03V21H9z"/></svg>
+                               <svg class="w-4 h-4" viewBox="0 0 382 382" fill="currentColor" aria-hidden="true">
+                                   <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                                   C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+                                   H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                                   c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+                                   s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                                   c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                                   c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+                                   c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+                                   L341.91,330.654L341.91,330.654z"/>
+                               </svg>
                                LinkedIn</a>
                         </div>
                     </div>
@@ -617,7 +726,7 @@
     </section>
 
     <!-- Case Studies -->
-    <section id="case-studies" class="py-20 bg-gray-50 fade-in-section">
+    <section id="case-studies" class="py-20 bg-gray-50 fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="caseStudiesTitle">Challenge → Solution → <span class="gradient-text">Outcome</span></h2>
@@ -647,7 +756,7 @@
     </section>
 
     <!-- Insights/Blog -->
-    <section id="insights" class="py-20 bg-white fade-in-section">
+    <section id="insights" class="py-20 bg-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0A192F] mb-4" data-lang-key="insightsTitle">Thought leadership <span class="gradient-text">from the field</span></h2>
@@ -676,7 +785,7 @@
     </section>
 
     <!-- Contact CTA -->
-    <section id="contact" class="py-20 bg-[#0A192F] text-white fade-in-section">
+    <section id="contact" class="py-20 bg-[#0A192F] text-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
@@ -757,7 +866,17 @@
                     <div class="flex space-x-4">
                         <a href="https://linkedin.com/company/bruxinnov" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-300 hover:text-[#00C9FF] transition-colors duration-300">
                             <!-- LinkedIn -->
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 8h2v13H3zM9 8h2v2h.03a3.25 3.25 0 0 1 2.97-1.64C17 8.36 18 10 18 12.7V21h-2v-7c0-1.66-.6-2.8-2.1-2.8-1.14 0-1.81.77-2.1 1.52-.11.27-.14.65-.14 1.03V21H9z"/></svg>
+                            <svg class="w-5 h-5" viewBox="0 0 382 382" fill="currentColor" aria-hidden="true">
+                                <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                                C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+                                H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                                c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+                                s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                                c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                                c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+                                c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+                                L341.91,330.654L341.91,330.654z"/>
+                            </svg>
                         </a>
                         <a href="https://www.facebook.com/bruxinnov/" target="_blank" rel="noopener" aria-label="Facebook" class="text-gray-300 hover:text-[#00C9FF] transition-colors duration-300">
                             <!-- Facebook -->
@@ -797,6 +916,8 @@
         </div>
     </footer>
 
+
+
     <script>
         // JavaScript for interactivity and translation
         // Global error handler
@@ -810,18 +931,84 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             
+            // --- ENHANCED SMOOTH SCROLLING ---
+            console.log('Enhanced smooth scrolling initialized');
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add scroll-to-top functionality
+            const scrollToTopBtn = document.createElement('button');
+            scrollToTopBtn.innerHTML = '↑';
+            scrollToTopBtn.className = 'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#00C9FF] to-[#2ECC71] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 opacity-0 invisible';
+            scrollToTopBtn.style.transform = 'translateY(20px)';
+            scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+            document.body.appendChild(scrollToTopBtn);
+            
+            // Show/hide scroll-to-top button
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.opacity = '1';
+                    scrollToTopBtn.style.visibility = 'visible';
+                    scrollToTopBtn.style.transform = 'translateY(0)';
+                } else {
+                    scrollToTopBtn.style.opacity = '0';
+                    scrollToTopBtn.style.visibility = 'invisible';
+                    scrollToTopBtn.style.transform = 'translateY(20px)';
+                }
+            });
+            
+            // Scroll to top when clicked
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Stagger animation observer
+            const staggerContainers = document.querySelectorAll('.stagger-container');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            staggerContainers.forEach(container => {
+                staggerObserver.observe(container);
+            });
+            
             // --- TRANSLATION DATA ---
             const translations = {
                 en: {
                     navServices: "Services", navAbout: "About", navCaseStudies: "Case Studies", navInsights: "Insights", navContact: "Let's Talk",
                     navServicesMobile: "Services", navAboutMobile: "About", navCaseStudiesMobile: "Case Studies", navInsightsMobile: "Insights", navContactMobile: "Let's Talk",
-                    heroTitle: 'Ship decision intelligence in weeks — not quarters.',
-                    heroSubtitle: "We build AI-ready data platforms on Microsoft Fabric & Azure that cut time-to-insight by 40% and unlock growth across commercial, ops, and finance.",
-                    heroBtnTalk: "Book a 30-min Discovery", heroBtnWork: "See Our Work",
+                    heroTitle: 'Empowering Smarter Decisions with Data, AI & Digital Transformation',
+                    heroSubtitle: "We build AI-ready data platforms on Microsoft Fabric & Azure that accelerate insights, optimize operations, and drive measurable growth across your organization.",
+                    heroBtnTalk: "Book a Free Discovery Call", heroBtnWork: "See Our Work",
                     cred1Title: "Microsoft Fabric", cred1Sub: "Early Adopter & Expert",
                     cred2Title: "Azure Certified", cred2Sub: "Data & AI Solutions",
                     cred3Title: "Power BI", cred3Sub: "Advanced Analytics & Viz",
                     cred4Title: "Professional Scrum Master™", cred4Sub: "Agile Project Delivery",
+                    cred5Title: "Databricks", cred5Sub: "Unified Analytics Platform",
                     testimonialsTitle: "What Our Partners Say",
                     testimonial1Text: `"Anas has a unique ability to translate complex data challenges into clear, actionable strategies. His empathetic leadership and technical expertise were critical to our project's success."`,
                     testimonial1Name: "Sarah M.", testimonial1Role: "Head of Analytics",
@@ -832,7 +1019,7 @@
                     service2Title: "Digital Strategy & Transformation", service2Desc: "Align business goals with technology roadmaps for sustainable growth.", service2Outcome: "Outcomes: Clear roadmap, improved ROI on tech spend.",
                     service3Title: "Cloud Solutions & Platform Engineering", service3Desc: "Build scalable systems with Microsoft Azure & Microsoft Fabric.", service3Outcome: "Outcomes: Reduced costs, enhanced security & scalability.",
                     service4Title: "Digital Marketing Analytics", service4Desc: "Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.", service4Outcome: "Outcomes: Increases qualified traffic and connects marketing to revenue.",
-                    aboutTitle: 'Driving Innovation at the Crossroads of <span class="gradient-text">Business and Technology</span>',
+                    aboutTitle: 'Driving Innovation at the Intersection of <span class="gradient-text">Business and Technology</span>',
                     aboutMission: `"I founded BRUXINNOV to bridge the gap between strategy and execution. Too many digital projects fail because insight doesn't translate into impact — our mission is to change that."`,
                     founderTitle: "Anas Alaswad - Digital Transformation & Data Analytics Lead", founderExperience: "Experience:", founderEducation: "Education:", founderBtnConsult: "Book a Consultation",
                     caseStudiesTitle: 'Challenge → Solution → <span class="gradient-text">Outcome</span>',
@@ -845,8 +1032,8 @@
                     blog2Title: "Decision Intelligence vs. Business Intelligence", blog2Desc: "Understanding the evolution from retrospective reporting to proactive, AI-driven decision-making.",
                     blog3Title: "AI Agents: Use Cases in Finance & Supply Chain", blog3Desc: "Exploring how autonomous AI agents are revolutionizing efficiency and accuracy in critical business functions.",
                     blogReadMore: "Read more &rarr;",
-                    contactTitle: 'Ready to accelerate your <span class="gradient-text">digital journey</span>?',
-                    contactSubtitle: "Tell us about your goals. We'll follow up within 24h on weekdays.",
+                    contactTitle: 'Ready to Transform Your <span class="gradient-text">Data into Strategic Advantage</span>?',
+                    contactSubtitle: "Share your data challenges and business goals. We'll provide tailored insights within 24 hours.",
                     contactAddressTitle: "Address", contactEmailTitle: "Email", contactBtnWhatsapp: "Chat Instantly",
                     formTitle: "Book a Consultation", formName: "Full Name", formEmail: "Work Email", formCompany: "Company", formRole: "Role", formMessage: "What challenge can we help with?", formButton: "Book a Consultation", formConsent: 'I agree to the <a href="/privacy.html" class="underline">Privacy Policy</a>',
                     footerDesc: "Premium consulting for enterprises and scale-ups at the intersection of data, AI, and digital transformation.",
@@ -856,13 +1043,14 @@
                 ar: {
                     navServices: "الخدمات", navAbout: "حولنا", navCaseStudies: "دراسات الحالة", navInsights: "الرؤى", navContact: "لنتحدث",
                     navServicesMobile: "الخدمات", navAboutMobile: "حولنا", navCaseStudiesMobile: "دراسات الحالة", navInsightsMobile: "الرؤى", navContactMobile: "لنتحدث",
-                    heroTitle: 'تطبيق ذكاء القرار في أسابيع — وليس أرباع سنة.',
-                    heroSubtitle: "نبني منصات بيانات جاهزة للذكاء الاصطناعي على Microsoft Fabric & Azure تقلل وقت الوصول إلى الرؤى بنسبة 40% وتطلق العنان للنمو التجاري والتشغيلي والمالي.",
-                    heroBtnTalk: "احجز جلسة استكشافية (30 دقيقة)", heroBtnWork: "شاهد أعمالنا",
+                    heroTitle: 'تمكين قرارات أذكى بالبيانات والذكاء الاصطناعي والتحول الرقمي',
+                    heroSubtitle: "نبني منصات بيانات متطورة جاهزة للذكاء الاصطناعي على Microsoft Fabric & Azure لتسريع الرؤى وتحسين العمليات وقيادة النمو المقيس عبر مؤسستك.",
+                    heroBtnTalk: "احجز مكالمة استكشافية مجانية", heroBtnWork: "شاهد أعمالنا",
                     cred1Title: "Microsoft Fabric", cred1Sub: "متبني مبكر وخبير",
                     cred2Title: "معتمد من Azure", cred2Sub: "حلول البيانات والذكاء الاصطناعي",
                     cred3Title: "Power BI", cred3Sub: "تحليلات متقدمة وتصور",
                     cred4Title: "Professional Scrum Master™", cred4Sub: "تسليم المشاريع بمنهجية أجايل",
+                    cred5Title: "Databricks", cred5Sub: "منصة التحليلات الموحدة",
                     testimonialsTitle: "ماذا يقول شركاؤنا",
                     testimonial1Text: `"يتمتع أنس بقدرة فريدة على ترجمة تحديات البيانات المعقدة إلى استراتيجيات واضحة وقابلة للتنفيذ. كانت قيادته المتعاطفة وخبرته التقنية حاسمة لنجاح مشروعنا."`,
                     testimonial1Name: "سارة م.", testimonial1Role: "رئيسة قسم التحليلات",
@@ -873,7 +1061,7 @@
                     service2Title: "الاستراتيجية الرقمية والتحول", service2Desc: "وازن بين أهداف العمل وخرائط طريق التكنولوجيا لتحقيق نمو مستدام.", service2Outcome: "النتائج: خارطة طريق واضحة، تحسين عائد الاستثمار في التكنولوجيا.",
                     service3Title: "الحلول السحابية وهندسة المنصات", service3Desc: "ابنِ أنظمة قابلة للتطوير باستخدام Microsoft Azure و Microsoft Fabric.", service3Outcome: "النتائج: تكاليف أقل، أمان وقابلية تطوير معززة.",
                     service4Title: "تحليلات التسويق الرقمي", service4Desc: "عزز النمو بتحليلات تسويق جاهزة للقرار، وربط القنوات بالإيرادات باستخدام Power BI وخطوط بيانات نظيفة.", service4Outcome: "النتائج: زيادة في الزيارات المؤهلة وربط التسويق بالإيرادات.",
-                    aboutTitle: 'قيادة الابتكار عند <span class="gradient-text">تقاطع الأعمال والتكنولوجيا</span>',
+                    aboutTitle: 'قيادة الابتكار في ملتقى <span class="gradient-text">الأعمال والتكنولوجيا</span>',
                     aboutMission: `"أسست BRUXINNOV لسد الفجوة بين الاستراتيجية والتنفيذ. تفشل الكثير من المشاريع الرقمية لأن الرؤية لا تترجم إلى تأثير — مهمتنا هي تغيير ذلك."`,
                     founderTitle: "أنس الأسود - قائد التحول الرقمي وتحليلات البيانات", founderExperience: "الخبرة:", founderEducation: "التعليم:", founderBtnConsult: "احجز استشارة",
                     caseStudiesTitle: 'التحدي ← الحل ← <span class="gradient-text">النتيجة</span>',
@@ -886,8 +1074,8 @@
                     blog2Title: "ذكاء القرار مقابل ذكاء الأعمال", blog2Desc: "فهم التطور من التقارير بأثر رجعي إلى اتخاذ القرارات الاستباقية القائمة على الذكاء الاصطناعي.",
                     blog3Title: "وكلاء الذكاء الاصطناعي: حالات استخدام في المالية وسلسلة التوريد", blog3Desc: "استكشاف كيف يُحدث وكلاء الذكاء الاصطناعي المستقلون ثورة في الكفاءة والدقة في وظائف الأعمال الحيوية.",
                     blogReadMore: "اقرأ المزيد &larr;",
-                    contactTitle: 'هل أنت مستعد لتسريع <span class="gradient-text">رحلتك الرقمية</span>؟',
-                    contactSubtitle: "أخبرنا عن أهدافك. سنتواصل معك خلال 24 ساعة في أيام العمل.",
+                    contactTitle: 'هل أنت مستعد لتحويل <span class="gradient-text">بياناتك إلى ميزة استراتيجية</span>؟',
+                    contactSubtitle: "شاركنا تحديات بياناتك وأهدافك التجارية. سنقدم رؤى مخصصة خلال 24 ساعة.",
                     contactAddressTitle: "العنوان", contactEmailTitle: "البريد الإلكتروني", contactBtnWhatsapp: "تحدث فوراً",
                     formTitle: "احجز استشارة", formName: "الاسم الكامل", formEmail: "البريد الإلكتروني للعمل", formCompany: "الشركة", formRole: "المنصب", formMessage: "ما هو التحدي الذي يمكننا المساعدة فيه؟", formButton: "احجز استشارة", formConsent: 'أوافق على <a href="/privacy.html" class="underline">سياسة الخصوصية</a>',
                     footerDesc: "استشارات متميزة للشركات الكبرى والناشئة عند تقاطع البيانات والذكاء الاصطناعي والتحول الرقمي.",
@@ -897,13 +1085,14 @@
                 fr: {
                     navServices: "Services", navAbout: "À propos", navCaseStudies: "Études de cas", navInsights: "Analyses", navContact: "Contact",
                     navServicesMobile: "Services", navAboutMobile: "À propos", navCaseStudiesMobile: "Études de cas", navInsightsMobile: "Analyses", navContactMobile: "Contact",
-                    heroTitle: "Déployez l'intelligence décisionnelle en semaines — pas en trimestres.",
-                    heroSubtitle: "Nous construisons des plateformes de données prêtes pour l'IA sur Microsoft Fabric & Azure qui réduisent le temps d'obtention des informations de 40% et débloquent la croissance commerciale, opérationnelle et financière.",
-                    heroBtnTalk: "Réserver une session de 30 min", heroBtnWork: "Voir nos réalisations",
+                    heroTitle: "Autonomiser des Décisions Plus Intelligentes avec les Données, l'IA et la Transformation Numérique",
+                    heroSubtitle: "Nous construisons des plateformes de données avancées prêtes pour l'IA sur Microsoft Fabric & Azure pour accélérer les insights, optimiser les opérations et stimuler une croissance mesurable dans votre organisation.",
+                    heroBtnTalk: "Réserver un Appel Découverte Gratuit", heroBtnWork: "Voir nos réalisations",
                     cred1Title: "Microsoft Fabric", cred1Sub: "Adopteur précoce & Expert",
                     cred2Title: "Certifié Azure", cred2Sub: "Solutions Données & IA",
                     cred3Title: "Power BI", cred3Sub: "Analyses & Visualisations Avancées",
                     cred4Title: "Professional Scrum Master™", cred4Sub: "Livraison de projet Agile",
+                    cred5Title: "Databricks", cred5Sub: "Plateforme d'Analyse Unifiée",
                     testimonialsTitle: "Ce que disent nos partenaires",
                     testimonial1Text: `"Anas a une capacité unique à traduire des défis de données complexes en stratégies claires et exploitables. Son leadership empathique et son expertise technique ont été essentiels au succès de notre projet."`,
                     testimonial1Name: "Sarah M.", testimonial1Role: "Responsable de l'analytique",
@@ -914,7 +1103,7 @@
                     service2Title: "Stratégie & Transformation Numérique", service2Desc: "Alignez les objectifs commerciaux avec les feuilles de route technologiques pour une croissance durable.", service2Outcome: "Résultats : Feuille de route claire, meilleur retour sur investissement technologique.",
                     service3Title: "Solutions Cloud & Ingénierie de Plateforme", service3Desc: "Créez des systèmes évolutifs avec Microsoft Azure et Microsoft Fabric.", service3Outcome: "Résultats : Coûts réduits, sécurité et évolutivité améliorées.",
                     service4Title: "Analyse du Marketing Numérique", service4Desc: "Stimulez la croissance avec des analyses marketing prêtes à la décision, reliant les canaux aux revenus avec Power BI et des pipelines de données propres.", service4Outcome: "Résultats : Augmente le trafic qualifié et relie le marketing aux revenus.",
-                    aboutTitle: 'Mener l\'innovation à la croisée des <span class="gradient-text">affaires et de la technologie</span>',
+                    aboutTitle: 'Mener l\'innovation à l\'intersection des <span class="gradient-text">affaires et de la technologie</span>',
                     aboutMission: `"J'ai fondé BRUXINNOV pour combler le fossé entre la stratégie et l'exécution. Trop de projets numériques échouent parce que la vision ne se traduit pas en impact — notre mission est de changer cela."`,
                     founderTitle: "Anas Alaswad - Leader de la transformation numérique et de l'analyse de données", founderExperience: "Expérience:", founderEducation: "Formation:", founderBtnConsult: "Réserver une consultation",
                     caseStudiesTitle: 'Défi → Solution → <span class="gradient-text">Résultat</span>',
@@ -927,8 +1116,8 @@
                     blog2Title: "Intelligence Décisionnelle vs. Intelligence d'Affaires", blog2Desc: "Comprendre l'évolution du reporting rétrospectif à la prise de décision proactive et pilotée par l'IA.",
                     blog3Title: "Agents IA : Cas d'utilisation en finance et chaîne d'approvisionnement", blog3Desc: "Explorer comment les agents IA autonomes révolutionnent l'efficacité et la précision dans les fonctions commerciales critiques.",
                     blogReadMore: "Lire la suite &rarr;",
-                    contactTitle: 'Prêt à accélérer votre <span class="gradient-text">parcours numérique</span> ?',
-                    contactSubtitle: "Parlez-nous de vos objectifs. Nous vous répondrons dans les 24h en semaine.",
+                    contactTitle: 'Prêt à Transformer vos <span class="gradient-text">Données en Avantage Stratégique</span> ?',
+                    contactSubtitle: "Partagez vos défis data et objectifs business. Nous fournirons des insights personnalisés sous 24 heures.",
                     contactAddressTitle: "Adresse", contactEmailTitle: "Email", contactBtnWhatsapp: "Discuter instantanément",
                     formTitle: "Réserver une consultation", formName: "Nom complet", formEmail: "Email professionnel", formCompany: "Entreprise", formRole: "Poste", formMessage: "Quel défi pouvons-nous vous aider à relever ?", formButton: "Réserver une consultation", formConsent: 'J\'accepte la <a href="/privacy.html" class="underline">Politique de confidentialité</a>',
                     footerDesc: "Conseil premium pour les entreprises et les scale-ups à l'intersection des données, de l'IA et de la transformation numérique.",
@@ -938,13 +1127,14 @@
                 nl: {
                     navServices: "Diensten", navAbout: "Over ons", navCaseStudies: "Casestudy's", navInsights: "Inzichten", navContact: "Neem contact op",
                     navServicesMobile: "Diensten", navAboutMobile: "Over ons", navCaseStudiesMobile: "Casestudy's", navInsightsMobile: "Inzichten", navContactMobile: "Neem contact op",
-                    heroTitle: "Lever besluitintelligentie in weken — niet in kwartalen.",
-                    heroSubtitle: "Wij bouwen AI-klare dataplatforms op Microsoft Fabric & Azure die de time-to-insight met 40% verkorten en groei ontsluiten in commercie, operations en financiën.",
-                    heroBtnTalk: "Boek een 30-min gesprek", heroBtnWork: "Bekijk ons werk",
+                    heroTitle: "Slimmere Beslissingen Mogelijk Maken met Data, AI & Digitale Transformatie",
+                    heroSubtitle: "Wij bouwen geavanceerde AI-klare dataplatforms op Microsoft Fabric & Azure om inzichten te versnellen, operaties te optimaliseren en meetbare groei te stimuleren binnen uw organisatie.",
+                    heroBtnTalk: "Boek een Gratis Ontdekkingsgesprek", heroBtnWork: "Bekijk ons werk",
                     cred1Title: "Microsoft Fabric", cred1Sub: "Early Adopter & Expert",
                     cred2Title: "Azure Gecertificeerd", cred2Sub: "Data & AI Oplossingen",
                     cred3Title: "Power BI", cred3Sub: "Geavanceerde Analyse & Visualisatie",
                     cred4Title: "Professional Scrum Master™", cred4Sub: "Agile Projectlevering",
+                    cred5Title: "Databricks", cred5Sub: "Geünificeerd Analyseplatform",
                     testimonialsTitle: "Wat onze partners zeggen",
                     testimonial1Text: `"Anas heeft het unieke vermogen om complexe data-uitdagingen te vertalen naar duidelijke, uitvoerbare strategieën. Zijn empathisch leiderschap en technische expertise waren cruciaal voor het succes van ons project."`,
                     testimonial1Name: "Sarah M.", testimonial1Role: "Hoofd Analytics",
@@ -955,7 +1145,7 @@
                     service2Title: "Digitale Strategie & Transformatie", service2Desc: "Lijn bedrijfsdoelen uit met technologische roadmaps voor duurzame groei.", service2Outcome: "Resultaten: Duidelijke roadmap, verbeterde ROI op tech-uitgaven.",
                     service3Title: "Cloudoplossingen & Platform Engineering", service3Desc: "Bouw schaalbare systemen met Microsoft Azure & Microsoft Fabric.", service3Outcome: "Resultaten: Lagere kosten, verbeterde beveiliging en schaalbaarheid.",
                     service4Title: "Digitale Marketinganalyse", service4Desc: "Stimuleer groei met besluitklare marketinganalyses, waarbij kanalen worden gekoppeld aan omzet met Power BI en schone datapijplijnen.", service4Outcome: "Resultaten: Verhoogt gekwalificeerd verkeer en verbindt marketing met omzet.",
-                    aboutTitle: 'Innovatie stimuleren op het kruispunt van <span class="gradient-text">business en technologie</span>',
+                    aboutTitle: 'Innovatie stimuleren op het snijvlak van <span class="gradient-text">business en technologie</span>',
                     aboutMission: `"Ik heb BRUXINNOV opgericht om de kloof tussen strategie en uitvoering te overbruggen. Te veel digitale projecten mislukken omdat inzicht niet wordt vertaald in impact — onze missie is om dat te veranderen."`,
                     founderTitle: "Anas Alaswad - Leider Digitale Transformatie & Data-analyse", founderExperience: "Ervaring:", founderEducation: "Opleiding:", founderBtnConsult: "Boek een consult",
                     caseStudiesTitle: 'Uitdaging → Oplossing → <span class="gradient-text">Resultaat</span>',
@@ -968,8 +1158,8 @@
                     blog2Title: "Besluitintelligentie vs. Business Intelligence", blog2Desc: "Het begrijpen van de evolutie van retrospectieve rapportage naar proactieve, AI-gestuurde besluitvorming.",
                     blog3Title: "AI-agenten: Use cases in financiën & toeleveringsketen", blog3Desc: "Onderzoeken hoe autonome AI-agenten de efficiëntie en nauwkeurigheid in kritieke bedrijfsfuncties revolutioneren.",
                     blogReadMore: "Lees meer &rarr;",
-                    contactTitle: 'Klaar om uw <span class="gradient-text">digitale reis</span> te versnellen?',
-                    contactSubtitle: "Vertel ons over uw doelen. We nemen binnen 24 uur op werkdagen contact met u op.",
+                    contactTitle: 'Klaar om uw <span class="gradient-text">Data om te zetten in Strategisch Voordeel</span>?',
+                    contactSubtitle: "Deel uw data-uitdagingen en bedrijfsdoelen. We bieden op maat gemaakte inzichten binnen 24 uur.",
                     contactAddressTitle: "Adres", contactEmailTitle: "E-mail", contactBtnWhatsapp: "Chat direct",
                     formTitle: "Boek een consult", formName: "Volledige naam", formEmail: "Zakelijke e-mail", formCompany: "Bedrijf", formRole: "Functie", formMessage: "Met welke uitdaging kunnen we helpen?", formButton: "Boek een consult", formConsent: 'Ik ga akkoord met het <a href="/privacy.html" class="underline">Privacybeleid</a>',
                     footerDesc: "Premium consulting voor ondernemingen en scale-ups op het snijvlak van data, AI en digitale transformatie.",
@@ -1153,4 +1343,3 @@
     </script>
 </body>
 </html>
-
