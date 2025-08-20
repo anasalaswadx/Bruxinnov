@@ -750,56 +750,24 @@
             }
         }
         
-        /* Mobile Menu Button - Ensure it's hidden on larger screens */
-        #mobile-menu-button {
-            display: none;
-        }
+        /* ================================================================================ */
+        /* ========================== MOBILE MENU SYSTEM ========================= */
+        /* ================================================================================ */
         
-        /* Additional specificity for mobile menu button container */
-        div[class*="lg:hidden"] #mobile-menu-button {
-            display: none;
-        }
-        
+        /* Mobile Menu Button - Proper responsive visibility */
         @media (max-width: 1023px) {
             #mobile-menu-button {
-                display: flex !important;
+                display: flex;
             }
         }
         
         @media (min-width: 1024px) {
             #mobile-menu-button {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-                position: absolute !important;
-                left: -9999px !important;
-                width: 0 !important;
-                height: 0 !important;
-                overflow: hidden !important;
+                display: none;
             }
             
             #mobile-menu {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-            }
-            
-            /* Hide the entire mobile menu button container on large screens */
-            div[class*="lg:hidden"] {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-                width: 0 !important;
-                height: 0 !important;
-                overflow: hidden !important;
-            }
-            
-            /* Additional safety - hide any element with mobile menu classes on large screens */
-            [id*="mobile"] {
-                display: none !important;
+                display: none;
             }
         }
         
@@ -909,90 +877,121 @@
             }
         }
         
-        /* CRITICAL: Ensure all content sections are always visible - but preserve layout */
-        section, .fade-in-section {
-            opacity: 1 !important;
-            visibility: visible !important;
+        /* ================================================================================ */
+        /* ========================== ANIMATION SYSTEM ========================= */
+        /* ================================================================================ */
+        
+        /* Fade-in animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
-        /* Preserve grid layout but ensure visibility */
+        .fade-in-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .stagger-container {
-            opacity: 1 !important;
-            visibility: visible !important;
+            opacity: 1;
+            visibility: visible;
         }
         
         .stagger-container > * {
-            opacity: 1 !important;
-            visibility: visible !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
-        /* Ensure all cards and content are visible - preserve layout */
-        .card-hover, .interactive-card, .scroll-reveal, .scroll-reveal-scale {
-            opacity: 1 !important;
-            visibility: visible !important;
+        .stagger-container > *.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        /* Preserve flexbox and grid layouts */
-        .flex, .flex-col {
-            display: flex !important;
+        /* Stagger delay for children */
+        .stagger-container > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-container > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-container > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-container > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-container > *:nth-child(5) { transition-delay: 0.5s; }
+        
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
         }
         
-        .grid, .grid-cols-2, .grid-cols-3, .grid-cols-5 {
-            display: grid !important;
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        /* Specific grid column preservation */
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        /* Interactive card effects */
+        .interactive-card {
+            transition: all 0.3s ease;
         }
         
-        .md\:grid-cols-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        .interactive-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 201, 255, 0.15);
         }
         
-        .lg\:grid-cols-5 {
-            grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        /* Scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
-        /* Preserve gap and spacing */
-        .gap-8 {
-            gap: 2rem !important;
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        /* Ensure text alignment is preserved */
-        .text-center {
-            text-align: center !important;
+        .scroll-reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
-        /* CRITICAL: Ensure privacy modal is hidden by default */
+        .scroll-reveal-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* ================================================================================ */
+        /* ========================== MODAL SYSTEM ========================= */
+        /* ================================================================================ */
+        
+        /* Modal visibility control - Clean and simple */
         #privacy-modal {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
         }
         
-        /* Only show privacy modal when explicitly triggered */
         #privacy-modal.show {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
+            display: flex;
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
         }
         
-        /* Cookie modal visibility control */
         #cookie-modal {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
         }
         
         #cookie-modal.show {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
+            display: flex;
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -2982,18 +2981,50 @@
             hideCookieConsent();
         });
 
-        // Privacy Policy Modal
-        document.getElementById('privacy-modal-close').addEventListener('click', () => {
-            const privacyModal = document.getElementById('privacy-modal');
-            privacyModal.classList.remove('show');
-        });
+        // Privacy Policy Modal with Enhanced Accessibility
+        const privacyModal = document.getElementById('privacy-modal');
+        const privacyModalClose = document.getElementById('privacy-modal-close');
+        const cookieModal = document.getElementById('cookie-modal');
+        
+        if (privacyModalClose) {
+            privacyModalClose.addEventListener('click', () => {
+                privacyModal.classList.remove('show');
+                // Return focus to the element that opened the modal
+                if (document.activeElement && document.activeElement.classList.contains('privacy-link')) {
+                    document.activeElement.focus();
+                }
+            });
+        }
+        
+        // Enhanced focus management for privacy modal
+        if (privacyModal) {
+            // Focus trap for privacy modal
+            const focusableElements = privacyModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+            
+            privacyModal.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            e.preventDefault();
+                            lastFocusableElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            e.preventDefault();
+                            firstFocusableElement.focus();
+                        }
+                    }
+                }
+            });
+        }
 
         // Show privacy modal when privacy policy links are clicked
         document.addEventListener('click', (e) => {
             if (e.target.matches('a[href="/privacy.html"], a[href*="privacy"]')) {
                 console.log('Privacy link clicked:', e.target.href);
                 e.preventDefault();
-                const privacyModal = document.getElementById('privacy-modal');
                 privacyModal.classList.add('show');
             }
         });
@@ -3002,7 +3033,6 @@
         console.log('Privacy modal initial state:', document.getElementById('privacy-modal').style.display);
         
         // Ensure privacy modal starts hidden
-        const privacyModal = document.getElementById('privacy-modal');
         if (privacyModal) {
             privacyModal.classList.remove('show');
             console.log('Privacy modal forced to hidden on initialization');
@@ -3036,7 +3066,6 @@
         
         // Cookie modal click outside to close functionality
         document.addEventListener('click', (e) => {
-            const cookieModal = document.getElementById('cookie-modal');
             if (e.target === cookieModal) {
                 console.log('Clicked outside cookie modal, closing...');
                 cookieModal.classList.remove('show');
@@ -3044,7 +3073,6 @@
         });
         
         // Ensure cookie modal starts hidden
-        const cookieModal = document.getElementById('cookie-modal');
         if (cookieModal) {
             cookieModal.classList.remove('show');
             console.log('Cookie modal forced to hidden on initialization');
@@ -3052,7 +3080,6 @@
         
         // Additional safety: Force hide cookie modal on page load
         window.addEventListener('load', () => {
-            const cookieModal = document.getElementById('cookie-modal');
             if (cookieModal) {
                 cookieModal.classList.remove('show');
                 console.log('Forced cookie modal to hidden on page load');
@@ -3079,7 +3106,6 @@
         // Keyboard support for cookie modal (Escape key)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const cookieModal = document.getElementById('cookie-modal');
                 if (cookieModal && cookieModal.classList.contains('show')) {
                     console.log('Escape key pressed, closing cookie modal...');
                     cookieModal.classList.remove('show');
@@ -3294,15 +3320,36 @@
         // Scroll Progress Indicator
         const scrollProgressBar = document.querySelector('.scroll-progress-bar');
         
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
+        // Consolidated Scroll Event Handler with Throttling
+        let scrollTimeout;
+        const handleScroll = () => {
+            if (scrollTimeout) return;
             
-            if (scrollProgressBar) {
-                scrollProgressBar.style.width = scrollPercent + '%';
-            }
-        });
+            scrollTimeout = setTimeout(() => {
+                // Scroll Progress Indicator
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                
+                if (scrollProgressBar) {
+                    scrollProgressBar.style.width = scrollPercent + '%';
+                }
+                
+                // Back to Top Button visibility
+                if (floatingAction) {
+                    if (window.pageYOffset > 300) {
+                        floatingAction.classList.add('visible');
+                    } else {
+                        floatingAction.classList.remove('visible');
+                    }
+                }
+                
+                scrollTimeout = null;
+            }, 16); // ~60fps throttling
+        };
+        
+        // Single scroll event listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
         
         // Immersive Cursor Effects
         const cursorGlow = document.querySelector('.cursor-glow');
@@ -3322,17 +3369,6 @@
         // Back to Top Button Functionality
         const backToTopButton = document.getElementById('back-to-top');
         const floatingAction = document.querySelector('.floating-action');
-        
-        // Show/hide button based on scroll position
-        window.addEventListener('scroll', () => {
-            if (floatingAction) {
-                if (window.pageYOffset > 300) {
-                    floatingAction.classList.add('visible');
-                } else {
-                    floatingAction.classList.remove('visible');
-                }
-            }
-        });
         
         // Back to top functionality
         if (backToTopButton) {
