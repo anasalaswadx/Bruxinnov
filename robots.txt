@@ -1,0 +1,51 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bruxinnov.com/sitemap.xml
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Allow crawling of all content
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
+
+# Specific rules for different content types
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.xml
+Allow: /*.txt
+
+# Disallow admin or private areas (if any exist in the future)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /temp/
+# Disallow: /logs/
+
+# Allow all language versions
+Allow: /?lang=*
+Allow: /#*
+
+# Host directive (recommended)
+Host: https://bruxinnov.com
