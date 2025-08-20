@@ -6,7 +6,7 @@
     
     <!-- SEO Meta Tags -->
     <title>BRUXINNOV | AI, Data & Digital Transformation Consulting</title>
-    <meta name="description" content="Decision intelligence on Microsoft Fabric & Azure delivering KPI wins: time-to-insight ↓ 40%, forecast error ↓ 12–18%, cycle time ↓ 30%">
+    <meta name="description" content="Decision intelligence on Microsoft Fabric & Azure delivering KPI wins: time-to-insight ↓ 40%, forecast error ↓ 12-18%, cycle time ↓ 30%">
     
     <!-- Canonical & Hreflang for SEO -->
     <link rel="canonical" href="https://bruxinnov.com/">
@@ -121,13 +121,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tajawal:wght@500&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom CSS variables and styles */
+        /* ===================================================================== */
+        /* ===================== GLOBAL STYLES & VARIABLES ==================== */
+        /* ===================================================================== */
+        
+        /* CSS Custom Properties */
         :root {
             --primary: #0A192F;
             --accent-cyan: #00C9FF;
             --accent-green: #2ECC71;
         }
         
+        /* Base HTML & Body Styles */
         html {
             scroll-behavior: smooth;
         }
@@ -137,15 +142,25 @@
             color: var(--primary);
         }
         
+        /* Section Navigation Offset */
         section[id] {
             scroll-margin-top: 80px; /* Offset for fixed navbar */
         }
 
+        /* ===================================================================== */
+        /* ==================== INTERNATIONALIZATION (i18n) =================== */
+        /* ===================================================================== */
+        
         /* Apply Arabic font when RTL is active */
         html[dir="rtl"] body {
             font-family: 'Tajawal', sans-serif;
         }
 
+        /* ===================================================================== */
+        /* ======================= UTILITY CLASSES ========================== */
+        /* ===================================================================== */
+        
+        /* Gradient Text Effect */
         .gradient-text {
             background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
             -webkit-background-clip: text;
@@ -153,26 +168,39 @@
             color: transparent;
         }
         
+        /* Gradient Background */
         .gradient-bg {
             background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
         }
         
 
 
+        /* ===================================================================== */
+        /* ====================== COMPONENT STYLES ========================== */
+        /* ===================================================================== */
+        
+        /* Hero Section */
         .hero-content {
             position: relative;
             z-index: 2;
         }
         
+        /* Card Hover Effects */
         .service-card:hover, .case-study-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
+        /* Icon Hover Effects */
         .icon-hover:hover {
             transform: scale(1.1);
         }
         
+        /* ===================================================================== */
+        /* ======================= ANIMATIONS & EFFECTS ===================== */
+        /* ===================================================================== */
+        
+        /* Keyframe Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -184,6 +212,7 @@
             100% { background-position: 0% 50%; }
         }
         
+        /* Section Fade In Effects */
         .fade-in-section {
             opacity: 0;
         }
@@ -192,7 +221,7 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Staggered animation for child elements */
+        /* Staggered Animation for Child Elements */
         .stagger-child {
             opacity: 0;
             transform: translateY(20px);
@@ -382,8 +411,16 @@
         }
     </style>
 </head>
+
+<!-- ============================================================================ -->
+<!-- ========================== DOCUMENT BODY SECTION ========================== -->
+<!-- ============================================================================ -->
 <body class="bg-white">
         <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white text-[#0A192F] rounded px-3 py-2 shadow z-50">Skip to content</a>
+
+<!-- ============================================================================ -->
+<!-- ========================== NAVIGATION SECTION ============================= -->
+<!-- ============================================================================ -->
     <!-- Navigation Bar -->
     <nav class="fixed w-full bg-white shadow-sm z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -442,6 +479,10 @@
         </div>
     </nav>
 <main id="main">
+
+<!-- ============================================================================ -->
+<!-- ============================= HERO SECTION ================================ -->
+<!-- ============================================================================ -->
     <!-- Hero Section -->
     <section id="hero" class="relative text-white pt-32 pb-24 md:pt-40 md:pb-32 fade-in-section" >
         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" fetchpriority="high">
@@ -641,6 +682,10 @@
         </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ========================= MAIN SERVICES SECTION =========================== -->
+<!-- ============================================================================ -->
     <!-- SERVICES (drop-in replacement for your current #services grid) -->
     <section id="services" class="py-20 bg-gray-50 fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -711,7 +756,7 @@
             <p class="text-gray-600 mb-3" data-lang-key="mainService5Desc">
               Agents that forecast, simulate, and recommend — surfaced in Power BI with human-in-the-loop guardrails.
             </p>
-            <p class="text-sm font-semibold text-gray-800" data-lang-key="mainService5Outcome">Impact: time-to-insight ↓ 40%, forecast error ↓ 12–18%.</p>
+            <p class="text-sm font-semibold text-gray-800" data-lang-key="mainService5Outcome">Impact: time-to-insight ↓ 40%, forecast error ↓ 12-18%.</p>
           </div>
 
           <!-- Power BI Center of Excellence -->
@@ -753,6 +798,10 @@
       </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ========================= SERVICE CATALOG SECTION ========================= -->
+<!-- ============================================================================ -->
     <!-- SERVICE CATALOG (drop-in replacement for #catalog) -->
     <section id="catalog" class="py-20 bg-gray-50 fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -771,7 +820,7 @@
               <li data-lang-key="catalog1Detail2">Security model, workspaces & release flow</li>
               <li data-lang-key="catalog1Detail3">Executive KPI dashboard + adoption plan</li>
             </ul>
-            <p class="text-sm font-semibold mt-4" data-lang-key="catalog1Impact">Typical impact: time-to-insight ↓ 30–40%</p>
+            <p class="text-sm font-semibold mt-4" data-lang-key="catalog1Impact">Typical impact: time-to-insight ↓ 30-40%</p>
           </div>
 
           <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover">
@@ -785,7 +834,7 @@
               <li data-lang-key="catalog2Detail2">Optimized model, RLS/OLS, performance tuning</li>
               <li data-lang-key="catalog2Detail3">Insight stories with decision prompts</li>
             </ul>
-            <p class="text-sm font-semibold mt-4" data-lang-key="catalog2Impact">Typical impact: decision cycle ↓ 20–30%</p>
+            <p class="text-sm font-semibold mt-4" data-lang-key="catalog2Impact">Typical impact: decision cycle ↓ 20-30%</p>
           </div>
 
           <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover">
@@ -799,7 +848,7 @@
               <li data-lang-key="catalog3Detail2">Feature store & evaluation harness</li>
               <li data-lang-key="catalog3Detail3">Power BI action center (human-in-the-loop)</li>
             </ul>
-            <p class="text-sm font-semibold mt-4" data-lang-key="catalog3Impact">Typical impact: forecast MAPE ↓ 12–18%</p>
+            <p class="text-sm font-semibold mt-4" data-lang-key="catalog3Impact">Typical impact: forecast MAPE ↓ 12-18%</p>
           </div>
 
           <!-- New productized offers -->
@@ -876,6 +925,10 @@
       </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ======================== INDUSTRIES & USE CASES SECTION =================== -->
+<!-- ============================================================================ -->
     <!-- Industries & Use cases -->
     <section id="use-cases" class="py-20 bg-white fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -891,6 +944,10 @@
       </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ============================= ABOUT SECTION =============================== -->
+<!-- ============================================================================ -->
     <!-- About Section -->
     <section id="about" class="py-20 bg-white fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -984,6 +1041,10 @@
       </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- =========================== CASE STUDIES SECTION ========================== -->
+<!-- ============================================================================ -->
     <!-- Case Studies -->
     <section id="case-studies" class="py-20 bg-gray-50 fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1014,6 +1075,10 @@
         </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ========================== INSIGHTS/BLOG SECTION ========================== -->
+<!-- ============================================================================ -->
     <!-- Insights/Blog -->
     <section id="insights" class="py-20 bg-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1043,6 +1108,10 @@
         </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- =============================== FAQ SECTION ================================ -->
+<!-- ============================================================================ -->
     <!-- FAQ -->
     <section id="faq" class="py-20 bg-gray-50 fade-in-section relative overflow-hidden">
       <!-- Background decoration -->
@@ -1136,6 +1205,10 @@
       </div>
     </section>
 
+
+<!-- ============================================================================ -->
+<!-- ============================ CONTACT SECTION ============================== -->
+<!-- ============================================================================ -->
     <!-- Contact CTA -->
     <section id="contact" class="py-20 bg-[#0A192F] text-white fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1208,6 +1281,9 @@
         </div>
     </section>
 </main>
+<!-- ============================================================================ -->
+<!-- ============================== FOOTER SECTION ============================== -->
+<!-- ============================================================================ -->
     <!-- Footer -->
     <footer class="bg-[#0A192F] text-gray-300 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1270,8 +1346,16 @@
 
 
 
+
+<!-- ============================================================================ -->
+<!-- ========================== JAVASCRIPT SECTION ============================= -->
+<!-- ============================================================================ -->
     <script>
-        // JavaScript for interactivity and translation
+        // ================================================================================
+        // ========================== JAVASCRIPT INITIALIZATION =========================
+        // ================================================================================
+        
+        // ==================== GLOBAL ERROR HANDLING ====================
         // Global error handler
         window.addEventListener('error', function(e) {
             console.error('Global error:', e.error);
@@ -1281,9 +1365,10 @@
             console.error('Unhandled promise rejection:', e.reason);
         });
         
+        // ==================== DOM CONTENT LOADED EVENT ====================
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- ENHANCED SMOOTH SCROLLING ---
+            // ==================== SMOOTH SCROLLING & NAVIGATION ====================
             console.log('Enhanced smooth scrolling initialized');
             
             // Smooth scroll for navigation links
@@ -1348,7 +1433,8 @@
                 staggerObserver.observe(container);
             });
             
-            // --- TRANSLATION DATA ---
+            // ==================== TRANSLATION SYSTEM ====================
+            // Translation data object containing all multilingual content
             const translations = {
                 en: {
                     navServices: "Services", navAbout: "About", navCaseStudies: "Case Studies", navInsights: "Insights", navContact: "Let's Talk",
@@ -1367,7 +1453,7 @@
                     testimonial2Text: `"Working with BRUXINNOV accelerated our digital transformation roadmap by months. Their insights into Microsoft Fabric and agile delivery models were invaluable."`,
                     testimonial2Name: "Emma R.", testimonial2Role: "CTO",
                     servicesTitle: 'Outcome-focused consulting to bridge <span class="gradient-text">strategy and execution</span>',
-                    service1Title: "AI & Decision Intelligence", service1Desc: "Deploy decision agents on Microsoft Fabric that automate data prep, forecast demand, and surface prescriptive actions in Power BI.", service1Outcome: "Impact: time-to-insight ↓ 40%, forecast MAPE ↓ 12–18%, decision cycle time ↓ 30%",
+                    service1Title: "AI & Decision Intelligence", service1Desc: "Deploy decision agents on Microsoft Fabric that automate data prep, forecast demand, and surface prescriptive actions in Power BI.", service1Outcome: "Impact: time-to-insight ↓ 40%, forecast MAPE ↓ 12-18%, decision cycle time ↓ 30%",
                     service2Title: "Digital Strategy & Transformation", service2Desc: "Align business goals with technology roadmaps for sustainable growth.", service2Outcome: "Outcomes: Clear roadmap, improved ROI on tech spend.",
                     service3Title: "Cloud Solutions & Platform Engineering", service3Desc: "Build scalable systems with Microsoft Azure & Microsoft Fabric.", service3Outcome: "Outcomes: Reduced costs, enhanced security & scalability.",
                     service4Title: "Digital Marketing Analytics", service4Desc: "Boost growth with decision-ready marketing analytics, connecting channels to revenue with Power BI and clean data pipelines.", service4Outcome: "Outcomes: Increases qualified traffic and connects marketing to revenue.",
@@ -1418,7 +1504,7 @@
                     mainService2Title: "Self-Service Analytics Enablement", mainService2Desc: "Empower business users with governed datasets, templates, and a WYSIWYG experience that's safe, fast, and scalable.", mainService2Outcome: "Outcomes: reduced ad-hoc backlog, higher adoption.",
                     mainService3Title: "Data Engineering & Lakehouse", mainService3Desc: "Build reliable pipelines for streaming + batch, unify formats and speeds, and tame data growth without sprawl.", mainService3Outcome: "Outcomes: trustworthy data, lower TCO, scale without chaos.",
                     mainService4Title: "Data Science & MLOps", mainService4Desc: "Detect fraud, segment customers, optimize processes, and run models in production with repeatable ML pipelines.", mainService4Outcome: "Outcomes: measurable lift, monitored models, fewer black boxes.",
-                    mainService5Title: "AI Decision Agents", mainService5Desc: "Agents that forecast, simulate, and recommend — surfaced in Power BI with human-in-the-loop guardrails.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, forecast error ↓ 12–18%.",
+                    mainService5Title: "AI Decision Agents", mainService5Desc: "Agents that forecast, simulate, and recommend — surfaced in Power BI with human-in-the-loop guardrails.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, forecast error ↓ 12-18%.",
                     mainService6Title: "Power BI Center of Excellence", mainService6Desc: "Governance, RLS/OLS, certified datasets, performance tuning, and a sustainable operating model.", mainService6Outcome: "Outcomes: trusted metrics, faster reports, lower risk.",
                     mainService7Title: "Data Strategy & Governance", mainService7Desc: "Decisions at the core: data contracts, KPI catalog, lineage, quality SLAs, and privacy-by-design.", mainService7Outcome: "Outcomes: clear ownership, compliance, ROI visibility.",
                     mainService8Title: "Data Storytelling & Adoption", mainService8Desc: "Less dashboard dumping, more narrative. We teach teams to communicate insights that drive action.", mainService8Outcome: "Outcomes: understanding, engagement, decisions made.",
@@ -1454,9 +1540,9 @@
                     deliveryNote: "Dual-track agile: demo every Friday, transparent backlog, measurable KPI deltas.",
                     stackTitle: "Tooling & stack",
                     // Service Catalog Details
-                    catalog1Detail1: "OneLake + medallion zones, pipelines & monitoring", catalog1Detail2: "Security model, workspaces & release flow", catalog1Detail3: "Executive KPI dashboard + adoption plan", catalog1Impact: "Typical impact: time-to-insight ↓ 30–40%",
-                    catalog2Detail1: "Metrics catalog & KPI contracts", catalog2Detail2: "Optimized model, RLS/OLS, performance tuning", catalog2Detail3: "Insight stories with decision prompts", catalog2Impact: "Typical impact: decision cycle ↓ 20–30%",
-                    catalog3Detail1: "Use-case selection, guardrails & ROI model", catalog3Detail2: "Feature store & evaluation harness", catalog3Detail3: "Power BI action center (human-in-the-loop)", catalog3Impact: "Typical impact: forecast MAPE ↓ 12–18%",
+                    catalog1Detail1: "OneLake + medallion zones, pipelines & monitoring", catalog1Detail2: "Security model, workspaces & release flow", catalog1Detail3: "Executive KPI dashboard + adoption plan", catalog1Impact: "Typical impact: time-to-insight ↓ 30-40%",
+                    catalog2Detail1: "Metrics catalog & KPI contracts", catalog2Detail2: "Optimized model, RLS/OLS, performance tuning", catalog2Detail3: "Insight stories with decision prompts", catalog2Impact: "Typical impact: decision cycle ↓ 20-30%",
+                    catalog3Detail1: "Use-case selection, guardrails & ROI model", catalog3Detail2: "Feature store & evaluation harness", catalog3Detail3: "Power BI action center (human-in-the-loop)", catalog3Impact: "Typical impact: forecast MAPE ↓ 12-18%",
                     catalog4Detail1: "Certified datasets & templates", catalog4Detail2: "Access patterns, governance & cataloging", catalog4Detail3: "Enablement workshops for analysts", catalog4Impact: "Impact: backlog ↓, adoption ↑",
                     catalog5Detail1: "Roles, RACI, review & release workflow", catalog5Detail2: "Data contracts, quality SLAs, lineage", catalog5Detail3: "Community of practice & playbooks", catalog5Impact: "Impact: fewer silos, trusted KPIs",
                     catalog6Detail1: "Batch + streaming (CDC, events)", catalog6Detail2: "Incremental processing & cost control", catalog6Detail3: "Observability: quality, lineage, SLOs", catalog6Impact: "Impact: reliability ↑, TCO ↓",
@@ -1644,7 +1730,7 @@
                     faq3Question: "Dans quelles technologies Microsoft BRUXINNOV se spécialise-t-elle ?", faq3Answer: "Nous sommes spécialisés en Microsoft Fabric avec une expertise approfondie en Power BI, Azure Data Factory, Azure SQL, Databricks, Azure OpenAI et Microsoft Purview. Notre équipe détient des certifications avancées en solutions Azure Data & AI et suit les dernières meilleures pratiques de Microsoft pour les plateformes de données modernes, incluant OneLake, Direct Lake et l'intégration Copilot.",
                     faq4Question: "Quelles industries BRUXINNOV sert-elle ?", faq4Answer: "BRUXINNOV sert des clients d'entreprise dans la Fabrication, les Biens de consommation, les Télécommunications, les Services financiers, la Santé et le B2B SaaS. Nous avons une expertise particulière en analytique de chaîne d'approvisionnement, intelligence client, reporting financier et tableaux de bord opérationnels. Nos solutions sont conçues pour répondre aux exigences réglementaires strictes incluant GDPR, SOX et les normes de conformité spécifiques à l'industrie.",
                     faq5Question: "Comment BRUXINNOV assure-t-elle la gouvernance et la sécurité des données ?", faq5Answer: "La sécurité et la gouvernance sont intégrées dans chaque solution que nous livrons. Nous implémentons le contrôle d'accès basé sur les rôles (RBAC), la sécurité au niveau des lignes (RLS), le suivi de la lignée des données et la surveillance automatisée de la qualité des données. Toutes les solutions suivent l'architecture Zero Trust de Microsoft et incluent des contrats de données, des principes de privacy-by-design et des pistes d'audit complètes pour la conformité réglementaire.",
-                    faq6Question: "Quel type de ROI pouvons-nous attendre d'un engagement BRUXINNOV ?", faq6Answer: "Nos clients voient généralement une réduction de 30-40% du temps d'obtention d'insights, une amélioration de 12-18% de la précision des prévisions et des cycles de décision 20-30% plus rapides. Nous mesurons le ROI à travers des KPIs spécifiques convenus durant la phase de Découverte, incluant les économies de coûts de l'automatisation des rapports, l'impact sur les revenus des meilleures prévisions et les gains d'efficacité de l'adoption de l'analytique en libre-service.",
+                    faq6Question: "Quel type de ROI pouvons-nous attendre d'un engagement BRUXINNOV ?", faq6Answer: "Nos clients voient généralement une réduction de 30-40 % du temps d'obtention d'insights, une amélioration de 12-18 % de la précision des prévisions et des cycles de décision 20-30 % plus rapides. Nous mesurons le ROI à travers des KPIs spécifiques convenus durant la phase de Découverte, incluant les économies de coûts de l'automatisation des rapports, l'impact sur les revenus des meilleures prévisions et les gains d'efficacité de l'adoption de l'analytique en libre-service.",
                     faq7Question: "BRUXINNOV fournit-elle un support continu après l'achèvement du projet ?", faq7Answer: "Oui, nous offrons des packages de support flexibles incluant des services gérés, du support à la demande et l'établissement de Centre d'Excellence. Nous fournissons aussi des programmes de formation pour améliorer les compétences de vos équipes internes, des sessions de transfert de connaissances et pouvons nous intégrer avec votre équipe durant la période de transition pour assurer une adoption durable et une amélioration continue.",
                     // Cookie Consent
                     cookieTitle: "Nous utilisons des cookies pour améliorer votre expérience", cookieMessage: "Nous utilisons des cookies essentiels pour faire fonctionner notre site. Nous aimerions aussi définir des cookies analytiques optionnels pour nous aider à l'améliorer. Nous ne définirons pas de cookies optionnels à moins que vous ne les activiez.",
@@ -1664,7 +1750,7 @@
                     mainService2Title: "Activation d'Analytics en Libre-Service", mainService2Desc: "Autonomisez les utilisateurs métier avec des datasets gouvernés, templates et une expérience WYSIWYG sûre, rapide et évolutive.", mainService2Outcome: "Résultats : backlog ad-hoc réduit, adoption plus élevée.",
                     mainService3Title: "Ingénierie des Données & Lakehouse", mainService3Desc: "Construisez des pipelines fiables pour streaming + batch, unifiez formats et vitesses, et maîtrisez la croissance des données sans éparpillement.", mainService3Outcome: "Résultats : données fiables, TCO plus bas, évolutivité sans chaos.",
                     mainService4Title: "Data Science & MLOps", mainService4Desc: "Détectez la fraude, segmentez les clients, optimisez les processus et exécutez des modèles en production avec des pipelines ML répétables.", mainService4Outcome: "Résultats : amélioration mesurable, modèles surveillés, moins de boîtes noires.",
-                    mainService5Title: "Agents de Décision IA", mainService5Desc: "Des agents qui prévoient, simulent et recommandent — exposés dans Power BI avec garde-fous human-in-the-loop.", mainService5Outcome: "Impact : temps d'insight ↓ 40%, erreur de prévision ↓ 12–18%.",
+                    mainService5Title: "Agents de Décision IA", mainService5Desc: "Des agents qui prévoient, simulent et recommandent — exposés dans Power BI avec garde-fous human-in-the-loop.", mainService5Outcome: "Impact : temps d'insight ↓ 40%, erreur de prévision ↓ 12-18%.",
                     mainService6Title: "Centre d'Excellence Power BI", mainService6Desc: "Gouvernance, RLS/OLS, datasets certifiés, optimisation des performances et modèle opérationnel durable.", mainService6Outcome: "Résultats : métriques fiables, rapports plus rapides, risque réduit.",
                     mainService7Title: "Stratégie des Données & Gouvernance", mainService7Desc: "Décisions au cœur : contrats de données, catalogue KPI, lignage, SLAs qualité et privacy-by-design.", mainService7Outcome: "Résultats : propriété claire, conformité, visibilité ROI.",
                     mainService8Title: "Storytelling des Données & Adoption", mainService8Desc: "Moins de dump de tableaux de bord, plus de narratif. Nous enseignons aux équipes à communiquer des insights qui conduisent à l'action.", mainService8Outcome: "Résultats : compréhension, engagement, décisions prises.",
@@ -1700,9 +1786,9 @@
                     deliveryNote: "Agile double-voie : démo chaque vendredi, backlog transparent, deltas KPI mesurables.",
                     stackTitle: "Outillage et stack",
                     // Service Catalog Details
-                    catalog1Detail1: "OneLake + zones médailles, pipelines & monitoring", catalog1Detail2: "Modèle de sécurité, espaces de travail & flux de release", catalog1Detail3: "Dashboard KPI exécutif + plan d'adoption", catalog1Impact: "Impact typique : temps d'insight ↓ 30–40%",
-                    catalog2Detail1: "Catalogue de métriques & contrats KPI", catalog2Detail2: "Modèle optimisé, RLS/OLS, tuning performance", catalog2Detail3: "Histoires d'insights avec prompts de décision", catalog2Impact: "Impact typique : cycle de décision ↓ 20–30%",
-                    catalog3Detail1: "Sélection cas d'usage, garde-fous & modèle ROI", catalog3Detail2: "Feature store & harnais d'évaluation", catalog3Detail3: "Centre d'action Power BI (human-in-the-loop)", catalog3Impact: "Impact typique : MAPE prévision ↓ 12–18%",
+                    catalog1Detail1: "OneLake + zones médailles, pipelines & monitoring", catalog1Detail2: "Modèle de sécurité, espaces de travail & flux de release", catalog1Detail3: "Dashboard KPI exécutif + plan d'adoption", catalog1Impact: "Impact typique : temps d'insight ↓ 30-40%",
+                    catalog2Detail1: "Catalogue de métriques & contrats KPI", catalog2Detail2: "Modèle optimisé, RLS/OLS, tuning performance", catalog2Detail3: "Histoires d'insights avec prompts de décision", catalog2Impact: "Impact typique : cycle de décision ↓ 20-30%",
+                    catalog3Detail1: "Sélection cas d'usage, garde-fous & modèle ROI", catalog3Detail2: "Feature store & harnais d'évaluation", catalog3Detail3: "Centre d'action Power BI (human-in-the-loop)", catalog3Impact: "Impact typique : MAPE prévision ↓ 12-18%",
                     catalog4Detail1: "Datasets certifiés & templates", catalog4Detail2: "Patterns d'accès, gouvernance & catalogage", catalog4Detail3: "Ateliers d'habilitation pour analystes", catalog4Impact: "Impact : backlog ↓, adoption ↑",
                     catalog5Detail1: "Rôles, RACI, workflow révision & release", catalog5Detail2: "Contrats de données, SLAs qualité, lignage", catalog5Detail3: "Communauté de pratique & playbooks", catalog5Impact: "Impact : moins de silos, KPIs fiables",
                     catalog6Detail1: "Batch + streaming (CDC, événements)", catalog6Detail2: "Traitement incrémental & contrôle coûts", catalog6Detail3: "Observabilité : qualité, lignage, SLOs", catalog6Impact: "Impact : fiabilité ↑, TCO ↓",
@@ -1787,7 +1873,7 @@
                     mainService2Title: "Self-Service Analytics Enablement", mainService2Desc: "Versterk zakelijke gebruikers met beheerde datasets, templates en een WYSIWYG ervaring die veilig, snel en schaalbaar is.", mainService2Outcome: "Resultaten: verminderde ad-hoc backlog, hogere adoptie.",
                     mainService3Title: "Data Engineering & Lakehouse", mainService3Desc: "Bouw betrouwbare pipelines voor streaming + batch, verenig formaten en snelheden, en tem datagroei zonder wildgroei.", mainService3Outcome: "Resultaten: betrouwbare data, lagere TCO, schalen zonder chaos.",
                     mainService4Title: "Data Science & MLOps", mainService4Desc: "Detecteer fraude, segmenteer klanten, optimaliseer processen en draai modellen in productie met herhaalbare ML pipelines.", mainService4Outcome: "Resultaten: meetbare lift, gemonitorde modellen, minder black boxes.",
-                    mainService5Title: "AI Beslissingsagenten", mainService5Desc: "Agenten die voorspellen, simuleren en aanbevelen — getoond in Power BI met human-in-the-loop veiligheidsmechanismen.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, voorspellingsfout ↓ 12–18%.",
+                    mainService5Title: "AI Beslissingsagenten", mainService5Desc: "Agenten die voorspellen, simuleren en aanbevelen — getoond in Power BI met human-in-the-loop veiligheidsmechanismen.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, voorspellingsfout ↓ 12-18%.",
                     mainService6Title: "Power BI Center of Excellence", mainService6Desc: "Governance, RLS/OLS, gecertificeerde datasets, performance tuning en een duurzaam operationeel model.", mainService6Outcome: "Resultaten: vertrouwde metrics, snellere rapporten, lager risico.",
                     mainService7Title: "Data Strategie & Governance", mainService7Desc: "Beslissingen centraal: data contracten, KPI catalogus, lineage, kwaliteit SLA's en privacy-by-design.", mainService7Outcome: "Resultaten: duidelijk eigendom, compliance, ROI zichtbaarheid.",
                     mainService8Title: "Data Storytelling & Adoptie", mainService8Desc: "Minder dashboard dumping, meer verhaal. We leren teams inzichten te communiceren die actie stimuleren.", mainService8Outcome: "Resultaten: begrip, betrokkenheid, beslissingen genomen.",
@@ -1823,9 +1909,9 @@
                     deliveryNote: "Dual-track agile: demo elke vrijdag, transparante backlog, meetbare KPI delta's.",
                     stackTitle: "Tooling & stack",
                     // Service Catalog Details
-                    catalog1Detail1: "OneLake + medaille zones, pipelines & monitoring", catalog1Detail2: "Beveiligingsmodel, workspaces & release flow", catalog1Detail3: "Executive KPI dashboard + adoptieplan", catalog1Impact: "Typische impact: time-to-insight ↓ 30–40%",
-                    catalog2Detail1: "Metrics catalogus & KPI contracten", catalog2Detail2: "Geoptimaliseerd model, RLS/OLS, performance tuning", catalog2Detail3: "Insight verhalen met beslissingsprompts", catalog2Impact: "Typische impact: beslissingscyclus ↓ 20–30%",
-                    catalog3Detail1: "Use-case selectie, veiligheidsmechanismen & ROI model", catalog3Detail2: "Feature store & evaluatie harness", catalog3Detail3: "Power BI actiecentrum (human-in-the-loop)", catalog3Impact: "Typische impact: forecast MAPE ↓ 12–18%",
+                    catalog1Detail1: "OneLake + medaille zones, pipelines & monitoring", catalog1Detail2: "Beveiligingsmodel, workspaces & release flow", catalog1Detail3: "Executive KPI dashboard + adoptieplan", catalog1Impact: "Typische impact: time-to-insight ↓ 30-40%",
+                    catalog2Detail1: "Metrics catalogus & KPI contracten", catalog2Detail2: "Geoptimaliseerd model, RLS/OLS, performance tuning", catalog2Detail3: "Insight verhalen met beslissingsprompts", catalog2Impact: "Typische impact: beslissingscyclus ↓ 20-30%",
+                    catalog3Detail1: "Use-case selectie, veiligheidsmechanismen & ROI model", catalog3Detail2: "Feature store & evaluatie harness", catalog3Detail3: "Power BI actiecentrum (human-in-the-loop)", catalog3Impact: "Typische impact: forecast MAPE ↓ 12-18%",
                     catalog4Detail1: "Gecertificeerde datasets & templates", catalog4Detail2: "Toegangspatronen, governance & catalogisering", catalog4Detail3: "Enablement workshops voor analisten", catalog4Impact: "Impact: backlog ↓, adoptie ↑",
                     catalog5Detail1: "Rollen, RACI, review & release workflow", catalog5Detail2: "Data contracten, kwaliteit SLA's, lineage", catalog5Detail3: "Community of practice & playbooks", catalog5Impact: "Impact: minder silo's, vertrouwde KPI's",
                     catalog6Detail1: "Batch + streaming (CDC, events)", catalog6Detail2: "Incrementele verwerking & kostenbeheersing", catalog6Detail3: "Observabiliteit: kwaliteit, lineage, SLO's", catalog6Impact: "Impact: betrouwbaarheid ↑, TCO ↓",
@@ -1844,7 +1930,8 @@
                 }
             };
 
-            // --- LANGUAGE SWITCHER LOGIC ---
+            // ==================== LANGUAGE SWITCHER LOGIC ====================
+            // Language switching functionality and DOM manipulation
             const langSwitcherBtn = document.getElementById('lang-switcher-btn');
             const langDropdown = document.getElementById('lang-dropdown');
             const currentLangSpan = document.getElementById('current-lang');
@@ -1926,7 +2013,8 @@
             translatePage(initialLang);
 
 
-            // --- GENERAL INTERACTIVITY ---
+            // ==================== MOBILE MENU FUNCTIONALITY ====================
+            // Mobile navigation toggle and accessibility
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
@@ -1964,6 +2052,7 @@
                             child.style.transitionDelay = `${index * 150}ms`;
                         });
 
+                        // ==================== COUNT-UP ANIMATION ====================
                         const counters = entry.target.querySelectorAll('.count-up');
                         counters.forEach(counter => {
                             if (counter.getAttribute('data-animated')) return;
@@ -1996,6 +2085,8 @@
 
             document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
+            // ==================== FORM HANDLING ====================
+            // Contact form submission and validation
             const consultationForm = document.getElementById('consultation-form');
             const formStatus = document.getElementById('form-status');
             consultationForm.addEventListener('submit', function(e) {
@@ -2019,6 +2110,10 @@
     </script>
 
     <!-- Cookie Consent Popup -->
+
+<!-- ============================================================================ -->
+<!-- ========================== COOKIE CONSENT SECTION ========================= -->
+<!-- ============================================================================ -->
     <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 transform translate-y-full transition-transform duration-300" style="display: none;">
       <div class="max-w-7xl mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -2043,6 +2138,10 @@
     </div>
 
     <!-- Cookie Settings Modal -->
+
+<!-- ============================================================================ -->
+<!-- =========================== COOKIE MODAL SECTION ========================== -->
+<!-- ============================================================================ -->
     <div id="cookie-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
       <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200">
@@ -2075,6 +2174,10 @@
     </div>
 
     <!-- Privacy Policy Modal -->
+
+<!-- ============================================================================ -->
+<!-- ========================== PRIVACY MODAL SECTION ========================== -->
+<!-- ============================================================================ -->
     <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
       <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200 flex items-center justify-between">
@@ -2111,7 +2214,9 @@
     </div>
 
     <script>
-        // Cookie Consent Management
+        // ================================================================================
+        // ========================== COOKIE CONSENT MANAGEMENT =========================
+        // ================================================================================
         function showCookieConsent() {
             const consent = localStorage.getItem('cookie-consent');
             if (!consent) {
