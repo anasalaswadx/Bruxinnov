@@ -52,12 +52,12 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://bruxinnov.com/"/>
     </url>
     
-    <!-- Main sections with anchor links -->
+    <!-- Main sections with anchor links - Updated to match current structure -->
     <url>
         <loc>https://bruxinnov.com/#hero</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     
     <url>
@@ -116,39 +116,87 @@
         <priority>0.9</priority>
     </url>
     
-    <!-- Service-specific anchor links -->
+    <!-- NEW: Testimonials section -->
     <url>
-        <loc>https://bruxinnov.com/#services</loc>
+        <loc>https://bruxinnov.com/#testimonials</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
-    <!-- Key service offerings -->
+    <!-- NEW: Credentials section -->
     <url>
-        <loc>https://bruxinnov.com/#catalog</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- Company information -->
-    <url>
-        <loc>https://bruxinnov.com/#about</loc>
+        <loc>https://bruxinnov.com/#credentials</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
-    <!-- Contact and consultation -->
+    <!-- NEW: Main services section -->
     <url>
-        <loc>https://bruxinnov.com/#contact</loc>
+        <loc>https://bruxinnov.com/#main-services</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- NEW: Data transformation section -->
+    <url>
+        <loc>https://bruxinnov.com/#data-transformation</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
-    <!-- Legal and policy pages (if they exist) -->
+    <!-- NEW: AI agents section -->
+    <url>
+        <loc>https://bruxinnov.com/#ai-agents</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- NEW: Adoption section -->
+    <url>
+        <loc>https://bruxinnov.com/#adoption</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- NEW: Process section -->
+    <url>
+        <loc>https://bruxinnov.com/#process</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- NEW: Team section -->
+    <url>
+        <loc>https://bruxinnov.com/#team</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- NEW: Privacy modal -->
+    <url>
+        <loc>https://bruxinnov.com/#privacy-modal</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- NEW: Cookie consent -->
+    <url>
+        <loc>https://bruxinnov.com/#cookie-consent</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <!-- Legal and policy pages -->
     <url>
         <loc>https://bruxinnov.com/privacy</loc>
         <lastmod>2024-12-19</lastmod>
@@ -161,86 +209,6 @@
         <lastmod>2024-12-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
-    </url>
-    
-    <!-- Blog/Insights section (if expanded) -->
-    <url>
-        <loc>https://bruxinnov.com/insights</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <!-- Case studies section (if expanded) -->
-    <url>
-        <loc>https://bruxinnov.com/case-studies</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- Services overview page (if expanded) -->
-    <url>
-        <loc>https://bruxinnov.com/services</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- About company page (if expanded) -->
-    <url>
-        <loc>https://bruxinnov.com/about</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- Contact page (if expanded) -->
-    <url>
-        <loc>https://bruxinnov.com/contact</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- Resources and downloads (if any) -->
-    <url>
-        <loc>https://bruxinnov.com/resources</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    
-    <!-- Careers/Jobs page (if applicable) -->
-    <url>
-        <loc>https://bruxinnov.com/careers</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    
-    <!-- Partners/Alliances page (if applicable) -->
-    <url>
-        <loc>https://bruxinnov.com/partners</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    
-    <!-- Events and webinars (if applicable) -->
-    <url>
-        <loc>https://bruxinnov.com/events</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    
-    <!-- Support and help (if applicable) -->
-    <url>
-        <loc>https://bruxinnov.com/support</loc>
-        <lastmod>2024-12-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
     </url>
     
     <!-- Sitemap itself -->
