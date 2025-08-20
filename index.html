@@ -2894,7 +2894,7 @@
 <!-- ============================================================================ -->
 <!-- ========================== PRIVACY MODAL SECTION ========================== -->
 <!-- ============================================================================ -->
-    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200 flex items-center justify-between">
           <h3 class="text-xl font-bold text-[#0A192F]" data-lang-key="privacyModalTitle">Privacy Policy</h3>
@@ -2982,135 +2982,165 @@
         });
 
         // Privacy Policy Modal with Enhanced Accessibility
-        const privacyModal = document.getElementById('privacy-modal');
-        const privacyModalClose = document.getElementById('privacy-modal-close');
-        const cookieModal = document.getElementById('cookie-modal');
-        
-        if (privacyModalClose) {
-            privacyModalClose.addEventListener('click', () => {
-                privacyModal.classList.remove('show');
-                // Return focus to the element that opened the modal
-                if (document.activeElement && document.activeElement.classList.contains('privacy-link')) {
-                    document.activeElement.focus();
-                }
-            });
-        }
-        
-        // Enhanced focus management for privacy modal
-        if (privacyModal) {
-            // Focus trap for privacy modal
-            const focusableElements = privacyModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            const firstFocusableElement = focusableElements[0];
-            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+        document.addEventListener('DOMContentLoaded', () => {
+            const privacyModal = document.getElementById('privacy-modal');
+            const privacyModalClose = document.getElementById('privacy-modal-close');
+            const cookieModal = document.getElementById('cookie-modal');
             
-            privacyModal.addEventListener('keydown', (e) => {
-                if (e.key === 'Tab') {
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstFocusableElement) {
-                            e.preventDefault();
-                            lastFocusableElement.focus();
-                        }
-                    } else {
-                        if (document.activeElement === lastFocusableElement) {
-                            e.preventDefault();
-                            firstFocusableElement.focus();
+            if (!privacyModal) {
+                console.error('Privacy modal not found!');
+                return;
+            }
+            
+            if (!cookieModal) {
+                console.error('Cookie modal not found!');
+                return;
+            }
+            
+            console.log('Privacy modal found:', privacyModal);
+            console.log('Cookie modal found:', cookieModal);
+            console.log('Privacy modal close button found:', privacyModalClose);
+            
+            if (privacyModalClose) {
+                privacyModalClose.addEventListener('click', () => {
+                    console.log('Privacy modal close button clicked');
+                    privacyModal.classList.remove('show');
+                    // Return focus to the element that opened the modal
+                    if (document.activeElement && document.activeElement.classList.contains('privacy-link')) {
+                        document.activeElement.focus();
+                    }
+                });
+            }
+            
+            // Enhanced focus management for privacy modal
+            if (privacyModal) {
+                // Focus trap for privacy modal
+                const focusableElements = privacyModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstFocusableElement = focusableElements[0];
+                const lastFocusableElement = focusableElements[focusableElements.length - 1];
+                
+                privacyModal.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstFocusableElement) {
+                                e.preventDefault();
+                                lastFocusableElement.focus();
+                            }
+                        } else {
+                            if (document.activeElement === lastFocusableElement) {
+                                e.preventDefault();
+                                firstFocusableElement.focus();
+                            }
                         }
                     }
+                });
+            }
+
+            // Show privacy modal when privacy policy links are clicked
+            document.addEventListener('click', (e) => {
+                console.log('Click event detected on:', e.target);
+                if (e.target.matches('a[href="/privacy.html"], a[href*="privacy"]')) {
+                    console.log('Privacy link clicked:', e.target.href);
+                    e.preventDefault();
+                    console.log('Privacy modal element:', privacyModal);
+                    console.log('Adding show class to privacy modal');
+                    privacyModal.classList.add('show');
+                    console.log('Privacy modal classes after adding show:', privacyModal.classList.toString());
                 }
             });
-        }
-
-        // Show privacy modal when privacy policy links are clicked
-        document.addEventListener('click', (e) => {
-            if (e.target.matches('a[href="/privacy.html"], a[href*="privacy"]')) {
-                console.log('Privacy link clicked:', e.target.href);
-                e.preventDefault();
-                privacyModal.classList.add('show');
-            }
-        });
-        
-        // Debug: Check if privacy modal is being shown automatically
-        console.log('Privacy modal initial state:', document.getElementById('privacy-modal').style.display);
-        
-        // Ensure privacy modal starts hidden
-        if (privacyModal) {
-            privacyModal.classList.remove('show');
-            console.log('Privacy modal forced to hidden on initialization');
-        }
-        
-        // Additional safety: Force hide modal on page load
-        window.addEventListener('load', () => {
-            const privacyModal = document.getElementById('privacy-modal');
+            
+            // Debug: Check if privacy modal is being shown automatically
+            console.log('Privacy modal initial state:', privacyModal.style.display);
+            
+            // Ensure privacy modal starts hidden
             if (privacyModal) {
                 privacyModal.classList.remove('show');
-                console.log('Forced privacy modal to hidden on page load');
+                console.log('Privacy modal forced to hidden on initialization');
             }
-        });
-        
-        // Monitor for any attempts to show the modal automatically
-        if (privacyModal) {
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        const currentDisplay = privacyModal.style.display;
-                        if (currentDisplay === 'flex' || currentDisplay === 'block') {
-                            console.warn('Privacy modal was shown automatically, hiding it...');
-                            privacyModal.classList.remove('show');
-                        }
-                    }
-                });
+            
+            // Additional safety: Force hide modal on page load
+            window.addEventListener('load', () => {
+                if (privacyModal) {
+                    privacyModal.classList.remove('show');
+                    console.log('Forced privacy modal to hidden on page load');
+                }
             });
             
-            observer.observe(privacyModal, { attributes: true, attributeFilter: ['style'] });
-        }
-        
-        // Cookie modal click outside to close functionality
-        document.addEventListener('click', (e) => {
-            if (e.target === cookieModal) {
-                console.log('Clicked outside cookie modal, closing...');
-                cookieModal.classList.remove('show');
-            }
-        });
-        
-        // Ensure cookie modal starts hidden
-        if (cookieModal) {
-            cookieModal.classList.remove('show');
-            console.log('Cookie modal forced to hidden on initialization');
-        }
-        
-        // Additional safety: Force hide cookie modal on page load
-        window.addEventListener('load', () => {
-            if (cookieModal) {
-                cookieModal.classList.remove('show');
-                console.log('Forced cookie modal to hidden on page load');
-            }
-        });
-        
-        // Monitor for any attempts to show the cookie modal automatically
-        if (cookieModal) {
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        const currentDisplay = cookieModal.style.display;
-                        if (currentDisplay === 'flex' || currentDisplay === 'block') {
-                            console.warn('Cookie modal was shown automatically, hiding it...');
-                            cookieModal.classList.remove('show');
+            // Monitor for any attempts to show the modal automatically
+            if (privacyModal) {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                            const currentDisplay = privacyModal.style.display;
+                            if (currentDisplay === 'flex' || currentDisplay === 'block') {
+                                console.warn('Privacy modal was shown automatically, hiding it...');
+                                privacyModal.classList.remove('show');
+                            }
                         }
-                    }
+                    });
                 });
-            });
-            
-            observer.observe(cookieModal, { attributes: true, attributeFilter: ['style'] });
-        }
+                
+                observer.observe(privacyModal, { attributes: true, attributeFilter: ['style'] });
+            }
+        });
         
-        // Keyboard support for cookie modal (Escape key)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (cookieModal && cookieModal.classList.contains('show')) {
-                    console.log('Escape key pressed, closing cookie modal...');
+        // Cookie modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const cookieModal = document.getElementById('cookie-modal');
+            
+            if (!cookieModal) {
+                console.error('Cookie modal not found!');
+                return;
+            }
+            
+            // Cookie modal click outside to close functionality
+            document.addEventListener('click', (e) => {
+                if (e.target === cookieModal) {
+                    console.log('Clicked outside cookie modal, closing...');
                     cookieModal.classList.remove('show');
                 }
+            });
+            
+            // Ensure cookie modal starts hidden
+            if (cookieModal) {
+                cookieModal.classList.remove('show');
+                console.log('Cookie modal forced to hidden on initialization');
             }
+            
+            // Additional safety: Force hide cookie modal on page load
+            window.addEventListener('load', () => {
+                if (cookieModal) {
+                    cookieModal.classList.remove('show');
+                    console.log('Forced cookie modal to hidden on page load');
+                }
+            });
+            
+            // Monitor for any attempts to show the cookie modal automatically
+            if (cookieModal) {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                            const currentDisplay = cookieModal.style.display;
+                            if (currentDisplay === 'flex' || currentDisplay === 'block') {
+                                console.warn('Cookie modal was shown automatically, hiding it...');
+                                cookieModal.classList.remove('show');
+                            }
+                        }
+                    });
+                });
+                
+                observer.observe(cookieModal, { attributes: true, attributeFilter: ['style'] });
+            }
+            
+            // Keyboard support for cookie modal (Escape key)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (cookieModal && cookieModal.classList.contains('show')) {
+                        console.log('Escape key pressed, closing cookie modal...');
+                        cookieModal.classList.remove('show');
+                    }
+                }
+            });
         });
 
         // Show cookie consent on page load (only if no consent has been given)
