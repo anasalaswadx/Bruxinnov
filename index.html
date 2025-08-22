@@ -797,12 +797,14 @@
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
+            visibility: hidden; /* Ensure it's completely hidden initially */
         }
         
         .floating-action.visible {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
+            visibility: visible; /* Show the button when visible class is added */
         }
         
         .floating-action button {
@@ -826,19 +828,37 @@
             box-shadow: 0 0 0 4px rgba(0, 201, 255, 0.3);
         }
         
-        /* Responsive positioning for mobile */
+        /* Mobile-responsive positioning for floating action button */
         @media (max-width: 768px) {
             .floating-action {
                 bottom: 20px;
                 right: 20px;
+                z-index: 1001; /* Ensure it's above other mobile elements */
             }
             
             .floating-action button {
                 min-width: 48px;
                 min-height: 48px;
                 padding: 12px;
+                font-size: 14px; /* Smaller font for mobile */
             }
         }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .floating-action {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .floating-action button {
+                min-width: 44px;
+                min-height: 44px;
+                padding: 10px;
+            }
+        }
+        
+
         
         /* ================================================================================ */
         /* ========================== MOBILE MENU SYSTEM ========================= */
@@ -961,10 +981,7 @@
                 display: none;
             }
             
-            .floating-action {
-                bottom: 20px;
-                right: 20px;
-            }
+
             
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -1196,7 +1213,40 @@
             opacity: 1;
             pointer-events: auto;
         }
+        
+        #terms-modal {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        #terms-modal.show {
+            display: flex;
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1636396343773449');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1636396343773449&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <!-- ============================================================================ -->
@@ -1311,9 +1361,9 @@
         
         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" fetchpriority="high">
         <div class="absolute inset-0 pointer-events-none hero-overlay" aria-hidden="true"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content relative z-10">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gradient-animate" data-lang-key="heroTitle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content relative z-10 flex items-center justify-center min-h-full">
+            <div class="text-center w-full">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal mb-8 text-gradient-animate pb-2" data-lang-key="heroTitle">
                     Ship <span class="text-white">Microsoft Fabric</span> decision intelligence in weeks — not quarters.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto" data-lang-key="heroSubtitle">
@@ -2162,7 +2212,7 @@
                     <h3 class="text-white font-semibold text-lg mb-4" data-lang-key="footerLegal">Legal</h3>
                     <ul class="space-y-2 text-sm">
                         <li><a href="/privacy.html" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerPrivacy">Privacy Policy</a></li>
-                        <li><a href="/terms.html" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerTerms">Terms of Service</a></li>
+                        <li><a href="#" id="terms-link" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerTerms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -2184,20 +2234,21 @@
         // ================================================================================
         
         // ==================== GLOBAL ERROR HANDLING ====================
-        // Global error handler
-        window.addEventListener('error', function(e) {
-            console.error('Global error:', e.error);
-        });
-        
-        window.addEventListener('unhandledrejection', function(e) {
-            console.error('Unhandled promise rejection:', e.reason);
-        });
+        // Global error handler (only in development)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            window.addEventListener('error', function(e) {
+                console.error('Global error:', e.error);
+            });
+            
+            window.addEventListener('unhandledrejection', function(e) {
+                console.error('Unhandled promise rejection:', e.reason);
+            });
+        }
         
         // ==================== DOM CONTENT LOADED EVENT ====================
         document.addEventListener('DOMContentLoaded', function() {
             
             // ==================== SMOOTH SCROLLING & NAVIGATION ====================
-            console.log('Enhanced smooth scrolling initialized');
             
             // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2213,34 +2264,7 @@
                 });
             });
             
-            // Add scroll-to-top functionality
-            const scrollToTopBtn = document.createElement('button');
-            scrollToTopBtn.innerHTML = '↑';
-            scrollToTopBtn.className = 'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#00C9FF] to-[#2ECC71] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 opacity-0 invisible';
-            scrollToTopBtn.style.transform = 'translateY(20px)';
-            scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
-            document.body.appendChild(scrollToTopBtn);
-            
-            // Show/hide scroll-to-top button
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.style.opacity = '1';
-                    scrollToTopBtn.style.visibility = 'visible';
-                    scrollToTopBtn.style.transform = 'translateY(0)';
-                } else {
-                    scrollToTopBtn.style.opacity = '0';
-                    scrollToTopBtn.style.visibility = 'invisible';
-                    scrollToTopBtn.style.transform = 'translateY(20px)';
-                }
-            });
-            
-            // Scroll to top when clicked
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+            // Back to top functionality is handled by the static .floating-action button
 
             // Stagger animation observer
             const staggerContainers = document.querySelectorAll('.stagger-container');
@@ -2325,6 +2349,18 @@
                     privacyDataSecurity: "Data Security", privacyDataSecurityText: "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. All data is processed in accordance with GDPR requirements and stored securely within the EU.",
                     privacyRights: "Your Rights", privacyRightsText: "Under GDPR, you have the right to access, rectify, erase, restrict processing, and port your personal data. You may also withdraw consent at any time. To exercise these rights, contact us at info@bruxinnov.com.",
                     privacyContact: "Contact Information", privacyContactText: "For privacy-related questions or to exercise your rights, contact BRUXINNOV SRL at info@bruxinnov.com or Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
+                    // Terms of Service
+                    termsModalTitle: "Terms of Service", termsAcceptance: "Acceptance of Terms", termsAcceptanceText: "By accessing and using BRUXINNOV SRL's services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
+                    termsCompanyInfo: "Company Information", termsCompanyInfoText: "BRUXINNOV SRL is a Belgian company registered under company number BE 1002.714.833, with registered office at Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium. VAT number: BE 1002.714.833.",
+                    termsServices: "Services Description", termsServicesText: "We provide consulting services in Microsoft Fabric, Power BI, Azure, and AI data transformation. Our services include strategy consulting, implementation, training, and ongoing support.",
+                    termsIntellectualProperty: "Intellectual Property", termsIntellectualPropertyText: "All intellectual property rights in our services, methodologies, and deliverables remain with BRUXINNOV SRL. You retain rights to your business data and any custom solutions developed specifically for your organization.",
+                    termsConfidentiality: "Confidentiality", termsConfidentialityText: "We maintain strict confidentiality of your business information and data. All information shared during our engagement is treated as confidential and is protected under Belgian and EU data protection laws.",
+                    termsPayment: "Payment Terms", termsPaymentText: "Payment terms are specified in individual service agreements. Invoices are due within 30 days unless otherwise agreed. Late payments may incur interest charges as permitted by Belgian law.",
+                    termsLiability: "Liability and Limitation", termsLiabilityText: "Our liability is limited to the amount paid for the specific service in question. We are not liable for indirect, consequential, or punitive damages. This limitation applies to the maximum extent permitted by Belgian law.",
+                    termsTermination: "Termination", termsTerminationText: "Either party may terminate services with written notice as specified in the service agreement. Upon termination, you remain responsible for payment of services rendered up to the termination date.",
+                    termsGoverningLaw: "Governing Law", termsGoverningLawText: "These terms are governed by Belgian law. Any disputes shall be resolved in the courts of Brussels, Belgium, unless otherwise agreed in writing.",
+                    termsChanges: "Changes to Terms", termsChangesText: "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of the modified terms.",
+                    termsContact: "Contact Information", termsContactText: "For questions about these terms, contact BRUXINNOV SRL at info@bruxinnov.com or Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
                     // Main Services Section
                     servicesMainTitle: 'Outcome-focused services across the <span class="gradient-text">data → decisions</span> lifecycle',
                     servicesMainDesc: "From data engineering to AI agents and adoption, we align technology with the decisions that matter.",
@@ -2399,15 +2435,15 @@
                     cred4Title: "Professional Scrum Master™", cred4Sub: "تسليم المشاريع بمنهجية أجايل",
                     cred5Title: "Databricks", cred5Sub: "منصة التحليلات الموحدة",
                     testimonialsTitle: "ماذا يقول شركاؤنا",
-                    testimonial1Text: `"يتمتع أنس بقدرة فريدة على ترجمة تحديات البيانات المعقدة إلى استراتيجيات واضحة وقابلة للتنفيذ. كانت قيادته المتعاطفة وخبرته التقنية حاسمة لنجاح مشروعنا."`,
+                    testimonial1Text: `"BRUXINNOV لديها قدرة فريدة على ترجمة تحديات البيانات المعقدة إلى استراتيجيات واضحة وقابلة للتنفيذ. قيادتها المتعاطفة وخبرتها التقنية كانت حاسمة لنجاح مشروعنا."`,
                     testimonial1Name: "سارة م.", testimonial1Role: "رئيسة قسم التحليلات",
-                    testimonial2Text: `"العمل مع BRUXINNOV سرّع خارطة طريق تحولنا الرقمي بأشهر. كانت رؤاهم حول Microsoft Fabric ونماذج التسليم السريع لا تقدر بثمن."`,
+                    testimonial2Text: `"العمل مع BRUXINNOV سرّع خريطة طريق تحولنا الرقمي بأشهر. كانت رؤاها حول Microsoft Fabric ونماذج التسليم السريع لا تقدر بثمن."`,
                     testimonial2Name: "إيما ر.", testimonial2Role: "المديرة التقنية",
-                    servicesTitle: 'استشارات تركز على النتائج <span class="gradient-text">لسد الفجوة بين الاستراتيجية والتنفيذ</span>',
+                    servicesTitle: 'استشارات تركز على النتائج <span class="gradient-text">لربط الاستراتيجية بالتنفيذ</span>',
                     service1Title: "الذكاء الاصطناعي وذكاء القرار", service1Desc: "نشر وكلاء قرار على Microsoft Fabric لأتمتة تحضير البيانات، توقع الطلب، وتقديم إجراءات إرشادية في Power BI.", service1Outcome: "الأثر: تقليل وقت الوصول للرؤية ↓ 40%، تقليل خطأ التنبؤ ↓ 12-18%، تقليل دورة القرار ↓ 30%",
-                    service2Title: "الاستراتيجية الرقمية والتحول", service2Desc: "وازن بين أهداف العمل وخرائط طريق التكنولوجيا لتحقيق نمو مستدام.", service2Outcome: "النتائج: خارطة طريق واضحة، تحسين عائد الاستثمار في التكنولوجيا.",
-                    service3Title: "الحلول السحابية وهندسة المنصات", service3Desc: "ابنِ أنظمة قابلة للتطوير باستخدام Microsoft Azure و Microsoft Fabric.", service3Outcome: "النتائج: تكاليف أقل، أمان وقابلية تطوير معززة.",
-                    service4Title: "تحليلات التسويق الرقمي", service4Desc: "عزز النمو بتحليلات تسويق جاهزة للقرار، وربط القنوات بالإيرادات باستخدام Power BI وخطوط بيانات نظيفة.", service4Outcome: "النتائج: زيادة في الزيارات المؤهلة وربط التسويق بالإيرادات.",
+                    service2Title: "الاستراتيجية الرقمية والتحول", service2Desc: "محاذاة الأهداف التجارية مع خرائط طريق التكنولوجيا للنمو المستدام.", service2Outcome: "النتائج: خارطة طريق واضحة، تحسين عائد الاستثمار في التكنولوجيا.",
+                    service3Title: "الحلول السحابية وهندسة المنصات", service3Desc: "بناء أنظمة قابلة للتطوير باستخدام Microsoft Azure و Microsoft Fabric.", service3Outcome: "النتائج: تكاليف أقل، أمان وقابلية تطوير معززة.",
+                    service4Title: "تحليلات التسويق الرقمي", service4Desc: "تعزيز النمو بتحليلات تسويق جاهزة للقرار، وربط القنوات بالإيرادات باستخدام Power BI وخطوط بيانات نظيفة.", service4Outcome: "النتائج: زيادة في الزيارات المؤهلة وربط التسويق بالإيرادات.",
                     aboutTitle: 'قيادة الابتكار في ملتقى <span class="gradient-text">الأعمال والتكنولوجيا</span>',
                     aboutMission: `"أسست BRUXINNOV لسد الفجوة بين الاستراتيجية والتنفيذ. تفشل الكثير من المشاريع الرقمية لأن الرؤية لا تترجم إلى تأثير — مهمتنا هي تغيير ذلك."`,
 
@@ -2448,14 +2484,26 @@
                     privacyDataSecurity: "أمان البيانات", privacyDataSecurityText: "نطبق تدابير تقنية وتنظيمية مناسبة لحماية بياناتك الشخصية من الوصول غير المصرح به أو التغيير أو الكشف أو التدمير. تتم معالجة جميع البيانات وفقاً لمتطلبات GDPR وتُخزن بأمان داخل الاتحاد الأوروبي.",
                     privacyRights: "حقوقك", privacyRightsText: "تحت GDPR، لك الحق في الوصول إلى بياناتك الشخصية وتصحيحها ومحوها وتقييد معالجتها ونقلها. يمكنك أيضاً سحب الموافقة في أي وقت. لممارسة هذه الحقوق، اتصل بنا على info@bruxinnov.com.",
                     privacyContact: "معلومات الاتصال", privacyContactText: "للأسئلة المتعلقة بالخصوصية أو لممارسة حقوقك، اتصل بـ BRUXINNOV SRL على info@bruxinnov.com أو Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
+                    // Terms of Service
+                    termsModalTitle: "شروط الخدمة", termsAcceptance: "قبول الشروط", termsAcceptanceText: "من خلال الوصول إلى خدمات BRUXINNOV SRL واستخدامها، فإنك تقبل وتوافق على الالتزام بهذه شروط الخدمة. إذا كنت لا توافق على هذه الشروط، يرجى عدم استخدام خدماتنا.",
+                    termsCompanyInfo: "معلومات الشركة", termsCompanyInfoText: "BRUXINNOV SRL هي شركة بلجيكية مسجلة تحت رقم الشركة BE 1002.714.833، مع مكتب مسجل في Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium. رقم ضريبة القيمة المضافة: BE 1002.714.833.",
+                    termsServices: "وصف الخدمات", termsServicesText: "نقدم خدمات استشارية في Microsoft Fabric وPower BI وAzure والتحول الرقمي للبيانات. تشمل خدماتنا الاستشارات الاستراتيجية والتنفيذ والتدريب والدعم المستمر.",
+                    termsIntellectualProperty: "الملكية الفكرية", termsIntellectualPropertyText: "جميع حقوق الملكية الفكرية في خدماتنا ومنهجياتنا وتسليماتنا تبقى مع BRUXINNOV SRL. تحتفظ بحقوق بيانات أعمالك وأي حلول مخصصة تم تطويرها خصيصاً لمؤسستك.",
+                    termsConfidentiality: "السرية", termsConfidentialityText: "نحافظ على سرية صارمة لمعلومات أعمالك وبياناتك. جميع المعلومات المشتركة خلال مشاركتنا تُعامل على أنها سرية ومحمية بموجب قوانين حماية البيانات البلجيكية والأوروبية.",
+                    termsPayment: "شروط الدفع", termsPaymentText: "شروط الدفع محددة في اتفاقيات الخدمة الفردية. الفواتير مستحقة خلال 30 يوماً ما لم يتم الاتفاق على خلاف ذلك. المدفوعات المتأخرة قد تتكبد رسوم فائدة كما يسمح به القانون البلجيكي.",
+                    termsLiability: "المسؤولية والحدود", termsLiabilityText: "مسؤوليتنا محدودة بالمبلغ المدفوع للخدمة المحددة المعنية. نحن لسنا مسؤولين عن الأضرار غير المباشرة أو التبعية أو العقابية. هذا التقييد ينطبق إلى الحد الأقصى المسموح به بموجب القانون البلجيكي.",
+                    termsTermination: "إنهاء الخدمة", termsTerminationText: "يمكن لأي من الطرفين إنهاء الخدمات بإشعار كتابي كما هو محدد في اتفاقية الخدمة. عند الإنهاء، تبقى مسؤولاً عن دفع الخدمات المقدمة حتى تاريخ الإنهاء.",
+                    termsGoverningLaw: "القانون الحاكم", termsGoverningLawText: "هذه الشروط يحكمها القانون البلجيكي. أي نزاعات يجب حلها في محاكم بروكسل، بلجيكا، ما لم يتم الاتفاق على خلاف ذلك كتابياً.",
+                    termsChanges: "التغييرات في الشروط", termsChangesText: "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. التغييرات ستكون فعالة فور النشر. الاستمرار في استخدام خدماتنا يشكل قبولاً للشروط المعدلة.",
+                    termsContact: "معلومات الاتصال", termsContactText: "للأسئلة حول هذه الشروط، اتصل بـ BRUXINNOV SRL على info@bruxinnov.com أو Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
                     // Main Services Section
                     servicesMainTitle: 'خدمات تركز على النتائج عبر دورة حياة <span class="gradient-text">البيانات ← القرارات</span>',
                     servicesMainDesc: "من هندسة البيانات إلى وكلاء الذكاء الاصطناعي والاعتماد، نوائم التكنولوجيا مع القرارات المهمة.",
-                    mainService1Title: "تنفيذ وتحديث ذكاء الأعمال", mainService1Desc: "من أعلى إلى أسفل أو من أسفل إلى أعلى، نترجم متطلبات الأعمال إلى نماذج دلالية قوية وتقارير موثقة.", mainService1Outcome: "النتائج: مؤشرات أداء متسقة، نماذج محكومة، قرارات أسرع.",
-                    mainService2Title: "تمكين التحليلات الذاتية", mainService2Desc: "مكّن مستخدمي الأعمال بمجموعات بيانات محكومة وقوالب وتجربة WYSIWYG آمنة وسريعة وقابلة للتوسع.", mainService2Outcome: "النتائج: تقليل الطلبات المخصصة، اعتماد أعلى.",
-                    mainService3Title: "هندسة البيانات ومنزل البيانات", mainService3Desc: "ابنِ خطوط أنابيب موثوقة للبث + المعالجة المجمعة، وحّد الصيغ والسرعات، واحكم نمو البيانات دون انتشار.", mainService3Outcome: "النتائج: بيانات موثوقة، تكلفة إجمالية أقل، توسع دون فوضى.",
-                    mainService4Title: "علوم البيانات وMLOps", mainService4Desc: "اكتشف الاحتيال، قسّم العملاء، حسّن العمليات، وشغّل النماذج في الإنتاج بخطوط أنابيب ML قابلة للتكرار.", mainService4Outcome: "النتائج: رفع قابل للقياس، نماذج مراقبة، صناديق سوداء أقل.",
-                    mainService5Title: "وكلاء قرار الذكاء الاصطناعي", mainService5Desc: "وكلاء يتنبؤون ويحاكون ويوصون — يظهرون في Power BI مع حواجز أمان بتدخل بشري.", mainService5Outcome: "الأثر: وقت الوصول للرؤية ↓ 40%، خطأ التنبؤ ↓ 12-18%.",
+                    mainService1Title: "تنفيذ وتحديث ذكاء الأعمال", mainService1Desc: "نترجم متطلبات الأعمال إلى نماذج دلالية قوية وتقارير موثقة - من أعلى إلى أسفل أو العكس.", mainService1Outcome: "النتائج: مؤشرات أداء متسقة، نماذج محكومة، قرارات أسرع.",
+                    mainService2Title: "تمكين التحليلات الذاتية", mainService2Desc: "تمكين مستخدمي الأعمال بمجموعات بيانات محكومة وقوالب وتجربة WYSIWYG آمنة وسريعة وقابلة للتوسع.", mainService2Outcome: "النتائج: تقليل الطلبات المخصصة، اعتماد أعلى.",
+                    mainService3Title: "هندسة البيانات ومنزل البيانات", mainService3Desc: "بناء خطوط أنابيب موثوقة للبث والمعالجة المجمعة، توحيد الصيغ والسرعات، إدارة نمو البيانات بكفاءة.", mainService3Outcome: "النتائج: بيانات موثوقة، تكلفة إجمالية أقل، توسع منظم.",
+                    mainService4Title: "علوم البيانات وMLOps", mainService4Desc: "اكتشاف الاحتيال، تجزئة العملاء، تحسين العمليات، تشغيل النماذج في الإنتاج بخطوط أنابيب ML قابلة للتكرار.", mainService4Outcome: "النتائج: رفع قابل للقياس، نماذج مراقبة، شفافية أعلى.",
+                    mainService5Title: "وكلاء قرار الذكاء الاصطناعي", mainService5Desc: "وكلاء يتنبؤون ويحاكون ويوصون - يظهرون في Power BI مع حواجز أمان بتدخل بشري.", mainService5Outcome: "الأثر: وقت الوصول للرؤية ↓ 40%، خطأ التنبؤ ↓ 12-18%.",
                     mainService6Title: "مركز تميز Power BI", mainService6Desc: "الحوكمة، RLS/OLS، مجموعات بيانات معتمدة، ضبط الأداء، ونموذج تشغيل مستدام.", mainService6Outcome: "النتائج: مقاييس موثوقة، تقارير أسرع، مخاطر أقل.",
                     mainService7Title: "استراتيجية البيانات والحوكمة", mainService7Desc: "القرارات في المركز: عقود البيانات، كتالوج مؤشرات الأداء، النسب، اتفاقيات مستوى جودة البيانات، والخصوصية بالتصميم.", mainService7Outcome: "النتائج: ملكية واضحة، امتثال، رؤية عائد الاستثمار.",
                     mainService8Title: "سرد البيانات والاعتماد", mainService8Desc: "أقل إغراق بلوحات المعلومات، أكثر سرداً. نعلم الفرق التواصل بالرؤى التي تقود العمل.", mainService8Outcome: "النتائج: فهم، مشاركة، قرارات متخذة.",
@@ -2465,16 +2513,16 @@
                     catalog2Title: "لوحات معلومات تنفيذية Power BI", catalog2Desc: "3 أسابيع من لوحة مؤشرات الأداء إلى التفصيل والسرديات وRLS.",
                     catalog3Title: "وكلاء قرار الذكاء الاصطناعي", catalog3Desc: "6 أسابيع لوكيل تجريبي يتنبأ ويوصي بالإجراءات.",
                     catalog4Title: "مسرع التحليلات الذاتية", catalog4Desc: "3 أسابيع للخدمة الذاتية الآمنة والقابلة للتوسع.",
-                    catalog5Title: "حوكمة ذكاء الأعمال ونموذج التشغيل", catalog5Desc: "أسبوعان لحواجز الحماية التي تدوم.",
+                    catalog5Title: "حوكمة ذكاء الأعمال ونموذج التشغيل", catalog5Desc: "أسبوعان لحواجز الحماية المستدامة.",
                     catalog6Title: "تحديث هندسة البيانات", catalog6Desc: "6 أسابيع لخطوط أنابيب مرنة.",
                     catalog7Title: "سباق قيمة علوم البيانات", catalog7Desc: "4 أسابيع لإثبات القيمة التنبؤية.",
                     catalog8Title: "معسكر تدريبي لسرد البيانات", catalog8Desc: "أسبوعان لسرديات مقنعة.",
                     // Industries Section
                     industriesTitle: "الصناعات وحالات الاستخدام",
-                    industry1Title: "التصنيع", industry1Desc: "تحليلات النفايات، الإنتاجية، الصيانة التنبؤية، مخاطر الموردين",
-                    industry2Title: "السلع الاستهلاكية", industry2Desc: "تخطيط الطلب، عائد الترويج، إنفاق التجارة، طريق إلى السوق",
+                    industry1Title: "التصنيع", industry1Desc: "تحليلات النفايات، الإنتاجية، الصيانة التنبؤية، إدارة مخاطر الموردين",
+                    industry2Title: "السلع الاستهلاكية", industry2Desc: "تخطيط الطلب، عائد الترويج، إدارة الإنفاق التجاري، استراتيجية الوصول للسوق",
                     industry3Title: "الاتصالات", industry3Desc: "مؤشرات أداء مركز العمليات، توقع الانقطاع، لوحات معلومات SLA، ضمان الإيرادات",
-                    industry4Title: "التكنولوجيا المالية", industry4Desc: "تقييم المخاطر، إشارات الاحتيال، جودة الإعداد، فحوصات الامتثال",
+                    industry4Title: "التكنولوجيا المالية", industry4Desc: "تقييم المخاطر، كشف الاحتيال، جودة الإعداد، فحوصات الامتثال",
                     industry5Title: "B2B SaaS", industry5Desc: "تحليلات المنتج، قنوات PLG، لوحات معلومات التوسع والاحتفاظ",
                     industry6Title: "الرعاية الصحية", industry6Desc: "مؤشرات أداء تشغيلية، توقع السعة، تحليلات تحافظ على الخصوصية",
                     // About Section Additional Content
@@ -2484,11 +2532,11 @@
                     aboutFeature3Title: "التسليم السريع", aboutFeature3Desc: "سباقات أسبوعين، عرض توضيحي كل جمعة، قائمة مهام مرئية لأصحاب المصلحة",
                     aboutFeature4Title: "حوكمة بمستوى الاتحاد الأوروبي", aboutFeature4Desc: "RBAC، النسب، اتفاقيات مستوى جودة البيانات، معالجة PII والمراجعة مدمجة",
                     deliveryTitle: "كيف نقدم الخدمة",
-                    deliveryStep1: "<strong>الاستكشاف (1-2 أسبوع)</strong> — رسم القرارات ومؤشرات الأداء ومصادر البيانات والقيود؛ اختيار أهم حالات الاستخدام.",
-                    deliveryStep2: "<strong>المخطط (أسبوع واحد)</strong> — البنية المستهدفة، خطة الطبقة الدلالية، الحوكمة ونموذج عائد الاستثمار.",
-                    deliveryStep3: "<strong>التجريب (4-6 أسابيع)</strong> — تقديم 1-2 حالة استخدام عالية التأثير مع لوحات معلومات/وكلاء عاملة.",
+                    deliveryStep1: "<strong>الاستكشاف (1-2 أسبوع)</strong> — فهم الأهداف التجارية ومشهد البيانات والقيود؛ اختيار أهم حالات الاستخدام.",
+                    deliveryStep2: "<strong>المخطط (أسبوع واحد)</strong> — تصميم البنية المستهدفة، خطة الطبقة الدلالية، الحوكمة ونموذج عائد الاستثمار.",
+                    deliveryStep3: "<strong>التجريب (4-6 أسابيع)</strong> — تقديم 1-2 حالة استخدام عالية التأثير مع لوحات معلومات ووكلاء عاملة.",
                     deliveryStep4: "<strong>التوسع (مستمر)</strong> — تقوية خطوط الأنابيب والنماذج والمراقبة؛ تمكين الخدمة الذاتية والاعتماد.",
-                    deliveryNote: "أجايل مزدوج المسار: عرض توضيحي كل جمعة، قائمة مهام شفافة، دلتا مؤشرات أداء قابلة للقياس.",
+                    deliveryNote: "أجايل مزدوج المسار: عرض توضيحي كل جمعة، قائمة مهام شفافة، مؤشرات أداء قابلة للقياس.",
                     stackTitle: "الأدوات والمكدس",
                     // Service Catalog Details
                     catalog1Detail1: "OneLake + مناطق الميداليات، خطوط الأنابيب والمراقبة", catalog1Detail2: "نموذج الأمان، مساحات العمل وتدفق الإصدار", catalog1Detail3: "لوحة معلومات مؤشرات الأداء التنفيذية + خطة الاعتماد", catalog1Impact: "الأثر النموذجي: وقت الوصول للرؤية ↓ 30-40%",
@@ -2500,12 +2548,12 @@
                     catalog7Detail1: "تأطير المشكلة ومقاييس النجاح", catalog7Detail2: "خط الأساس ← هندسة الميزات ← النموذج", catalog7Detail3: "الرفع، المخاطر وخيارات النشر", catalog7Impact: "الأثر: رفع موثق، خارطة طريق",
                     catalog8Detail1: "أطر القصة والإطارات الشبكية", catalog8Detail2: "أفضل الممارسات البصرية وإمكانية الوصول", catalog8Detail3: "دليل 'من الرؤية إلى العمل'", catalog8Impact: "الأثر: مشاركة ↑، عمل ↑",
                     // Tech Stack Details
-                    stack1Title: "<strong>منصة البيانات</strong>", stack1Desc: "Microsoft Fabric (Lakehouse، Warehouse، الوقت الفعلي)",
+                    stack1Title: "<strong>منصة البيانات</strong>", stack1Desc: "Microsoft Fabric (Lakehouse، Warehouse، Real-Time)",
                     stack2Title: "<strong>الاستيعاب والبث</strong>", stack2Desc: "Data Factory، Event Hubs، IoT Hub، Dataflow Gen2",
-                    stack3Title: "<strong>التخزين والبحيرة</strong>", stack3Desc: "OneLake، Delta، Parquet، الاختصارات",
+                    stack3Title: "<strong>التخزين والبحيرة</strong>", stack3Desc: "OneLake، Delta، Parquet، Shortcuts",
                     stack4Title: "<strong>التحويل والنمذجة</strong>", stack4Desc: "Fabric Notebooks، SQL، أنماط dbt، النموذج الدلالي",
                     stack5Title: "<strong>التحليلات</strong>", stack5Desc: "Power BI (RLS/OLS، نماذج مركبة، Direct Lake)",
-                    stack6Title: "<strong>الذكاء الاصطناعي والتعلم الآلي</strong>", stack6Desc: "Azure OpenAI، MLflow، Feature Store، أنماط المطالبة/الوكيل",
+                    stack6Title: "<strong>الذكاء الاصطناعي والتعلم الآلي</strong>", stack6Desc: "Azure OpenAI، MLflow، Feature Store، أنماط Prompt/Agent",
                     stack7Title: "<strong>الحوكمة</strong>", stack7Desc: "Purview، Entra ID، عقود البيانات، النسب واتفاقيات مستوى جودة البيانات",
                     stack8Title: "<strong>DevOps</strong>", stack8Desc: "GitHub Actions / Azure DevOps، IaC (Bicep/Terraform)",
                     stack9Title: "<strong>المراقبة</strong>", stack9Desc: "مراقبة Fabric، Log Analytics، ضوابط التكلفة"
@@ -2522,7 +2570,7 @@
                     cred4Title: "Professional Scrum Master™", cred4Sub: "Livraison de projet Agile",
                     cred5Title: "Databricks", cred5Sub: "Plateforme d'Analyse Unifiée",
                     testimonialsTitle: "Ce que disent nos partenaires",
-                    testimonial1Text: `"Anas a une capacité unique à traduire des défis de données complexes en stratégies claires et exploitables. Son leadership empathique et son expertise technique ont été essentiels au succès de notre projet."`,
+                    testimonial1Text: `"BRUXINNOV a une capacité unique à traduire des défis de données complexes en stratégies claires et exploitables. Leur leadership empathique et leur expertise technique ont été essentiels au succès de notre projet."`,
                     testimonial1Name: "Sarah M.", testimonial1Role: "Responsable de l'analytique",
                     testimonial2Text: `"Travailler avec BRUXINNOV a accéléré notre feuille de route de transformation numérique de plusieurs mois. Leurs connaissances sur Microsoft Fabric et les modèles de livraison agiles ont été inestimables."`,
                     testimonial2Name: "Emma R.", testimonial2Role: "Directrice de la technologie (CTO)",
@@ -2571,14 +2619,26 @@
                     privacyDataSecurity: "Sécurité des données", privacyDataSecurityText: "Nous implémentons des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre l'accès non autorisé, l'altération, la divulgation ou la destruction. Toutes les données sont traitées conformément aux exigences GDPR et stockées en sécurité dans l'UE.",
                     privacyRights: "Vos droits", privacyRightsText: "Sous GDPR, vous avez le droit d'accéder, rectifier, effacer, restreindre le traitement et porter vos données personnelles. Vous pouvez aussi retirer votre consentement à tout moment. Pour exercer ces droits, contactez-nous à info@bruxinnov.com.",
                     privacyContact: "Informations de contact", privacyContactText: "Pour les questions liées à la confidentialité ou pour exercer vos droits, contactez BRUXINNOV SRL à info@bruxinnov.com ou Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
+                    // Terms of Service
+                    termsModalTitle: "Conditions d'utilisation", termsAcceptance: "Acceptation des conditions", termsAcceptanceText: "En accédant et en utilisant les services de BRUXINNOV SRL, vous acceptez et acceptez d'être lié par ces Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.",
+                    termsCompanyInfo: "Informations sur l'entreprise", termsCompanyInfoText: "BRUXINNOV SRL est une entreprise belge enregistrée sous le numéro d'entreprise BE 1002.714.833, avec siège social à Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium. Numéro de TVA : BE 1002.714.833.",
+                    termsServices: "Description des services", termsServicesText: "Nous fournissons des services de conseil en Microsoft Fabric, Power BI, Azure et transformation numérique des données. Nos services incluent le conseil stratégique, l'implémentation, la formation et le support continu.",
+                    termsIntellectualProperty: "Propriété intellectuelle", termsIntellectualPropertyText: "Tous les droits de propriété intellectuelle sur nos services, méthodologies et livrables restent avec BRUXINNOV SRL. Vous conservez les droits sur vos données commerciales et toute solution personnalisée développée spécifiquement pour votre organisation.",
+                    termsConfidentiality: "Confidentialité", termsConfidentialityText: "Nous maintenons une confidentialité stricte de vos informations et données commerciales. Toutes les informations partagées pendant notre engagement sont traitées comme confidentielles et protégées par les lois belges et européennes sur la protection des données.",
+                    termsPayment: "Conditions de paiement", termsPaymentText: "Les conditions de paiement sont spécifiées dans les accords de service individuels. Les factures sont dues dans les 30 jours sauf accord contraire. Les paiements tardifs peuvent entraîner des charges d'intérêt comme permis par la loi belge.",
+                    termsLiability: "Responsabilité et limitation", termsLiabilityText: "Notre responsabilité est limitée au montant payé pour le service spécifique en question. Nous ne sommes pas responsables des dommages indirects, consécutifs ou punitifs. Cette limitation s'applique dans la mesure maximale permise par la loi belge.",
+                    termsTermination: "Résiliation", termsTerminationText: "Chaque partie peut résilier les services avec un préavis écrit comme spécifié dans l'accord de service. Lors de la résiliation, vous restez responsable du paiement des services rendus jusqu'à la date de résiliation.",
+                    termsGoverningLaw: "Droit applicable", termsGoverningLawText: "Ces conditions sont régies par la loi belge. Tout litige sera résolu dans les tribunaux de Bruxelles, Belgique, sauf accord contraire par écrit.",
+                    termsChanges: "Modifications des conditions", termsChangesText: "Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications seront effectives immédiatement après publication. L'utilisation continue de nos services constitue l'acceptation des conditions modifiées.",
+                    termsContact: "Informations de contact", termsContactText: "Pour toute question concernant ces conditions, contactez BRUXINNOV SRL à info@bruxinnov.com ou Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
                     // Main Services Section
                     servicesMainTitle: 'Services axés sur les résultats à travers le cycle de vie <span class="gradient-text">données → décisions</span>',
                     servicesMainDesc: "De l'ingénierie des données aux agents IA et à l'adoption, nous alignons la technologie avec les décisions qui comptent.",
-                    mainService1Title: "Implémentation et Modernisation BI", mainService1Desc: "De haut en bas ou de bas en haut, nous traduisons les exigences métier en modèles sémantiques robustes et rapports validés.", mainService1Outcome: "Résultats : KPIs cohérents, modèles gouvernés, décisions plus rapides.",
+                    mainService1Title: "Implémentation et Modernisation BI", mainService1Desc: "Nous traduisons les exigences métier en modèles sémantiques robustes et rapports validés - de haut en bas ou de bas en haut.", mainService1Outcome: "Résultats : KPIs cohérents, modèles gouvernés, décisions plus rapides.",
                     mainService2Title: "Activation d'Analytics en Libre-Service", mainService2Desc: "Autonomisez les utilisateurs métier avec des datasets gouvernés, templates et une expérience WYSIWYG sûre, rapide et évolutive.", mainService2Outcome: "Résultats : backlog ad-hoc réduit, adoption plus élevée.",
-                    mainService3Title: "Ingénierie des Données & Lakehouse", mainService3Desc: "Construisez des pipelines fiables pour streaming + batch, unifiez formats et vitesses, et maîtrisez la croissance des données sans éparpillement.", mainService3Outcome: "Résultats : données fiables, TCO plus bas, évolutivité sans chaos.",
-                    mainService4Title: "Data Science & MLOps", mainService4Desc: "Détectez la fraude, segmentez les clients, optimisez les processus et exécutez des modèles en production avec des pipelines ML répétables.", mainService4Outcome: "Résultats : amélioration mesurable, modèles surveillés, moins de boîtes noires.",
-                    mainService5Title: "Agents de Décision IA", mainService5Desc: "Des agents qui prévoient, simulent et recommandent — exposés dans Power BI avec garde-fous human-in-the-loop.", mainService5Outcome: "Impact : temps d'insight ↓ 40%, erreur de prévision ↓ 12-18%.",
+                    mainService3Title: "Ingénierie des Données & Lakehouse", mainService3Desc: "Construisez des pipelines fiables pour streaming et batch, unifiez formats et vitesses, et maîtrisez la croissance des données de manière organisée.", mainService3Outcome: "Résultats : données fiables, TCO plus bas, évolutivité organisée.",
+                    mainService4Title: "Data Science & MLOps", mainService4Desc: "Détectez la fraude, segmentez les clients, optimisez les processus et exécutez des modèles en production avec des pipelines ML répétables.", mainService4Outcome: "Résultats : amélioration mesurable, modèles surveillés, plus de transparence.",
+                    mainService5Title: "Agents de Décision IA", mainService5Desc: "Des agents qui prévoient, simulent et recommandent - exposés dans Power BI avec garde-fous human-in-the-loop.", mainService5Outcome: "Impact : temps d'insight ↓ 40%, erreur de prévision ↓ 12-18%.",
                     mainService6Title: "Centre d'Excellence Power BI", mainService6Desc: "Gouvernance, RLS/OLS, datasets certifiés, optimisation des performances et modèle opérationnel durable.", mainService6Outcome: "Résultats : métriques fiables, rapports plus rapides, risque réduit.",
                     mainService7Title: "Stratégie des Données & Gouvernance", mainService7Desc: "Décisions au cœur : contrats de données, catalogue KPI, lignage, SLAs qualité et privacy-by-design.", mainService7Outcome: "Résultats : propriété claire, conformité, visibilité ROI.",
                     mainService8Title: "Storytelling des Données & Adoption", mainService8Desc: "Moins de dump de tableaux de bord, plus de narratif. Nous enseignons aux équipes à communiquer des insights qui conduisent à l'action.", mainService8Outcome: "Résultats : compréhension, engagement, décisions prises.",
@@ -2588,16 +2648,16 @@
                     catalog2Title: "Tableaux de Bord Exécutifs Power BI", catalog2Desc: "3 semaines du canvas KPI au drill-through, narratifs et RLS.",
                     catalog3Title: "Agents de Décision IA", catalog3Desc: "6 semaines pour un agent pilote qui prévoit et recommande des actions.",
                     catalog4Title: "Accélérateur Analytics Libre-Service", catalog4Desc: "3 semaines pour un libre-service sûr et évolutif.",
-                    catalog5Title: "Gouvernance BI & Modèle Opérationnel", catalog5Desc: "2 semaines pour des garde-fous qui tiennent.",
+                    catalog5Title: "Gouvernance BI & Modèle Opérationnel", catalog5Desc: "2 semaines pour des garde-fous durables.",
                     catalog6Title: "Modernisation Ingénierie des Données", catalog6Desc: "6 semaines pour des pipelines résilients.",
                     catalog7Title: "Sprint Valeur Data Science", catalog7Desc: "4 semaines pour prouver la valeur prédictive.",
                     catalog8Title: "Bootcamp Storytelling des Données", catalog8Desc: "2 semaines pour des narratifs convaincants.",
                     // Industries Section
                     industriesTitle: "Industries et cas d'usage",
-                    industry1Title: "Fabrication", industry1Desc: "Analytique des déchets, débit, maintenance prédictive, risque fournisseur",
-                    industry2Title: "Biens de consommation", industry2Desc: "Planification de la demande, ROI promo, dépenses commerciales, route vers le marché",
+                    industry1Title: "Fabrication", industry1Desc: "Analytique des déchets, débit, maintenance prédictive, gestion des risques fournisseurs",
+                    industry2Title: "Biens de consommation", industry2Desc: "Planification de la demande, ROI promo, gestion des dépenses commerciales, stratégie d'accès au marché",
                     industry3Title: "Télécommunications", industry3Desc: "KPIs NOC, prédiction de désabonnement, tableaux de bord SLA, assurance revenus",
-                    industry4Title: "Fintech", industry4Desc: "Scoring de risque, signaux de fraude, qualité d'onboarding, vérifications de conformité",
+                    industry4Title: "Fintech", industry4Desc: "Scoring de risque, détection de fraude, qualité d'onboarding, vérifications de conformité",
                     industry5Title: "B2B SaaS", industry5Desc: "Analytique produit, entonnoirs PLG, tableaux de bord d'expansion et rétention",
                     industry6Title: "Santé", industry6Desc: "KPIs opérationnels, prévision de capacité, analytique préservant la confidentialité",
                     // About Section Additional Content
@@ -2607,11 +2667,11 @@
                     aboutFeature3Title: "Livraison agile", aboutFeature3Desc: "Sprints de deux semaines, démo chaque vendredi, backlog visible à vos parties prenantes",
                     aboutFeature4Title: "Gouvernance niveau UE", aboutFeature4Desc: "RBAC, lignage, SLAs qualité données, gestion PII et auditabilité intégrées",
                     deliveryTitle: "Comment nous livrons",
-                    deliveryStep1: "<strong>Découverte (1–2 sem)</strong> — cartographier décisions, KPIs, sources de données et contraintes ; choisir les cas d'usage prioritaires.",
-                    deliveryStep2: "<strong>Blueprint (1 sem)</strong> — architecture cible, plan de couche sémantique, gouvernance et modèle ROI.",
-                    deliveryStep3: "<strong>Pilote (4–6 sem)</strong> — livrer 1–2 cas d'usage à fort impact avec tableaux de bord/agents fonctionnels.",
+                    deliveryStep1: "<strong>Découverte (1–2 sem)</strong> — comprendre les objectifs commerciaux, le paysage de données et les contraintes ; choisir les cas d'usage prioritaires.",
+                    deliveryStep2: "<strong>Blueprint (1 sem)</strong> — concevoir l'architecture cible, le plan de couche sémantique, la gouvernance et le modèle ROI.",
+                    deliveryStep3: "<strong>Pilote (4–6 sem)</strong> — livrer 1–2 cas d'usage à fort impact avec tableaux de bord et agents fonctionnels.",
                     deliveryStep4: "<strong>Échelle (continu)</strong> — durcir pipelines, modèles, observabilité ; activer libre-service et adoption.",
-                    deliveryNote: "Agile double-voie : démo chaque vendredi, backlog transparent, deltas KPI mesurables.",
+                    deliveryNote: "Agile double-voie : démo chaque vendredi, backlog transparent, KPIs mesurables.",
                     stackTitle: "Outillage et stack",
                     // Service Catalog Details
                     catalog1Detail1: "OneLake + zones médailles, pipelines & monitoring", catalog1Detail2: "Modèle de sécurité, espaces de travail & flux de release", catalog1Detail3: "Dashboard KPI exécutif + plan d'adoption", catalog1Impact: "Impact typique : temps d'insight ↓ 30-40%",
@@ -2645,7 +2705,7 @@
                     cred4Title: "Professional Scrum Master™", cred4Sub: "Agile Projectlevering",
                     cred5Title: "Databricks", cred5Sub: "Geünificeerd Analyseplatform",
                     testimonialsTitle: "Wat onze partners zeggen",
-                    testimonial1Text: `"Anas heeft het unieke vermogen om complexe data-uitdagingen te vertalen naar duidelijke, uitvoerbare strategieën. Zijn empathisch leiderschap en technische expertise waren cruciaal voor het succes van ons project."`,
+                    testimonial1Text: `"BRUXINNOV heeft het unieke vermogen om complexe data-uitdagingen te vertalen naar duidelijke, uitvoerbare strategieën. Hun empathisch leiderschap en technische expertise waren cruciaal voor het succes van ons project."`,
                     testimonial1Name: "Sarah M.", testimonial1Role: "Hoofd Analytics",
                     testimonial2Text: `"De samenwerking met BRUXINNOV heeft onze digitale transformatie-roadmap met maanden versneld. Hun inzichten in Microsoft Fabric en agile leveringsmodellen waren van onschatbare waarde."`,
                     testimonial2Name: "Emma R.", testimonial2Role: "CTO",
@@ -2694,14 +2754,26 @@
                     privacyDataSecurity: "Gegevensbeveiliging", privacyDataSecurityText: "We implementeren passende technische en organisatorische maatregelen om uw persoonlijke gegevens te beschermen tegen ongeautoriseerde toegang, wijziging, openbaarmaking of vernietiging. Alle gegevens worden verwerkt in overeenstemming met GDPR-vereisten en veilig opgeslagen binnen de EU.",
                     privacyRights: "Uw rechten", privacyRightsText: "Onder GDPR heeft u het recht om uw persoonlijke gegevens te benaderen, te rectificeren, te wissen, de verwerking te beperken en te porteren. U kunt ook toestemming op elk moment intrekken. Om deze rechten uit te oefenen, neem contact met ons op via info@bruxinnov.com.",
                     privacyContact: "Contactinformatie", privacyContactText: "Voor privacy-gerelateerde vragen of om uw rechten uit te oefenen, neem contact op met BRUXINNOV SRL via info@bruxinnov.com of Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
+                    // Terms of Service
+                    termsModalTitle: "Servicevoorwaarden", termsAcceptance: "Acceptatie van voorwaarden", termsAcceptanceText: "Door toegang te krijgen tot en gebruik te maken van de diensten van BRUXINNOV SRL, accepteert en gaat u akkoord met deze Servicevoorwaarden. Als u niet akkoord gaat met deze voorwaarden, gebruik dan alstublieft onze diensten niet.",
+                    termsCompanyInfo: "Bedrijfsinformatie", termsCompanyInfoText: "BRUXINNOV SRL is een Belgisch bedrijf geregistreerd onder bedrijfsnummer BE 1002.714.833, met geregistreerd kantoor op Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium. BTW-nummer: BE 1002.714.833.",
+                    termsServices: "Dienstbeschrijving", termsServicesText: "Wij bieden adviesdiensten in Microsoft Fabric, Power BI, Azure en AI data transformatie. Onze diensten omvatten strategisch advies, implementatie, training en doorlopende ondersteuning.",
+                    termsIntellectualProperty: "Intellectueel eigendom", termsIntellectualPropertyText: "Alle intellectuele eigendomsrechten in onze diensten, methodologieën en deliverables blijven bij BRUXINNOV SRL. U behoudt rechten op uw bedrijfsdata en eventuele aangepaste oplossingen die specifiek voor uw organisatie zijn ontwikkeld.",
+                    termsConfidentiality: "Vertrouwelijkheid", termsConfidentialityText: "Wij handhaven strikte vertrouwelijkheid van uw bedrijfsinformatie en data. Alle informatie die wordt gedeeld tijdens onze samenwerking wordt behandeld als vertrouwelijk en is beschermd onder Belgische en EU gegevensbeschermingswetten.",
+                    termsPayment: "Betalingsvoorwaarden", termsPaymentText: "Betalingsvoorwaarden zijn gespecificeerd in individuele serviceovereenkomsten. Facturen zijn verschuldigd binnen 30 dagen tenzij anders overeengekomen. Laatbetalingen kunnen rentekosten met zich meebrengen zoals toegestaan door de Belgische wet.",
+                    termsLiability: "Aansprakelijkheid en beperking", termsLiabilityText: "Onze aansprakelijkheid is beperkt tot het bedrag dat is betaald voor de specifieke dienst in kwestie. Wij zijn niet aansprakelijk voor indirecte, gevolg- of strafschade. Deze beperking is van toepassing tot de maximale omvang toegestaan door de Belgische wet.",
+                    termsTermination: "Beëindiging", termsTerminationText: "Elke partij kan diensten beëindigen met schriftelijke kennisgeving zoals gespecificeerd in de serviceovereenkomst. Bij beëindiging blijft u verantwoordelijk voor betaling van geleverde diensten tot de beëindigingsdatum.",
+                    termsGoverningLaw: "Toepasselijk recht", termsGoverningLawText: "Deze voorwaarden worden beheerst door Belgisch recht. Eventuele geschillen worden opgelost in de rechtbanken van Brussel, België, tenzij anders schriftelijk overeengekomen.",
+                    termsChanges: "Wijzigingen in voorwaarden", termsChangesText: "Wij behouden ons het recht voor om deze voorwaarden op elk moment te wijzigen. Wijzigingen zijn effectief onmiddellijk na plaatsing. Doorlopend gebruik van onze diensten vormt acceptatie van de gewijzigde voorwaarden.",
+                    termsContact: "Contactinformatie", termsContactText: "Voor vragen over deze voorwaarden, neem contact op met BRUXINNOV SRL via info@bruxinnov.com of Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.",
                     // Main Services Section
                     servicesMainTitle: 'Resultaatgerichte services door de <span class="gradient-text">data → beslissingen</span> levenscyclus',
                     servicesMainDesc: "Van data engineering tot AI agents en adoptie, we lijnen technologie uit met de beslissingen die ertoe doen.",
-                    mainService1Title: "BI Implementatie & Modernisering", mainService1Desc: "Top-down of bottom-up, we vertalen bedrijfsvereisten naar robuuste semantische modellen en gevalideerde rapporten.", mainService1Outcome: "Resultaten: consistente KPI's, beheerde modellen, snellere beslissingen.",
+                    mainService1Title: "BI Implementatie & Modernisering", mainService1Desc: "We vertalen bedrijfsvereisten naar robuuste semantische modellen en gevalideerde rapporten - top-down of bottom-up.", mainService1Outcome: "Resultaten: consistente KPI's, beheerde modellen, snellere beslissingen.",
                     mainService2Title: "Self-Service Analytics Enablement", mainService2Desc: "Versterk zakelijke gebruikers met beheerde datasets, templates en een WYSIWYG ervaring die veilig, snel en schaalbaar is.", mainService2Outcome: "Resultaten: verminderde ad-hoc backlog, hogere adoptie.",
-                    mainService3Title: "Data Engineering & Lakehouse", mainService3Desc: "Bouw betrouwbare pipelines voor streaming + batch, verenig formaten en snelheden, en tem datagroei zonder wildgroei.", mainService3Outcome: "Resultaten: betrouwbare data, lagere TCO, schalen zonder chaos.",
-                    mainService4Title: "Data Science & MLOps", mainService4Desc: "Detecteer fraude, segmenteer klanten, optimaliseer processen en draai modellen in productie met herhaalbare ML pipelines.", mainService4Outcome: "Resultaten: meetbare lift, gemonitorde modellen, minder black boxes.",
-                    mainService5Title: "AI Beslissingsagenten", mainService5Desc: "Agenten die voorspellen, simuleren en aanbevelen — getoond in Power BI met human-in-the-loop veiligheidsmechanismen.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, voorspellingsfout ↓ 12-18%.",
+                    mainService3Title: "Data Engineering & Lakehouse", mainService3Desc: "Bouw betrouwbare pipelines voor streaming en batch, verenig formaten en snelheden, en beheer datagroei op een georganiseerde manier.", mainService3Outcome: "Resultaten: betrouwbare data, lagere TCO, georganiseerde schaalbaarheid.",
+                    mainService4Title: "Data Science & MLOps", mainService4Desc: "Detecteer fraude, segmenteer klanten, optimaliseer processen en draai modellen in productie met herhaalbare ML pipelines.", mainService4Outcome: "Resultaten: meetbare lift, gemonitorde modellen, meer transparantie.",
+                    mainService5Title: "AI Beslissingsagenten", mainService5Desc: "Agenten die voorspellen, simuleren en aanbevelen - getoond in Power BI met human-in-the-loop veiligheidsmechanismen.", mainService5Outcome: "Impact: time-to-insight ↓ 40%, voorspellingsfout ↓ 12-18%.",
                     mainService6Title: "Power BI Center of Excellence", mainService6Desc: "Governance, RLS/OLS, gecertificeerde datasets, performance tuning en een duurzaam operationeel model.", mainService6Outcome: "Resultaten: vertrouwde metrics, snellere rapporten, lager risico.",
                     mainService7Title: "Data Strategie & Governance", mainService7Desc: "Beslissingen centraal: data contracten, KPI catalogus, lineage, kwaliteit SLA's en privacy-by-design.", mainService7Outcome: "Resultaten: duidelijk eigendom, compliance, ROI zichtbaarheid.",
                     mainService8Title: "Data Storytelling & Adoptie", mainService8Desc: "Minder dashboard dumping, meer verhaal. We leren teams inzichten te communiceren die actie stimuleren.", mainService8Outcome: "Resultaten: begrip, betrokkenheid, beslissingen genomen.",
@@ -2711,16 +2783,16 @@
                     catalog2Title: "Power BI Executive Dashboards", catalog2Desc: "3 weken van KPI canvas naar drill-through, verhalen en RLS.",
                     catalog3Title: "AI Beslissingsagenten", catalog3Desc: "6 weken naar een pilot agent die voorspelt en acties aanbeveelt.",
                     catalog4Title: "Self-Service Analytics Accelerator", catalog4Desc: "3 weken naar veilige, schaalbare self-service.",
-                    catalog5Title: "BI Governance & Operationeel Model", catalog5Desc: "2 weken naar veiligheidsmechanismen die blijven.",
+                    catalog5Title: "BI Governance & Operationeel Model", catalog5Desc: "2 weken naar duurzame veiligheidsmechanismen.",
                     catalog6Title: "Data Engineering Modernisering", catalog6Desc: "6 weken naar veerkrachtige pipelines.",
                     catalog7Title: "Data Science Waarde Sprint", catalog7Desc: "4 weken om voorspellende waarde te bewijzen.",
                     catalog8Title: "Data Storytelling Bootcamp", catalog8Desc: "2 weken naar overtuigende verhalen.",
                     // Industries Section
                     industriesTitle: "Industrieën en use cases",
-                    industry1Title: "Productie", industry1Desc: "Afval analytics, doorvoer, voorspellend onderhoud, leverancierrisico",
-                    industry2Title: "FMCG", industry2Desc: "Vraagplanning, promo ROI, handelsuitgaven, route-naar-markt",
+                    industry1Title: "Productie", industry1Desc: "Afval analytics, doorvoer, voorspellend onderhoud, leverancierrisicobeheer",
+                    industry2Title: "FMCG", industry2Desc: "Vraagplanning, promo ROI, handelsuitgavenbeheer, markttoegangsstrategie",
                     industry3Title: "Telecom", industry3Desc: "NOC KPI's, churn voorspelling, SLA dashboards, revenue zekerheid",
-                    industry4Title: "Fintech", industry4Desc: "Risicoscoring, fraude signalen, onboarding kwaliteit, compliance checks",
+                    industry4Title: "Fintech", industry4Desc: "Risicoscoring, fraudedetectie, onboarding kwaliteit, compliance checks",
                     industry5Title: "B2B SaaS", industry5Desc: "Product analytics, PLG funnels, expansie en retentie dashboards",
                     industry6Title: "Gezondheidszorg", industry6Desc: "Operationele KPI's, capaciteit forecasting, privacy-behoudende analytics",
                     // About Section Additional Content
@@ -2730,11 +2802,11 @@
                     aboutFeature3Title: "Agile levering", aboutFeature3Desc: "Twee-weken sprints, demo elke vrijdag, backlog zichtbaar voor uw stakeholders",
                     aboutFeature4Title: "EU-niveau governance", aboutFeature4Desc: "RBAC, lineage, data kwaliteit SLA's, PII handling en auditabiliteit ingebouwd",
                     deliveryTitle: "Hoe we leveren",
-                    deliveryStep1: "<strong>Discovery (1–2 wkn)</strong> — kaart beslissingen, KPI's, databronnen en beperkingen; kies top use-cases.",
-                    deliveryStep2: "<strong>Blueprint (1 wk)</strong> — doelarchitectuur, semantische laag plan, governance & ROI model.",
-                    deliveryStep3: "<strong>Pilot (4–6 wkn)</strong> — lever 1–2 high-impact use-cases met werkende dashboards/agents.",
+                    deliveryStep1: "<strong>Discovery (1–2 wkn)</strong> — begrijp bedrijfsdoelstellingen, datalandschap en beperkingen; kies top use-cases.",
+                    deliveryStep2: "<strong>Blueprint (1 wk)</strong> — ontwerp doelarchitectuur, semantische laag plan, governance & ROI model.",
+                    deliveryStep3: "<strong>Pilot (4–6 wkn)</strong> — lever 1–2 high-impact use-cases met werkende dashboards en agents.",
                     deliveryStep4: "<strong>Schaal (doorlopend)</strong> — verharden pipelines, modellen, observabiliteit; enablen self-service & adoptie.",
-                    deliveryNote: "Dual-track agile: demo elke vrijdag, transparante backlog, meetbare KPI delta's.",
+                    deliveryNote: "Dual-track agile: demo elke vrijdag, transparante backlog, meetbare KPI's.",
                     stackTitle: "Tooling & stack",
                     // Service Catalog Details
                     catalog1Detail1: "OneLake + medaille zones, pipelines & monitoring", catalog1Detail2: "Beveiligingsmodel, workspaces & release flow", catalog1Detail3: "Executive KPI dashboard + adoptieplan", catalog1Impact: "Typische impact: time-to-insight ↓ 30-40%",
@@ -2965,11 +3037,11 @@
             };
             
             // Initialize enhanced animations
-            document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
                 enhanceStaggerAnimation();
                 // Small delay to ensure smooth initial animation
                 setTimeout(revealElements, 100);
-            });
+            }, 100);
             
             // ==================== ACCESSIBILITY ENHANCEMENTS ====================
             // Keyboard navigation for mobile menu
@@ -3021,7 +3093,7 @@
             
             // Apply focus trap to modals
             document.addEventListener('DOMContentLoaded', () => {
-                const modals = document.querySelectorAll('#cookie-modal, #privacy-modal');
+                const modals = document.querySelectorAll('#cookie-modal, #privacy-modal, #terms-modal');
                 modals.forEach(trapFocus);
             });
         });
@@ -3131,6 +3203,70 @@
       </div>
     </div>
 
+    <!-- Terms of Service Modal -->
+
+<!-- ============================================================================ -->
+<!-- ========================== TERMS MODAL SECTION ========================== -->
+<!-- ============================================================================ -->
+    <div id="terms-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+          <h3 class="text-xl font-bold text-[#0A192F]" data-lang-key="termsModalTitle">Terms of Service</h3>
+          <button id="terms-modal-close" class="text-gray-400 hover:text-gray-600 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 text-sm text-gray-700">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsAcceptance">Acceptance of Terms</h4>
+            <p data-lang-key="termsAcceptanceText">By accessing and using BRUXINNOV SRL's services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsCompanyInfo">Company Information</h4>
+            <p data-lang-key="termsCompanyInfoText">BRUXINNOV SRL is a Belgian company registered under company number BE 1002.714.833, with registered office at Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium. VAT number: BE 1002.714.833.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsServices">Services Description</h4>
+            <p data-lang-key="termsServicesText">We provide consulting services in Microsoft Fabric, Power BI, Azure, and AI data transformation. Our services include strategy consulting, implementation, training, and ongoing support.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsIntellectualProperty">Intellectual Property</h4>
+            <p data-lang-key="termsIntellectualPropertyText">All intellectual property rights in our services, methodologies, and deliverables remain with BRUXINNOV SRL. You retain rights to your business data and any custom solutions developed specifically for your organization.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsConfidentiality">Confidentiality</h4>
+            <p data-lang-key="termsConfidentialityText">We maintain strict confidentiality of your business information and data. All information shared during our engagement is treated as confidential and is protected under Belgian and EU data protection laws.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsPayment">Payment Terms</h4>
+            <p data-lang-key="termsPaymentText">Payment terms are specified in individual service agreements. Invoices are due within 30 days unless otherwise agreed. Late payments may incur interest charges as permitted by Belgian law.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsLiability">Liability and Limitation</h4>
+            <p data-lang-key="termsLiabilityText">Our liability is limited to the amount paid for the specific service in question. We are not liable for indirect, consequential, or punitive damages. This limitation applies to the maximum extent permitted by Belgian law.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsTermination">Termination</h4>
+            <p data-lang-key="termsTerminationText">Either party may terminate services with written notice as specified in the service agreement. Upon termination, you remain responsible for payment of services rendered up to the termination date.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsGoverningLaw">Governing Law</h4>
+            <p data-lang-key="termsGoverningLawText">These terms are governed by Belgian law. Any disputes shall be resolved in the courts of Brussels, Belgium, unless otherwise agreed in writing.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsChanges">Changes to Terms</h4>
+            <p data-lang-key="termsChangesText">We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of the modified terms.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-lang-key="termsContact">Contact Information</h4>
+            <p data-lang-key="termsContactText">For questions about these terms, contact BRUXINNOV SRL at info@bruxinnov.com or Avenue Herrmann Debroux 54, 1160 Auderghem, Brussels, Belgium.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
         // ================================================================================
         // ========================== COOKIE CONSENT MANAGEMENT =========================
@@ -3165,17 +3301,14 @@
         });
 
         document.getElementById('cookie-settings').addEventListener('click', () => {
-            console.log('Cookie settings clicked, showing modal...');
             document.getElementById('cookie-modal').classList.add('show');
         });
 
         document.getElementById('cookie-modal-cancel').addEventListener('click', () => {
-            console.log('Cookie modal cancel clicked, hiding modal...');
             document.getElementById('cookie-modal').classList.remove('show');
         });
 
         document.getElementById('cookie-modal-save').addEventListener('click', () => {
-            console.log('Cookie modal save clicked, saving preferences...');
             const analyticsEnabled = document.getElementById('analytics-toggle').checked;
             localStorage.setItem('cookie-consent', 'custom');
             localStorage.setItem('analytics-cookies', analyticsEnabled.toString());
@@ -3190,22 +3323,21 @@
             const cookieModal = document.getElementById('cookie-modal');
             
             if (!privacyModal) {
-                console.error('Privacy modal not found!');
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('Privacy modal not found!');
+                }
                 return;
             }
             
             if (!cookieModal) {
-                console.error('Cookie modal not found!');
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('Cookie modal not found!');
+                }
                 return;
             }
             
-            console.log('Privacy modal found:', privacyModal);
-            console.log('Cookie modal found:', cookieModal);
-            console.log('Privacy modal close button found:', privacyModalClose);
-            
             if (privacyModalClose) {
                 privacyModalClose.addEventListener('click', () => {
-                    console.log('Privacy modal close button clicked');
                     privacyModal.classList.remove('show');
                     // Return focus to the element that opened the modal
                     if (document.activeElement && document.activeElement.classList.contains('privacy-link')) {
@@ -3240,50 +3372,90 @@
 
             // Show privacy modal when privacy policy links are clicked
             document.addEventListener('click', (e) => {
-                console.log('Click event detected on:', e.target);
                 if (e.target.matches('a[href="/privacy.html"], a[href*="privacy"]')) {
-                    console.log('Privacy link clicked:', e.target.href);
                     e.preventDefault();
-                    console.log('Privacy modal element:', privacyModal);
-                    console.log('Adding show class to privacy modal');
                     privacyModal.classList.add('show');
-                    console.log('Privacy modal classes after adding show:', privacyModal.classList.toString());
                 }
             });
-            
-            // Debug: Check if privacy modal is being shown automatically
-            console.log('Privacy modal initial state:', privacyModal.style.display);
             
             // Ensure privacy modal starts hidden
             if (privacyModal) {
                 privacyModal.classList.remove('show');
-                console.log('Privacy modal forced to hidden on initialization');
             }
             
             // Additional safety: Force hide modal on page load
             window.addEventListener('load', () => {
                 if (privacyModal) {
                     privacyModal.classList.remove('show');
-                    console.log('Forced privacy modal to hidden on page load');
+                }
+            });
+        });
+        
+        // Terms of Service Modal with Enhanced Accessibility
+        document.addEventListener('DOMContentLoaded', () => {
+            const termsModal = document.getElementById('terms-modal');
+            const termsModalClose = document.getElementById('terms-modal-close');
+            
+            if (!termsModal) {
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('Terms modal not found!');
+                }
+                return;
+            }
+            
+            if (termsModalClose) {
+                termsModalClose.addEventListener('click', () => {
+                    termsModal.classList.remove('show');
+                    // Return focus to the element that opened the modal
+                    if (document.activeElement && document.activeElement.classList.contains('terms-link')) {
+                        document.activeElement.focus();
+                    }
+                });
+            }
+            
+            // Enhanced focus management for terms modal
+            if (termsModal) {
+                // Focus trap for terms modal
+                const focusableElements = termsModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstFocusableElement = focusableElements[0];
+                const lastFocusableElement = focusableElements[focusableElements.length - 1];
+                
+                termsModal.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstFocusableElement) {
+                                e.preventDefault();
+                                lastFocusableElement.focus();
+                            }
+                        } else {
+                            if (document.activeElement === lastFocusableElement) {
+                                e.preventDefault();
+                                firstFocusableElement.focus();
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Show terms modal when terms of service links are clicked
+            document.addEventListener('click', (e) => {
+                if (e.target.matches('#terms-link, a[href="/terms.html"], a[href*="terms"]')) {
+                    e.preventDefault();
+                    termsModal.classList.add('show');
                 }
             });
             
-            // Monitor for any attempts to show the modal automatically
-            if (privacyModal) {
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                            const currentDisplay = privacyModal.style.display;
-                            if (currentDisplay === 'flex' || currentDisplay === 'block') {
-                                console.warn('Privacy modal was shown automatically, hiding it...');
-                                privacyModal.classList.remove('show');
-                            }
-                        }
-                    });
-                });
-                
-                observer.observe(privacyModal, { attributes: true, attributeFilter: ['style'] });
+            // Ensure terms modal starts hidden
+            if (termsModal) {
+                termsModal.classList.remove('show');
             }
+            
+            // Additional safety: Force hide modal on page load
+            window.addEventListener('load', () => {
+                if (termsModal) {
+                    termsModal.classList.remove('show');
+                }
+            });
         });
         
         // Cookie modal functionality
@@ -3291,54 +3463,45 @@
             const cookieModal = document.getElementById('cookie-modal');
             
             if (!cookieModal) {
-                console.error('Cookie modal not found!');
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('Cookie modal not found!');
+                }
                 return;
             }
             
             // Cookie modal click outside to close functionality
             document.addEventListener('click', (e) => {
                 if (e.target === cookieModal) {
-                    console.log('Clicked outside cookie modal, closing...');
                     cookieModal.classList.remove('show');
                 }
             });
             
+            // Terms modal click outside to close functionality
+            const termsModal = document.getElementById('terms-modal');
+            if (termsModal) {
+                document.addEventListener('click', (e) => {
+                    if (e.target === termsModal) {
+                        termsModal.classList.remove('show');
+                    }
+                });
+            }
+            
             // Ensure cookie modal starts hidden
             if (cookieModal) {
                 cookieModal.classList.remove('show');
-                console.log('Cookie modal forced to hidden on initialization');
             }
             
             // Additional safety: Force hide cookie modal on page load
             window.addEventListener('load', () => {
                 if (cookieModal) {
                     cookieModal.classList.remove('show');
-                    console.log('Forced cookie modal to hidden on page load');
                 }
             });
-            
-            // Monitor for any attempts to show the cookie modal automatically
-            if (cookieModal) {
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                            const currentDisplay = cookieModal.style.display;
-                            if (currentDisplay === 'flex' || currentDisplay === 'block') {
-                                console.warn('Cookie modal was shown automatically, hiding it...');
-                                cookieModal.classList.remove('show');
-                            }
-                        }
-                    });
-                });
-                
-                observer.observe(cookieModal, { attributes: true, attributeFilter: ['style'] });
-            }
             
             // Keyboard support for cookie modal (Escape key)
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     if (cookieModal && cookieModal.classList.contains('show')) {
-                        console.log('Escape key pressed, closing cookie modal...');
                         cookieModal.classList.remove('show');
                     }
                 }
@@ -3347,26 +3510,17 @@
 
         // Show cookie consent on page load (only if no consent has been given)
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOMContentLoaded: Checking cookie consent...');
             // Check if user has already made a choice
             const consent = localStorage.getItem('cookie-consent');
-            console.log('Current cookie consent:', consent);
             
             if (!consent) {
-                console.log('No consent found, will show cookie consent after delay...');
                 // Only show after a delay and only if user hasn't made a choice
                 setTimeout(() => {
                     const existingConsent = localStorage.getItem('cookie-consent');
-                    console.log('After delay, consent is:', existingConsent);
                     if (!existingConsent) {
-                        console.log('Showing cookie consent popup...');
                         showCookieConsent();
-                    } else {
-                        console.log('User made choice during delay, not showing popup');
                     }
-                }, 2000); // Increased delay to 2 seconds
-            } else {
-                console.log('User already has consent, not showing popup');
+                }, 2000); // 2 second delay
             }
         });
         
@@ -3397,7 +3551,6 @@
             }
             
                         // Simple and reliable scroll-triggered animations
-            console.log('Setting up simple scroll animations...');
             
             // Function to check if element is in viewport
             function isElementInViewport(el) {
@@ -3413,7 +3566,7 @@
             // Function to animate elements when they come into view
             function animateOnScroll() {
                 const elements = document.querySelectorAll('.fade-in-section, .stagger-container > *');
-                console.log(`Found ${elements.length} elements to animate`);
+
                 
                 elements.forEach((element, index) => {
                     if (isElementInViewport(element)) {
@@ -3436,7 +3589,6 @@
             
             // Fallback: Make all elements visible after 2 seconds
             setTimeout(() => {
-                console.log('Fallback: Making all elements visible');
                 const allElements = document.querySelectorAll('.fade-in-section, .stagger-container > *');
                 allElements.forEach(element => {
                     element.style.opacity = '1';
@@ -3445,81 +3597,36 @@
                 });
             }, 2000);
             
-            // Immediate test: Log all elements and their current state
-            console.log('=== DEBUGGING ELEMENT VISIBILITY ===');
-            const testElements = document.querySelectorAll('.fade-in-section, .stagger-container > *');
-            testElements.forEach((element, index) => {
-                const computedStyle = window.getComputedStyle(element);
-                console.log(`Element ${index}:`, {
-                    tagName: element.tagName,
-                    className: element.className,
-                    opacity: computedStyle.opacity,
-                    transform: computedStyle.transform,
-                    display: computedStyle.display,
-                    visibility: computedStyle.visibility
-                });
-            });
-            
 
             
-            // Add mutation observer to track when elements disappear
-            console.log('Setting up mutation observer to track disappearing elements...');
+            // Optimized mutation observer for critical elements only
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
                         const target = mutation.target;
                         const computedStyle = window.getComputedStyle(target);
                         if (computedStyle.opacity === '0' || computedStyle.visibility === 'hidden') {
-                            console.warn('Element became hidden:', target);
-                            console.warn('Computed styles:', {
-                                opacity: computedStyle.opacity,
-                                visibility: computedStyle.visibility,
-                                display: computedStyle.display
-                            });
-                            // Force it back to visible
-                            target.style.opacity = '1';
-                            target.style.visibility = 'visible';
-                            target.style.display = 'block';
+                            // Only fix critical elements
+                            if (target.classList.contains('stagger-container') || target.closest('.stagger-container')) {
+                                target.style.opacity = '1';
+                                target.style.visibility = 'visible';
+                            }
                         }
                     }
                 });
             });
             
-            // Observe all elements for style changes
-            const allElements = document.querySelectorAll('*');
-            allElements.forEach(element => {
-                observer.observe(element, { attributes: true, attributeFilter: ['style'] });
+            // Observe only critical containers, not all elements
+            const criticalContainers = document.querySelectorAll('.stagger-container, .fade-in-section');
+            criticalContainers.forEach(container => {
+                observer.observe(container, { attributes: true, attributeFilter: ['style'] });
             });
             
-            // Debug: Check layout structure
-            console.log('=== DEBUGGING LAYOUT STRUCTURE ===');
+            // Optimized layout fix for stagger containers
             const staggerContainer = document.querySelector('.stagger-container');
             if (staggerContainer) {
-                console.log('Stagger container found:', staggerContainer);
-                console.log('Stagger container classes:', staggerContainer.className);
-                console.log('Stagger container computed styles:', {
-                    display: window.getComputedStyle(staggerContainer).display,
-                    gridTemplateColumns: window.getComputedStyle(staggerContainer).gridTemplateColumns,
-                    flexDirection: window.getComputedStyle(staggerContainer).flexDirection,
-                    gap: window.getComputedStyle(staggerContainer).gap
-                });
-                
-                const children = Array.from(staggerContainer.children);
-                console.log(`Stagger container has ${children.length} children`);
-                children.forEach((child, index) => {
-                    console.log(`Child ${index}:`, {
-                        tagName: child.tagName,
-                        className: child.className,
-                        display: window.getComputedStyle(child).display,
-                        opacity: window.getComputedStyle(child).opacity,
-                        visibility: window.getComputedStyle(child).visibility,
-                        gridColumn: window.getComputedStyle(child).gridColumn
-                    });
-                });
-                
                 // Force grid layout if it's not working
                 if (window.getComputedStyle(staggerContainer).display !== 'grid') {
-                    console.warn('Grid layout not working, forcing it...');
                     staggerContainer.style.display = 'grid';
                     staggerContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
                     if (window.innerWidth >= 768) {
@@ -3531,11 +3638,10 @@
                     staggerContainer.style.gap = '2rem';
                 }
                 
-                // Set up periodic layout monitoring
+                // Set up periodic layout monitoring (less frequent)
                 setInterval(() => {
                     const currentDisplay = window.getComputedStyle(staggerContainer).display;
                     if (currentDisplay !== 'grid') {
-                        console.warn('Layout broken, fixing...');
                         staggerContainer.style.display = 'grid';
                         staggerContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
                         if (window.innerWidth >= 768) {
@@ -3546,7 +3652,7 @@
                         }
                         staggerContainer.style.gap = '2rem';
                     }
-                }, 1000); // Check every second
+                }, 5000); // Check every 5 seconds instead of every second
             }
         
         // Scroll Progress Indicator
@@ -3603,7 +3709,22 @@
         const floatingAction = document.querySelector('.floating-action');
         
         // Back to top functionality
-        if (backToTopButton) {
+        if (backToTopButton && floatingAction) {
+            // Show/hide back-to-top button based on scroll position
+            const toggleBackToTop = () => {
+                if (window.pageYOffset > 300) {
+                    floatingAction.classList.add('visible');
+                } else {
+                    floatingAction.classList.remove('visible');
+                }
+            };
+            
+            // Add scroll event listener for button visibility
+            window.addEventListener('scroll', toggleBackToTop, { passive: true });
+            
+            // Check initial state
+            toggleBackToTop();
+            
             backToTopButton.addEventListener('click', () => {
                 // Smooth scroll to top
                 window.scrollTo({
@@ -3710,12 +3831,7 @@
                 }
             });
             
-            // Initialize floating action button
-            if (floatingAction) {
-                setTimeout(() => {
-                    floatingAction.classList.add('visible');
-                }, 2000);
-            }
+            // Floating action button visibility is controlled by scroll position
             
             
         
@@ -3756,36 +3872,28 @@
         document.addEventListener('DOMContentLoaded', ensureContentVisibility);
         window.addEventListener('load', ensureContentVisibility);
         
-        // Aggressive fix for testimonials grid layout
+        // Optimized fix for testimonials grid layout
         function fixTestimonialsGrid() {
             const testimonialsContainer = document.querySelector('.py-20.bg-white .stagger-container');
             if (testimonialsContainer) {
-                console.log('Found testimonials container, applying grid fix...');
-                
                 // Force grid display with !important equivalent
                 testimonialsContainer.style.setProperty('display', 'grid', 'important');
                 
                 if (window.innerWidth >= 768) {
                     testimonialsContainer.style.setProperty('grid-template-columns', 'repeat(2, minmax(0, 1fr))', 'important');
-                    console.log('Applied 2-column grid for desktop');
                 } else {
                     testimonialsContainer.style.setProperty('grid-template-columns', 'repeat(1, minmax(0, 1fr))', 'important');
-                    console.log('Applied 1-column grid for mobile');
                 }
                 
                 // Also force the gap property
                 testimonialsContainer.style.setProperty('gap', '2rem', 'important');
-            } else {
-                console.log('Testimonials container not found');
             }
         }
         
-        // Run testimonials fix multiple times to ensure it works
+        // Run testimonials fix once and then periodically
         fixTestimonialsGrid();
-        setTimeout(fixTestimonialsGrid, 100);
-        setTimeout(fixTestimonialsGrid, 500);
         setTimeout(fixTestimonialsGrid, 1000);
-        setTimeout(fixTestimonialsGrid, 2000);
+        setTimeout(fixTestimonialsGrid, 5000);
         
 
         
