@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
     <title>BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation</title>
@@ -25,11 +25,10 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300C9FF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%232ECC71;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%230A192F'/%3E%3Ctext x='50' y='65' font-family='Poppins, sans-serif' font-size='40' font-weight='bold' fill='url(%23grad)' text-anchor='middle'%3EBRUX%3C/text%3E%3C/svg%3E">
 
     <!-- Preload hero image for LCP -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" fetchpriority="high">
 
     <!-- Content Security Policy -->
-    <!-- Allow 'unsafe-eval' so Tailwind CDN can JIT in the browser. For best security, replace CDN with a prebuilt CSS and remove 'unsafe-eval'. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; connect-src 'self' https:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https:;">
 
     <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
     <meta property="og:title" content="BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation">
@@ -164,7 +163,6 @@
 
 
     <!-- Tailwind CSS CDN -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Tailwind CSS Configuration -->
@@ -180,32 +178,32 @@
             }
         }
     </script>
-    <script>(function(){ try { document.documentElement.classList.add('js'); } catch(e){} })();</script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tajawal:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Facebook Pixel Code -->
+    <!-- IMPORTANT: Replace 'YOUR_PIXEL_ID_HERE' with your actual Facebook Pixel ID -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    
     <style>
-        /* Minimal utility fallbacks to keep layout readable if Tailwind fails to load */
-        .hidden { display: none !important; }
-        .block { display: block; }
-        .flex { display: flex; }
-        .grid { display: grid; }
-        .w-full { width: 100%; }
-        .h-full { height: 100%; }
-        .object-cover { object-fit: cover; }
-        .absolute { position: absolute; }
-        .relative { position: relative; }
-        .fixed { position: fixed; }
-        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-        .z-10 { z-index: 10; }
-        .-z-10 { z-index: -10; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .text-center { text-align: center; }
-        .bg-white { background-color: #fff; }
-        .text-white { color: #fff; }
-        /* End minimal fallbacks */
         /* ===================================================================== */
         /* ===================== GLOBAL STYLES & VARIABLES ==================== */
         /* ===================================================================== */
@@ -225,13 +223,6 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--primary);
-        }
-        
-        /* Prevent background scroll when mobile menu is open */
-        body.no-scroll {
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
         }
         
         /* Section Navigation Offset */
@@ -799,8 +790,8 @@
         /* Back to Top Button */
         .floating-action {
             position: fixed;
-            bottom: calc(30px + env(safe-area-inset-bottom));
-            right: calc(30px + env(safe-area-inset-right));
+            bottom: 30px;
+            right: 30px;
             z-index: 1000;
             opacity: 0;
             transform: translateY(20px);
@@ -840,8 +831,8 @@
         /* Mobile-responsive positioning for floating action button */
         @media (max-width: 768px) {
             .floating-action {
-                bottom: calc(20px + env(safe-area-inset-bottom));
-                right: calc(20px + env(safe-area-inset-right));
+                bottom: 20px;
+                right: 20px;
                 z-index: 1001; /* Ensure it's above other mobile elements */
             }
             
@@ -856,8 +847,8 @@
         /* Extra small mobile devices */
         @media (max-width: 480px) {
             .floating-action {
-                bottom: calc(15px + env(safe-area-inset-bottom));
-                right: calc(15px + env(safe-area-inset-right));
+                bottom: 15px;
+                right: 15px;
             }
             
             .floating-action button {
@@ -865,11 +856,6 @@
                 min-height: 44px;
                 padding: 10px;
             }
-        }
-
-        /* Respect iOS safe-area for the cookie bar */
-        #cookie-consent {
-            padding-bottom: env(safe-area-inset-bottom);
         }
         
 
@@ -1035,17 +1021,6 @@
             position: relative;
             z-index: 10;
         }
-
-        /* If JS fails to run, do NOT hide content by default */
-        html:not(.js) .fade-in-section,
-        html:not(.js) .scroll-reveal,
-        html:not(.js) .scroll-reveal-left,
-        html:not(.js) .scroll-reveal-right,
-        html:not(.js) .scroll-reveal-scale {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-        }
         
         /* Fix for disappearing content - more targeted approach */
         .fade-in-section.visible,
@@ -1176,31 +1151,6 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 201, 255, 0.15);
         }
-
-        /* Unified Card Hover/Tilt System */
-        .card-hover, .interactive-card {
-            transform: translateY(var(--lift, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) scale(var(--scale, 1));
-            transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms ease, border-color 200ms ease;
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        .card-hover:hover, .interactive-card:hover {
-            --lift: -8px;
-            --scale: 1.02;
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-            border-color: var(--accent-cyan);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .card-hover, .interactive-card {
-                transition: box-shadow 200ms ease, border-color 200ms ease;
-                transform: none !important;
-            }
-            .card-hover:hover, .interactive-card:hover {
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-            }
-        }
         
         /* Scroll reveal animations - Fixed visibility issues */
         .scroll-reveal {
@@ -1278,139 +1228,6 @@
             opacity: 1;
             pointer-events: auto;
         }
-
-        /* ================================================================================ */
-        /* ========================== CONFLICT RESOLUTION OVERRIDES ======================= */
-        /* ================================================================================ */
-        
-        /* Ensure animation classes have consistent initial/active states */
-        .fade-in-section.fade-in-section:not(.visible) {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scroll-reveal.scroll-reveal:not(.revealed) {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scroll-reveal-left.scroll-reveal-left:not(.revealed) {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        .scroll-reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scroll-reveal-right.scroll-reveal-right:not(.revealed) {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        .scroll-reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scroll-reveal-scale.scroll-reveal-scale:not(.revealed) {
-            opacity: 0;
-            transform: scale(0.98);
-        }
-        .scroll-reveal-scale.revealed {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Stagger containers: enforce hidden initial state and reveal on .animate */
-        .stagger-container.stagger-container > * {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .stagger-container.animate > * {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* RTL improvements */
-        html[dir="rtl"] .nav-link::after {
-            right: 0;
-            left: auto;
-            transform-origin: bottom left;
-        }
-        html[dir="rtl"] .nav-link:hover::after {
-            transform-origin: bottom right;
-        }
-        html[dir="rtl"] .floating-action {
-            right: auto;
-            left: 30px;
-        }
-        @media (max-width: 768px) {
-            html[dir="rtl"] .floating-action { left: 20px; }
-        }
-        @media (max-width: 480px) {
-            html[dir="rtl"] .floating-action { left: 15px; }
-        }
-        html[dir="rtl"] #lang-dropdown {
-            right: auto;
-            left: 0;
-        }
-
-        /* ================================================================================ */
-        /* ========================== RESPONSIVE & TOUCH ENHANCEMENTS ===================== */
-        /* ================================================================================ */
-        
-        /* Mobile-first service card spacing */
-        .service-card {
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .service-card {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .service-card {
-                padding: 2rem;
-                margin-bottom: 0;
-            }
-        }
-
-        /* Touch-friendly minimum target sizes */
-        .nav-link, .btn-lift {
-            min-height: 44px;
-            min-width: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Disable hover transforms on touch devices */
-        @media (hover: none) {
-            .card-hover:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-
-        /* Animation performance optimizations */
-        .card-hover {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            will-change: transform, opacity;
-        }
-        .parallax-layer {
-            transform: translateZ(0);
-            will-change: transform;
-        }
     </style>
     
     <!-- Meta Pixel Code -->
@@ -1430,32 +1247,6 @@
     src="https://www.facebook.com/tr?id=1636396343773449&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-
-    <!-- Unified Card Hover Overrides (after all other styles) -->
-    <style>
-      /* Ensure card transforms win over reveal/transitions */
-      .card-hover, .interactive-card {
-        transform: perspective(var(--p, 800px)) translateY(var(--lift, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) scale(var(--scale, 1)) !important;
-        transform-style: preserve-3d;
-        will-change: transform;
-      }
-      .card-hover:hover, .interactive-card:hover {
-        --lift: -8px;
-        --scale: 1.02;
-        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-        border-color: var(--accent-cyan);
-        transform: perspective(var(--p, 800px)) translateY(var(--lift, -8px)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) scale(var(--scale, 1.02)) !important;
-      }
-      /* Force icon zoom consistently, independent of Tailwind group-hover */
-      .zoom-icon { transition: transform 200ms ease, box-shadow 200ms ease; will-change: transform; }
-      .card-hover:hover .zoom-icon,
-      .interactive-card:hover .zoom-icon { transform: scale(1.10); box-shadow: 0 8px 18px rgba(0,0,0,0.08); }
-      @media (prefers-reduced-motion: reduce) {
-        .card-hover, .interactive-card {
-          transform: none !important;
-        }
-      }
-    </style>
 </head>
 
 <!-- ============================================================================ -->
@@ -1492,7 +1283,7 @@
 <!-- ========================== NAVIGATION SECTION ============================= -->
 <!-- ============================================================================ -->
     <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-white shadow-sm z-40" role="navigation" aria-label="Main navigation">
+    <nav class="fixed w-full bg-white shadow-sm z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
@@ -1568,7 +1359,7 @@
             <div class="data-flow"></div>
         </div>
         
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" loading="eager" decoding="async">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" fetchpriority="high">
         <div class="absolute inset-0 pointer-events-none hero-overlay" aria-hidden="true"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content relative z-10 flex items-center justify-center min-h-full">
             <div class="text-center w-full">
@@ -1593,8 +1384,8 @@
     <section class="py-12 bg-gray-100 fade-in-section" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center stagger-container">
-                <div class="card-hover interactive-card scroll-reveal-scale group">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 zoom-icon">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Fabric official SVG logo -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
                             <path fill="url(#a)" fill-rule="evenodd" d="m5.64 31.6-.586 2.144c-.218.685-.524 1.693-.689 2.59a5.629 5.629 0 0 0 4.638 7.588c.792.114 1.688.108 2.692-.04l4.613-.636a2.924 2.924 0 0 0 2.421-2.127l3.175-11.662L5.64 31.599Z" clip-rule="evenodd"/>
@@ -1622,8 +1413,8 @@
                     <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred1Title">Microsoft Fabric</h3>
                     <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred1Sub">Early Adopter & Expert</p>
                 </div>
-                <div class="card-hover interactive-card scroll-reveal-scale group">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 zoom-icon">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Azure official SVG logo -->
                         <svg class="w-8 h-8" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
@@ -1652,8 +1443,8 @@
                     <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred2Title">Azure Certified</h3>
                     <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred2Sub">Data & AI Solutions</p>
                 </div>
-                <div class="card-hover interactive-card scroll-reveal-scale group">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 zoom-icon">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Microsoft Power BI official SVG logo -->
                         <svg class="w-8 h-8" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
@@ -1704,8 +1495,8 @@
                     <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred3Title">Power BI</h3>
                     <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred3Sub">Advanced Analytics & Viz</p>
                 </div>
-                <div class="card-hover interactive-card scroll-reveal-scale group">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 zoom-icon">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Scrum.org Professional Scrum Master official SVG logo -->
                         <svg class="w-8 h-8" viewBox="-17.429084416588353 -9.362805561401416 334.8581688331767 514.3628055614014" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M82.43 182.42V505L150 437.36 217.56 505V182.42z" fill="#1599b5"/>
@@ -1728,8 +1519,8 @@
                     <h3 class="text-lg font-bold text-[#0A192F] transition-colors duration-300 group-hover:text-[#00C9FF]" data-lang-key="cred4Title">Professional Scrum Master™</h3>
                     <p class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-gray-800" data-lang-key="cred4Sub">Agile Project Delivery</p>
                 </div>
-                <div class="card-hover interactive-card scroll-reveal-scale group">
-                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 zoom-icon">
+                <div class="card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
                         <!-- Databricks official SVG logo -->
                         <svg class="w-8 h-8" viewBox="0 0 18 18" fill="#ff3621" aria-hidden="true">
                             <path d="M1.155,4.93v.512L9,9.868l7.006-3.957,0,1.6L9,11.491,1.55,7.258l-.395.22V10.54L9,14.955l7.006-3.942,0,1.586L9,16.581,1.55,12.347l-.395.22v.519L9,17.5l7.845-4.414V10.021l-.4-.218L9,14.036,1.992,10.054V8.476L9,12.414,16.845,8V4.978l-.4-.219L9,8.993,2.352,5.215,9,1.46l5.476,3.094.479-.269V3.863L9,.5Z"/>
@@ -1924,7 +1715,7 @@
             <p class="text-sm font-semibold mt-4" data-lang-key="catalog2Impact">Typical impact: decision cycle ↓ 20-30%</p>
           </div>
 
-          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover interactive-card scroll-reveal-scale">
+          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover">
             <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 border border-gray-200 shadow-sm">
               <svg class="w-8 h-8" viewBox="0 0 18 18"><defs><linearGradient id="uuid-05876c72-8f26-40da-996e-a488172ec072" x1="-603.563" y1="-218.378" x2="-606.6" y2="-206.22" gradientTransform="translate(617.126 -205.758) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#712575" /><stop offset=".09" stop-color="#9a2884" /><stop offset=".18" stop-color="#bf2c92" /><stop offset=".27" stop-color="#da2e9c" /><stop offset=".34" stop-color="#eb30a2" /><stop offset=".4" stop-color="#f131a5" /><stop offset=".5" stop-color="#ec30a3" /><stop offset=".61" stop-color="#df2f9e" /><stop offset=".72" stop-color="#c92d96" /><stop offset=".83" stop-color="#aa2a8a" /><stop offset=".95" stop-color="#83267c" /><stop offset="1" stop-color="#712575" /></linearGradient><linearGradient id="uuid-c4a2f627-d730-447e-9152-62009c64c361" x1="-602.412" y1="-206.025" x2="-602.412" y2="-223.175" gradientTransform="translate(617.126 -205.758) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#da7ed0" /><stop offset=".08" stop-color="#b17bd5" /><stop offset=".19" stop-color="#8778db" /><stop offset=".3" stop-color="#6276e1" /><stop offset=".41" stop-color="#4574e5" /><stop offset=".54" stop-color="#2e72e8" /><stop offset=".67" stop-color="#1d71eb" /><stop offset=".81" stop-color="#1471ec" /><stop offset="1" stop-color="#1171ed" /></linearGradient><linearGradient id="uuid-5a4cf215-4932-4f12-8af1-1b6833df259c" x1="-603.438" y1="-206.414" x2="-614.807" y2="-224.644" gradientTransform="translate(617.126 -205.758) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#da7ed0" /><stop offset=".05" stop-color="#b77bd4" /><stop offset=".11" stop-color="#9079da" /><stop offset=".18" stop-color="#6e77df" /><stop offset=".25" stop-color="#5175e3" /><stop offset=".33" stop-color="#3973e7" /><stop offset=".42" stop-color="#2772e9" /><stop offset=".54" stop-color="#1a71eb" /><stop offset=".68" stop-color="#1371ec" /><stop offset="1" stop-color="#1171ed" /></linearGradient></defs><path d="m12.061.012c.534,0,1.008.401,1.178.984s1.166,4.19,1.166,4.19v7.166h-3.607l.073-12.352h1.19v.012Z" fill="url(#uuid-05876c72-8f26-40da-996e-a488172ec072)" fill-rule="evenodd" stroke-width="0" /><path d="m17.356,5.611c0-.255-.206-.449-.449-.449h-2.126c-1.494,0-2.709,1.215-2.709,2.709v4.494h2.575c1.494,0,2.709-1.215,2.709-2.709v-4.045Z" fill="url(#uuid-c4a2f627-d730-447e-9152-62009c64c361)" stroke-width="0" /><path d="m12.061.012c-.413,0-.741.328-.741.741l-.073,13.64c0,1.992-1.615,3.607-3.607,3.607H1.093c-.316,0-.522-.304-.425-.595L5.915,2.429C6.425.984,7.785.012,9.316.012h2.757-.012Z" fill="url(#uuid-5a4cf215-4932-4f12-8af1-1b6833df259c)" fill-rule="evenodd" stroke-width="0" /></svg>
             </div>
@@ -1967,7 +1758,7 @@
             <p class="text-sm font-semibold mt-4" data-lang-key="catalog5Impact">Impact: fewer silos, trusted KPIs</p>
           </div>
 
-          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover interactive-card scroll-reveal-scale">
+          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover">
             <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 border border-gray-200 shadow-sm">
               <svg class="w-8 h-8" viewBox="0 0 18 18"><defs><linearGradient id="ba420277-700e-42cc-9de9-5388a5c16e54" x1="9" y1="16.97" x2="9" y2="1.03" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0078d4" /><stop offset="0.16" stop-color="#1380da" /><stop offset="0.53" stop-color="#3c91e5" /><stop offset="0.82" stop-color="#559cec" /><stop offset="1" stop-color="#5ea0ef" /></linearGradient></defs><path d="M17,4v9.74l-4,3.28-6.2-2.26V17L3.29,12.41l10.23.8V4.44Zm-3.41.49L7.85,1V3.29L2.58,4.84,1,6.87v4.61l2.26,1V6.57Z" fill="url(#ba420277-700e-42cc-9de9-5388a5c16e54)" /></svg>
             </div>
@@ -1981,7 +1772,7 @@
             <p class="text-sm font-semibold mt-4" data-lang-key="catalog6Impact">Impact: reliability ↑, TCO ↓</p>
           </div>
 
-          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover interactive-card scroll-reveal-scale">
+          <div class="bg-white rounded-xl p-8 border border-gray-100 card-hover">
             <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 border border-gray-200 shadow-sm">
               <svg class="w-8 h-8" viewBox="0 0 18 18"><defs><linearGradient id="b99c58b0-04f5-410c-8ad4-2204269dfe37" x1="8.995" y1="778.607" x2="9.092" y2="787.531" gradientTransform="matrix(1, 0, 0, -1, 0, 791.516)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#198ab3" /><stop offset="0.679" stop-color="#31d1f3" /><stop offset="1" stop-color="#32d4f5" /></linearGradient><linearGradient id="b7e1ce10-82e5-46d7-9465-80660175c9e6" x1="8.997" y1="791.404" x2="8.997" y2="786.087" gradientTransform="matrix(1, 0, 0, -1, 0, 791.516)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0078d4" /><stop offset="0.801" stop-color="#005ba1" /></linearGradient></defs><g><g><path d="M13.233,12.922H4.767c-.27,0-.429-.431-.277-.654L7.409,8.012a.351.351,0,0,0,.059-.2V5.008A.168.168,0,0,0,7.3,4.842H7.143a.336.336,0,0,1-.335-.335V4.363a.337.337,0,0,1,.335-.336h3.709a.337.337,0,0,1,.335.336v.151a.334.334,0,0,1-.335.334H10.7a.167.167,0,0,0-.167.167V7.829a.342.342,0,0,0,.058.2l2.92,4.249C13.666,12.491,13.5,12.922,13.233,12.922Z" fill="url(#b99c58b0-04f5-410c-8ad4-2204269dfe37)" /><path d="M5.739,11.786,7.958,8.55A.8.8,0,0,0,8.1,8.093v-1.3a.258.258,0,0,1,.258-.257H9.62a.258.258,0,0,1,.257.256h0V8.185a.539.539,0,0,0,.1.308l2.265,3.293a.2.2,0,0,1-.053.269.185.185,0,0,1-.107.033H5.905a.2.2,0,0,1-.2-.191A.19.19,0,0,1,5.739,11.786Z" fill="#fff" /><path d="M6.405,10.819a4.147,4.147,0,0,1,3.717-.421s.811.454,1.1-.084l1.046,1.453a.28.28,0,0,1-.061.393l0,0a.288.288,0,0,1-.161.052H5.914a.279.279,0,0,1-.279-.281.286.286,0,0,1,.056-.169Z" fill="#3cd4c2" /><path d="M9,.105,1.242,4.543v8.865L9,17.9l7.758-4.438V4.562Zm6.325,12.423L9,16.185,2.675,12.567V5.422L9,1.766l6.325,3.666Z" fill="#0078d4" /><path d="M16.753,4.565l-1.428.864L9,1.772H9L2.675,5.429l-1.433-.88L9,.112H9Z" fill="url(#b7e1ce10-82e5-46d7-9465-80660175c9e6)" /></g></g></svg>
             </div>
@@ -2315,7 +2106,7 @@
                             <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                                     </svg>
-                    </div><div class="ml-4"><h3 class="text-lg font-semibold" data-lang-key="contactEmailTitle">Email</h3><a href="#" class="text-gray-300 hover:text-white contact-email" data-email="aW5mb0BicnV4aW5ub3YuY29t" aria-label="Email" title="Email">Email</a></div></div>
+                    </div><div class="ml-4"><h3 class="text-lg font-semibold" data-lang-key="contactEmailTitle">Email</h3><a href="#" class="text-gray-300 hover:text-white contact-email" data-email="aW5mb0BicnV4aW5ub3YuY29t"></a></div></div>
                     </div>
                      <div class="mt-8 flex gap-4">
                         <a href="https://api.whatsapp.com/send?phone=32495477770&text=Hi+BRUXINNOV,+I+need+help+with..." target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors duration-300 flex items-center gap-2 btn-lift">
@@ -2327,37 +2118,37 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2 bg-white rounded-xl p-8 shadow-xl w-full">
-                    <h3 class="text-2xl font-bold text-[#0A192F] mb-6" id="consultation-form-title" data-lang-key="formTitle">Book a Consultation</h3>
-                    <form id="consultation-form" aria-labelledby="consultation-form-title">
-                        <input type="text" name="website" class="hidden" hidden aria-hidden="true" tabindex="-1" autocomplete="off">
+                    <h3 class="text-2xl font-bold text-[#0A192F] mb-6" data-lang-key="formTitle">Book a Consultation</h3>
+                    <form id="consultation-form">
+                        <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="name" id="name-label" class="block text-gray-700 font-medium mb-2" data-lang-key="formName">Full Name</label>
-                                <input type="text" id="name" name="name" aria-labelledby="name-label" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
+                                <label for="name" class="block text-gray-700 font-medium mb-2" data-lang-key="formName">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                             <div>
-                                <label for="email" id="email-label" class="block text-gray-700 font-medium mb-2" data-lang-key="formEmail">Work Email</label>
-                                <input type="email" id="email" name="email" aria-labelledby="email-label" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
+                                <label for="email" class="block text-gray-700 font-medium mb-2" data-lang-key="formEmail">Work Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="company" id="company-label" class="block text-gray-700 font-medium mb-2" data-lang-key="formCompany">Company</label>
-                                <input type="text" id="company" name="company" aria-labelledby="company-label" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
+                                <label for="company" class="block text-gray-700 font-medium mb-2" data-lang-key="formCompany">Company</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                             <div>
-                                <label for="role" id="role-label" class="block text-gray-700 font-medium mb-2" data-lang-key="formRole">Role</label>
-                                <input type="text" id="role" name="role" aria-labelledby="role-label" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
+                                <label for="role" class="block text-gray-700 font-medium mb-2" data-lang-key="formRole">Role</label>
+                                <input type="text" id="role" name="role" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900">
                             </div>
                         </div>
                         <div class="mb-6">
-                            <label for="message" id="message-label" class="block text-gray-700 font-medium mb-2" data-lang-key="formMessage">What challenge can we help with?</label>
-                            <textarea id="message" name="message" aria-labelledby="message-label" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required></textarea>
+                            <label for="message" class="block text-gray-700 font-medium mb-2" data-lang-key="formMessage">What challenge can we help with?</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C9FF] text-gray-900" required></textarea>
                         </div>
                         <div class="mb-4">
-                            <label for="consent" class="flex items-start gap-2">
-                                <input id="consent" type="checkbox" required aria-describedby="consent-text" class="mt-1">
-                                <span id="consent-text" class="text-sm text-gray-600" data-lang-key="formConsent">I agree to the <a href="#privacy" rel="nofollow" class="underline">Privacy Policy</a></span>
+                            <label class="flex items-start gap-2">
+                                <input type="checkbox" required class="mt-1">
+                                <span class="text-sm text-gray-600" data-lang-key="formConsent">I agree to the <a href="/privacy.html" class="underline">Privacy Policy</a></span>
                             </label>
                         </div>
                         <button type="submit" class="w-full px-6 py-4 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity duration-300 btn-lift" data-lang-key="formButton">Book a Consultation</button>
@@ -2420,7 +2211,7 @@
                 <div>
                     <h3 class="text-white font-semibold text-lg mb-4" data-lang-key="footerLegal">Legal</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#privacy" rel="nofollow" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerPrivacy">Privacy Policy</a></li>
+                        <li><a href="/privacy.html" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerPrivacy">Privacy Policy</a></li>
                         <li><a href="#" id="terms-link" class="hover:text-[#00C9FF] transition-colors duration-300" data-lang-key="footerTerms">Terms of Service</a></li>
                     </ul>
                 </div>
@@ -3047,66 +2838,18 @@
             const allElementsToTranslate = document.querySelectorAll('[data-lang-key]');
             const ogLocaleMeta = document.getElementById('og-locale');
 
-            // Fix mojibake/encoding artifacts in certain language strings without changing structure
-            const normalizeTextForLang = (lang, text) => {
-                if (typeof text !== 'string') return text;
-                if (lang === 'fr') {
-                    let t = text;
-                    // Common corrupted diacritics -> proper French accents
-                    t = t.replace(/Ǹ/g, 'é')
-                         .replace(/Ǧ/g, 'ê')
-                         .replace(/ǩ/g, 'î')
-                         .replace(/ǯ/g, 'û');
-                    // Targeted word fixes where previous mapping isn't enough
-                    t = t.replace(/mod��le/g, 'modèle')
-                         .replace(/mod��les/g, 'modèles')
-                         .replace(/op��re/g, 'opère')
-                         .replace(/commen��ons/g, 'commençons')
-                         .replace(/apr��s/g, 'après')
-                         .replace(/con��u/g, 'conçu')
-                         .replace(/contr��les/g, 'contrôles')
-                         .replace(/g��n��ralement/g, 'généralement')
-                         .replace(/r��les/g, 'rôles')
-                         .replace(/compl��tes/g, 'complètes')
-                         .replace(/�%tats/g, 'États')
-                         .replace(/�%tudes/g, 'Études')
-                         .replace(/�%pine/g, 'Épine')
-                         .replace(/TǸlǸcommunications/g, 'Télécommunications')
-                         .replace(/chaǩne/g, 'chaîne')
-                         .replace(/ObservabilitǸ/g, 'Observabilité');
-                    // Minor phrasing separators corrupted; normalize a few known cases
-                    t = t.replace(/Dfi.*Solution.*<span/, 'Défi – Solution – <span');
-                    return t;
-                }
-                return text;
-            };
-
             const updateDomForLang = (lang) => {
                 allElementsToTranslate.forEach(el => {
                     const key = el.getAttribute('data-lang-key');
                     if (translations[lang] && translations[lang][key]) {
-                        let val = translations[lang][key];
-                        if (lang === 'fr') {
-                            // Spot-fix a few known labels that often get mojibake
-                            if (key === 'navAbout' || key === 'navAboutMobile' || key === 'footerAbout') val = 'À propos';
-                            if (key === 'navCaseStudies' || key === 'navCaseStudiesMobile') val = 'Études de cas';
-                            if (key === 'caseStudyChallenge') val = 'DÉFI';
-                            if (key === 'caseStudySolution') val = 'SOLUTION';
-                            if (key === 'caseStudyOutcome') val = 'RÉSULTAT';
-                        }
-                        val = normalizeTextForLang(lang, val);
-                        el.innerHTML = val;
+                        el.innerHTML = translations[lang][key];
                     }
                 });
 
                 document.documentElement.setAttribute('lang', lang);
                 document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-                if (ogLocaleMeta) {
-                    ogLocaleMeta.setAttribute('content', {en: 'en_US', ar: 'ar_AR', fr: 'fr_FR', nl: 'nl_NL'}[lang]);
-                }
-                if (currentLangSpan) {
-                    currentLangSpan.textContent = (lang || 'en').toUpperCase();
-                }
+                ogLocaleMeta.setAttribute('content', {en: 'en_US', ar: 'ar_AR', fr: 'fr_FR', nl: 'nl_NL'}[lang]);
+                currentLangSpan.textContent = lang.toUpperCase();
             };
             
             const translatePage = (lang) => {
@@ -3115,73 +2858,58 @@
                 } else {
                     updateDomForLang(lang);
                 }
-                try { localStorage.setItem('preferredLang', lang); } catch {}
+                localStorage.setItem('preferredLang', lang);
                 try {
                     const url = new URL(window.location);
                     url.searchParams.set('lang', lang);
                     history.replaceState({}, '', url);
                 } catch (e) {
-                    // no-op: likely running in file:// or restricted env
+                    console.warn("Could not update URL: ", e.message);
                 }
             };
 
-            if (langSwitcherBtn && langDropdown) {
-                langSwitcherBtn.addEventListener('click', () => {
-                    const isHidden = langDropdown.classList.toggle('hidden');
-                    langSwitcherBtn.setAttribute('aria-expanded', String(!isHidden));
-                });
-                
-                // Keyboard navigation for language switcher
-                langSwitcherBtn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        langSwitcherBtn.click();
-                    }
-                });
-
-                document.addEventListener('click', (e) => {
-                    if (!langSwitcherBtn.contains(e.target)) {
-                        langDropdown.classList.add('hidden');
-                        langSwitcherBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-
-            if (langDropdown) {
-                langDropdown.addEventListener('click', (e) => {
-                    const target = e.target;
-                    if (!(target instanceof Element)) return;
+            langSwitcherBtn.addEventListener('click', () => {
+                const isHidden = langDropdown.classList.toggle('hidden');
+                langSwitcherBtn.setAttribute('aria-expanded', !isHidden);
+            });
+            
+            // Keyboard navigation for language switcher
+            langSwitcherBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const lang = target.getAttribute('data-lang');
-                    if (lang) {
-                        translatePage(lang);
-                        langDropdown.classList.add('hidden');
-                        if (langSwitcherBtn) {
-                            langSwitcherBtn.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                });
-            }
+                    langSwitcherBtn.click();
+                }
+            });
 
-            // Handle language selection from mobile menu
-            const mobileMenuLang = document.getElementById('mobile-menu');
-            if (mobileMenuLang) {
-                mobileMenuLang.addEventListener('click', (e) => {
-                    const target = e.target;
-                    if (!(target instanceof Element)) return;
-                    const lang = target.getAttribute('data-lang');
-                    if (lang) {
-                        e.preventDefault();
-                        translatePage(lang);
-                        mobileMenuLang.classList.add('hidden');
-                        const mobileBtnEl = document.getElementById('mobile-menu-button');
-                        if (mobileBtnEl) mobileBtnEl.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
+            document.addEventListener('click', (e) => {
+                if (!langSwitcherBtn.contains(e.target)) {
+                    langDropdown.classList.add('hidden');
+                    langSwitcherBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            langDropdown.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                if (lang) {
+                    translatePage(lang);
+                    langDropdown.classList.add('hidden');
+                    langSwitcherBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            document.getElementById('mobile-menu').addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                if(lang){
+                    e.preventDefault();
+                    translatePage(lang);
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
             
             // Set initial language based on URL param or localStorage
-            const initialLang = new URLSearchParams(window.location.search).get('lang') || (typeof localStorage !== 'undefined' ? localStorage.getItem('preferredLang') : null) || 'en';
+            const initialLang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('preferredLang') || 'en';
             translatePage(initialLang);
 
 
@@ -3189,25 +2917,16 @@
             // Mobile navigation toggle and accessibility
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    const isHidden = mobileMenu.classList.toggle('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
-
-                    // Lock or unlock background scroll when menu is open/closed
-                    if (!isHidden) {
-                        document.body.classList.add('no-scroll');
-                    } else {
-                        document.body.classList.remove('no-scroll');
-                    }
-                    
-                    // Focus management for accessibility
-                    if (!isHidden) {
-                        const firstLink = mobileMenu.querySelector('a');
-                        if (firstLink) firstLink.focus();
-                    }
-                });
-            }
+            mobileMenuButton.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+                
+                // Focus management for accessibility
+                if (!isHidden) {
+                    const firstLink = mobileMenu.querySelector('a');
+                    if (firstLink) firstLink.focus();
+                }
+            });
 
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -3218,7 +2937,6 @@
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                             mobileMenuButton.setAttribute('aria-expanded', 'false');
-                            document.body.classList.remove('no-scroll');
                         }
                     }
                 });
@@ -3226,100 +2944,74 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-
-                    const el = entry.target;
-
-                    // Reveal class handling by type
-                    if (el.classList.contains('fade-in-section')) {
-                        el.classList.add('visible');
-                    }
-                    if (el.classList.contains('scroll-reveal') ||
-                        el.classList.contains('scroll-reveal-left') ||
-                        el.classList.contains('scroll-reveal-right') ||
-                        el.classList.contains('scroll-reveal-scale')) {
-                        el.classList.add('revealed');
-                    }
-
-                    // ==================== STAGGER ANIMATION ====================
-                    if (el.classList.contains('stagger-container')) {
-                        el.classList.add('animate');
-                        const children = el.querySelectorAll('.stagger-child, :scope > *');
-                        children.forEach((child, index) => {
-                            child.style.transitionDelay = `${index * 120}ms`;
-                        });
-                    } else {
-                        const staggerContainer = el.querySelector('.stagger-container');
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // ==================== STAGGER ANIMATION ====================
+                        const staggerContainer = entry.target.querySelector('.stagger-container');
                         if (staggerContainer) {
                             staggerContainer.classList.add('animate');
-                            const children = staggerContainer.querySelectorAll('.stagger-child, :scope > *');
-                            children.forEach((child, index) => {
-                                child.style.transitionDelay = `${index * 120}ms`;
-                            });
                         }
-                    }
-
-                    // ==================== COUNT-UP ANIMATION ====================
-                    const counters = el.querySelectorAll('.count-up');
-                    counters.forEach(counter => {
-                        if (counter.getAttribute('data-animated')) return;
-                        counter.setAttribute('data-animated', 'true');
                         
-                        const target = +counter.getAttribute('data-target');
-                        let frame = 0;
-                        const totalFrames = 100; // Animation duration
-                        const easeOutQuad = t => t * (2 - t);
+                        const children = entry.target.querySelectorAll('.stagger-child');
+                        children.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * 150}ms`;
+                        });
 
-                        const updateCounter = () => {
-                            frame++;
-                            const progress = easeOutQuad(frame / totalFrames);
-                            const currentCount = Math.round(target * progress);
+                        // ==================== COUNT-UP ANIMATION ====================
+                        const counters = entry.target.querySelectorAll('.count-up');
+                        counters.forEach(counter => {
+                            if (counter.getAttribute('data-animated')) return;
+                            counter.setAttribute('data-animated', 'true');
+                            
+                            const target = +counter.getAttribute('data-target');
+                            let frame = 0;
+                            const totalFrames = 100; // Animation duration
+                            const easeOutQuad = t => t * (2 - t);
 
-                            counter.innerText = currentCount;
+                            const updateCounter = () => {
+                                frame++;
+                                const progress = easeOutQuad(frame / totalFrames);
+                                const currentCount = Math.round(target * progress);
 
-                            if (frame < totalFrames) {
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.innerText = target;
-                            }
-                        };
-                        requestAnimationFrame(updateCounter);
-                    });
+                                counter.innerText = currentCount;
 
-                    observer.unobserve(el);
+                                if (frame < totalFrames) {
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            requestAnimationFrame(updateCounter);
+                        });
+                        observer.unobserve(entry.target);
+                    }
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+            }, { threshold: 0.1 });
 
-            // Observe all reveal targets
-            document.querySelectorAll('.fade-in-section, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .stagger-container')
-                .forEach(section => observer.observe(section));
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
             // ==================== FORM HANDLING ====================
             // Contact form submission and validation
             const consultationForm = document.getElementById('consultation-form');
             const formStatus = document.getElementById('form-status');
-            if (consultationForm) {
-                consultationForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const honeypot = consultationForm.querySelector('input[name="website"]');
-                    if (honeypot && honeypot.value) return; // Honeypot check
-                    
-                    const data = new FormData(consultationForm);
-                    const action = "https://script.google.com/macros/s/AKfycbyFWtlEdgJns17g3U_eL5YioTNNZwGZJ_lXJqWGiRR8ypn885tmA_xVPXXe6O7ZGx1k/exec";
-                    if (formStatus) {
-                        formStatus.innerHTML = '<p class="text-gray-700 flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Sending...</p>';
-                    }
-                    fetch(action, { method: 'POST', body: data })
-                        .then(() => {
-                            if (formStatus) formStatus.innerHTML = '<p class="text-green-600">Thank you! Your message has been sent successfully.</p>';
-                            consultationForm.reset();
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            if (formStatus) formStatus.innerHTML = '<p class="text-red-600">Oops! There was a problem. Please try again.</p>';
-                        });
-                });
-            }
+            consultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (consultationForm.querySelector('input[name="website"]').value) return; // Honeypot check
+                
+                const data = new FormData(consultationForm);
+                const action = "https://script.google.com/macros/s/AKfycbyFWtlEdgJns17g3U_eL5YioTNNZwGZJ_lXJqWGiRR8ypn885tmA_xVPXXe6O7ZGx1k/exec";
+                formStatus.innerHTML = '<p class="text-gray-700 flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Sending...</p>';
+                fetch(action, { method: 'POST', body: data })
+                    .then(() => {
+                        formStatus.innerHTML = '<p class="text-green-600">Thank you! Your message has been sent successfully.</p>';
+                        consultationForm.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        formStatus.innerHTML = '<p class="text-red-600">Oops! There was a problem. Please try again.</p>';
+                    });
+            });
             
             // ==================== ADDITIONAL ANIMATION ENHANCEMENTS ====================
             // Smooth reveal for elements on page load
@@ -3440,10 +3132,10 @@
 <!-- ============================================================================ -->
 <!-- =========================== COOKIE MODAL SECTION ========================== -->
 <!-- ============================================================================ -->
-    <div id="cookie-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <div id="cookie-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200">
-          <h3 id="cookie-modal-title" class="text-xl font-bold text-[#0A192F]" data-lang-key="cookieModalTitle">Cookie Settings</h3>
+          <h3 class="text-xl font-bold text-[#0A192F]" data-lang-key="cookieModalTitle">Cookie Settings</h3>
         </div>
         <div class="p-6 space-y-6">
           <div>
@@ -3476,10 +3168,10 @@
 <!-- ============================================================================ -->
 <!-- ========================== PRIVACY MODAL SECTION ========================== -->
 <!-- ============================================================================ -->
-    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+    <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200 flex items-center justify-between">
-          <h3 id="privacy-modal-title" class="text-xl font-bold text-[#0A192F]" data-lang-key="privacyModalTitle">Privacy Policy</h3>
+          <h3 class="text-xl font-bold text-[#0A192F]" data-lang-key="privacyModalTitle">Privacy Policy</h3>
           <button id="privacy-modal-close" class="text-gray-400 hover:text-gray-600 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -3516,10 +3208,10 @@
 <!-- ============================================================================ -->
 <!-- ========================== TERMS MODAL SECTION ========================== -->
 <!-- ============================================================================ -->
-    <div id="terms-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title">
+    <div id="terms-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200 flex items-center justify-between">
-          <h3 id="terms-modal-title" class="text-xl font-bold text-[#0A192F]" data-lang-key="termsModalTitle">Terms of Service</h3>
+          <h3 class="text-xl font-bold text-[#0A192F]" data-lang-key="termsModalTitle">Terms of Service</h3>
           <button id="terms-modal-close" class="text-gray-400 hover:text-gray-600 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -3580,80 +3272,49 @@
         // ========================== COOKIE CONSENT MANAGEMENT =========================
         // ================================================================================
         function showCookieConsent() {
-            try {
-                const consent = localStorage.getItem('cookie-consent');
-                const banner = document.getElementById('cookie-consent');
-                if (!consent && banner) {
-                    banner.style.display = 'block';
-                    setTimeout(() => {
-                        banner.classList.remove('translate-y-full');
-                    }, 100);
-                }
-            } catch {}
-        }
-
-        function hideCookieConsent() {
-            const banner = document.getElementById('cookie-consent');
-            if (banner) {
-                banner.classList.add('translate-y-full');
+            const consent = localStorage.getItem('cookie-consent');
+            if (!consent) {
+                document.getElementById('cookie-consent').style.display = 'block';
                 setTimeout(() => {
-                    banner.style.display = 'none';
-                }, 300);
+                    document.getElementById('cookie-consent').classList.remove('translate-y-full');
+                }, 100);
             }
         }
 
-        const cookieAcceptBtn = document.getElementById('cookie-accept');
-        if (cookieAcceptBtn) {
-            cookieAcceptBtn.addEventListener('click', () => {
-                try {
-                    localStorage.setItem('cookie-consent', 'accepted');
-                    localStorage.setItem('analytics-cookies', 'true');
-                } catch {}
-                hideCookieConsent();
-            });
+        function hideCookieConsent() {
+            document.getElementById('cookie-consent').classList.add('translate-y-full');
+            setTimeout(() => {
+                document.getElementById('cookie-consent').style.display = 'none';
+            }, 300);
         }
 
-        const cookieRejectBtn = document.getElementById('cookie-reject');
-        if (cookieRejectBtn) {
-            cookieRejectBtn.addEventListener('click', () => {
-                try {
-                    localStorage.setItem('cookie-consent', 'rejected');
-                    localStorage.setItem('analytics-cookies', 'false');
-                } catch {}
-                hideCookieConsent();
-            });
-        }
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'accepted');
+            localStorage.setItem('analytics-cookies', 'true');
+            hideCookieConsent();
+        });
 
-        const cookieSettingsBtn = document.getElementById('cookie-settings');
-        if (cookieSettingsBtn) {
-            cookieSettingsBtn.addEventListener('click', () => {
-                const modal = document.getElementById('cookie-modal');
-                if (modal) modal.classList.add('show');
-            });
-        }
+        document.getElementById('cookie-reject').addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'rejected');
+            localStorage.setItem('analytics-cookies', 'false');
+            hideCookieConsent();
+        });
 
-        const cookieModalCancel = document.getElementById('cookie-modal-cancel');
-        if (cookieModalCancel) {
-            cookieModalCancel.addEventListener('click', () => {
-                const modal = document.getElementById('cookie-modal');
-                if (modal) modal.classList.remove('show');
-            });
-        }
+        document.getElementById('cookie-settings').addEventListener('click', () => {
+            document.getElementById('cookie-modal').classList.add('show');
+        });
 
-        const cookieModalSave = document.getElementById('cookie-modal-save');
-        if (cookieModalSave) {
-            cookieModalSave.addEventListener('click', () => {
-                const analyticsToggle = document.getElementById('analytics-toggle');
-                const analyticsEnabled = analyticsToggle ? analyticsToggle.checked : false;
-                try {
-                    localStorage.setItem('cookie-consent', 'custom');
-                    localStorage.setItem('analytics-cookies', analyticsEnabled.toString());
-                } catch {}
-                const modal = document.getElementById('cookie-modal');
-                if (modal) modal.classList.remove('show');
-                hideCookieConsent();
-            });
-        }
+        document.getElementById('cookie-modal-cancel').addEventListener('click', () => {
+            document.getElementById('cookie-modal').classList.remove('show');
+        });
+
+        document.getElementById('cookie-modal-save').addEventListener('click', () => {
+            const analyticsEnabled = document.getElementById('analytics-toggle').checked;
+            localStorage.setItem('cookie-consent', 'custom');
+            localStorage.setItem('analytics-cookies', analyticsEnabled.toString());
+            document.getElementById('cookie-modal').classList.remove('show');
+            hideCookieConsent();
+        });
 
         // Privacy Policy Modal with Enhanced Accessibility
         document.addEventListener('DOMContentLoaded', () => {
@@ -3902,52 +3563,44 @@
                 );
             }
             
-            const supportsIO = typeof IntersectionObserver !== 'undefined';
-            // Function to animate elements when they come into view (fallback only)
+            // Function to animate elements when they come into view
             function animateOnScroll() {
-                const elements = document.querySelectorAll('.fade-in-section, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .stagger-container > *');
+                const elements = document.querySelectorAll('.fade-in-section, .stagger-container > *');
+
+                
                 elements.forEach((element, index) => {
                     if (isElementInViewport(element)) {
+                        // Add a small delay for stagger effect
                         setTimeout(() => {
-                            if (element.classList.contains('fade-in-section')) {
-                                element.classList.add('visible');
-                            } else {
-                                element.classList.add('revealed');
-                            }
                             element.style.opacity = '1';
                             element.style.transform = 'translateY(0)';
                             element.classList.add('animated');
-                        }, index * 80);
+                        }, index * 100); // 100ms delay between each element
                     }
                 });
             }
             
-            if (!supportsIO) {
-                // Run animation check on scroll and on load
-                window.addEventListener('scroll', animateOnScroll);
-                window.addEventListener('load', animateOnScroll);
-                // Also run shortly after init
-                setTimeout(animateOnScroll, 100);
-                // Fallback: Make all elements visible after 2 seconds
-                setTimeout(() => {
-                    const allElements = document.querySelectorAll('.fade-in-section, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .stagger-container > *');
-                    allElements.forEach(element => {
-                        if (element.classList.contains('fade-in-section')) {
-                            element.classList.add('visible');
-                        } else {
-                            element.classList.add('revealed');
-                        }
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                        element.classList.add('animated');
-                    });
-                }, 2000);
-            }
+            // Run animation check on scroll and on load
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('load', animateOnScroll);
+            
+            // Also run immediately
+            setTimeout(animateOnScroll, 100);
+            
+            // Fallback: Make all elements visible after 2 seconds
+            setTimeout(() => {
+                const allElements = document.querySelectorAll('.fade-in-section, .stagger-container > *');
+                allElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                    element.classList.add('animated');
+                });
+            }, 2000);
             
 
             
             // Optimized mutation observer for critical elements only
-            const styleMutationObserver = new MutationObserver((mutations) => {
+            const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
                         const target = mutation.target;
@@ -3966,7 +3619,7 @@
             // Observe only critical containers, not all elements
             const criticalContainers = document.querySelectorAll('.stagger-container, .fade-in-section');
             criticalContainers.forEach(container => {
-                styleMutationObserver.observe(container, { attributes: true, attributeFilter: ['style'] });
+                observer.observe(container, { attributes: true, attributeFilter: ['style'] });
             });
             
             // Optimized layout fix for stagger containers
@@ -4004,50 +3657,42 @@
         
         // Scroll Progress Indicator
         const scrollProgressBar = document.querySelector('.scroll-progress-bar');
-
-        // Debounce utility for scroll events
-        function debounce(func, wait) {
-          let timeout;
-          return function executedFunction(...args) {
-            const later = () => {
-              clearTimeout(timeout);
-              func.apply(this, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-          };
-        }
-
-        // Consolidated Scroll Event Handler
+        
+        // Consolidated Scroll Event Handler with Throttling
+        let scrollTimeout;
         const handleScroll = () => {
-            // Scroll Progress Indicator
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-
-            if (scrollProgressBar) {
-                scrollProgressBar.style.width = scrollPercent + '%';
-            }
-
-            // Back to Top Button visibility
-            if (floatingAction) {
-                if (window.pageYOffset > 300) {
-                    floatingAction.classList.add('visible');
-                } else {
-                    floatingAction.classList.remove('visible');
+            if (scrollTimeout) return;
+            
+            scrollTimeout = setTimeout(() => {
+                // Scroll Progress Indicator
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                
+                if (scrollProgressBar) {
+                    scrollProgressBar.style.width = scrollPercent + '%';
                 }
-            }
+                
+                // Back to Top Button visibility
+                if (floatingAction) {
+                    if (window.pageYOffset > 300) {
+                        floatingAction.classList.add('visible');
+                    } else {
+                        floatingAction.classList.remove('visible');
+                    }
+                }
+                
+                scrollTimeout = null;
+            }, 16); // ~60fps throttling
         };
-
-        // Single debounced scroll event listener
-        window.addEventListener('scroll', debounce(handleScroll, 10), { passive: true });
+        
+        // Single scroll event listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
         
         // Immersive Cursor Effects
         const cursorGlow = document.querySelector('.cursor-glow');
         
-        const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-        if (!isCoarsePointer) {
-          document.addEventListener('mousemove', (e) => {
+        document.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
                 cursorGlow.style.left = e.clientX + 'px';
                 cursorGlow.style.top = e.clientY + 'px';
@@ -4057,8 +3702,7 @@
                 const y = e.clientY / window.innerHeight;
                 cursorGlow.style.transform = `translate(-50%, -50%) scale(${1 + (x + y) * 0.1})`;
             }
-          });
-        }
+        });
         
         // Back to Top Button Functionality
         const backToTopButton = document.getElementById('back-to-top');
@@ -4117,41 +3761,19 @@
             element.style.animationDuration = `${3 + index * 0.5}s`;
         });
         
-        // Unified Card Hover/Tilt Effects (mouse/pen)
-        const hoverCards = document.querySelectorAll('.interactive-card, .card-hover');
-        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        hoverCards.forEach(card => {
-            // Pointer-based subtle tilt
-            const onPointerMove = (e) => {
-                if (prefersReduced) return;
-                const rect = card.getBoundingClientRect();
-                const px = (e.clientX - rect.left) / rect.width;  // 0..1
-                const py = (e.clientY - rect.top) / rect.height; // 0..1
-                const rx = (py - 0.5) * 6;  // tilt range in deg
-                const ry = (px - 0.5) * -6;
-                card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
-                card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
-                card.style.setProperty('--scale', '1.02');
-                card.style.setProperty('--lift', '-8px');
-            };
-
-            const onPointerLeave = () => {
-                card.style.removeProperty('--rx');
-                card.style.removeProperty('--ry');
-                card.style.removeProperty('--scale');
-                card.style.removeProperty('--lift');
-            };
-
-            const onPointerEnter = () => {
-                if (prefersReduced) return;
-                card.style.setProperty('--scale', '1.02');
-                card.style.setProperty('--lift', '-8px');
-            };
-
-            card.addEventListener('pointermove', onPointerMove);
-            card.addEventListener('pointerleave', onPointerLeave);
-            card.addEventListener('pointerenter', onPointerEnter);
+        // Interactive Card Hover Effects
+        const interactiveCards = document.querySelectorAll('.interactive-card');
+        
+        interactiveCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(0, 201, 255, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '';
+            });
         });
         
         // Enhanced Section Dividers Animation
@@ -4181,18 +3803,19 @@
                     requestAnimationFrame(() => {
                         const scrolled = window.pageYOffset;
                         const rate = scrolled * -0.5;
-                        const layers = document.querySelectorAll('.parallax-layer');
-                        layers.forEach((layer, index) => {
+                        
+                        parallaxLayers.forEach((layer, index) => {
                             const speed = (index + 1) * 0.1;
                             layer.style.transform = `translateY(${rate * speed}px) rotate(${scrolled * 0.01}deg)`;
                         });
+                        
                         ticking = false;
                     });
                     ticking = true;
                 }
             }
             
-            if (document.querySelectorAll('.parallax-layer').length > 0) {
+            if (parallaxLayers.length > 0) {
                 window.addEventListener('scroll', updateParallax, { passive: true });
             }
             
@@ -4214,36 +3837,37 @@
         
         // Ensure all content is visible on page load
         function ensureContentVisibility() {
-            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const lacksIO = typeof IntersectionObserver === 'undefined';
-            // Only force visibility if user prefers reduced motion or the browser lacks IntersectionObserver
-            if (!prefersReduced && !lacksIO) return;
-
             // Force all fade-in sections to be visible
             document.querySelectorAll('.fade-in-section').forEach(section => {
                 section.style.opacity = '1';
                 section.style.visibility = 'visible';
+                // Don't override display property for sections
             });
             
             // Force all stagger containers to be visible
             document.querySelectorAll('.stagger-container').forEach(container => {
                 container.style.opacity = '1';
                 container.style.visibility = 'visible';
+                // Don't override display property for grid containers
+                
+                // Make all children visible but preserve their layout
                 container.querySelectorAll('*').forEach(child => {
                     child.style.opacity = '1';
                     child.style.visibility = 'visible';
+                    // Don't override display property for grid items
                 });
             });
             
             // Force all scroll-reveal elements to be visible
-            document.querySelectorAll('.scroll-reveal, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right').forEach(element => {
+            document.querySelectorAll('.scroll-reveal, .scroll-reveal-scale').forEach(element => {
                 element.style.opacity = '1';
                 element.style.visibility = 'visible';
                 element.style.transform = 'none';
+                // Don't override display property
             });
         }
         
-        // Run visibility fix only if needed
+        // Run visibility fix immediately and after DOM is fully loaded
         ensureContentVisibility();
         document.addEventListener('DOMContentLoaded', ensureContentVisibility);
         window.addEventListener('load', ensureContentVisibility);
