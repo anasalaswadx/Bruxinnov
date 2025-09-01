@@ -28,7 +28,8 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https:;">
+    <!-- Allow 'unsafe-eval' so Tailwind CDN can JIT in the browser. For best security, replace CDN with a prebuilt CSS and remove 'unsafe-eval'. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; connect-src 'self' https:;">
 
     <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
     <meta property="og:title" content="BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation">
@@ -163,6 +164,7 @@
 
 
     <!-- Tailwind CSS CDN -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Tailwind CSS Configuration -->
@@ -185,6 +187,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tajawal:wght@500&display=swap" rel="stylesheet">
     <style>
+        /* Minimal utility fallbacks to keep layout readable if Tailwind fails to load */
+        .hidden { display: none !important; }
+        .block { display: block; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .object-cover { object-fit: cover; }
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .fixed { position: fixed; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .z-10 { z-index: 10; }
+        .-z-10 { z-index: -10; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .text-center { text-align: center; }
+        .bg-white { background-color: #fff; }
+        .text-white { color: #fff; }
+        /* End minimal fallbacks */
         /* ===================================================================== */
         /* ===================== GLOBAL STYLES & VARIABLES ==================== */
         /* ===================================================================== */
@@ -4024,7 +4045,9 @@
         // Immersive Cursor Effects
         const cursorGlow = document.querySelector('.cursor-glow');
         
-        document.addEventListener('mousemove', (e) => {
+        const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        if (!isCoarsePointer) {
+          document.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
                 cursorGlow.style.left = e.clientX + 'px';
                 cursorGlow.style.top = e.clientY + 'px';
@@ -4034,7 +4057,8 @@
                 const y = e.clientY / window.innerHeight;
                 cursorGlow.style.transform = `translate(-50%, -50%) scale(${1 + (x + y) * 0.1})`;
             }
-        });
+          });
+        }
         
         // Back to Top Button Functionality
         const backToTopButton = document.getElementById('back-to-top');
