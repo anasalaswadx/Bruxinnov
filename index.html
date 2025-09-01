@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     
     <!-- SEO Meta Tags -->
     <title>BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation</title>
@@ -203,6 +203,13 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--primary);
+        }
+        
+        /* Prevent background scroll when mobile menu is open */
+        body.no-scroll {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
         
         /* Section Navigation Offset */
@@ -770,8 +777,8 @@
         /* Back to Top Button */
         .floating-action {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: calc(30px + env(safe-area-inset-bottom));
+            right: calc(30px + env(safe-area-inset-right));
             z-index: 1000;
             opacity: 0;
             transform: translateY(20px);
@@ -811,8 +818,8 @@
         /* Mobile-responsive positioning for floating action button */
         @media (max-width: 768px) {
             .floating-action {
-                bottom: 20px;
-                right: 20px;
+                bottom: calc(20px + env(safe-area-inset-bottom));
+                right: calc(20px + env(safe-area-inset-right));
                 z-index: 1001; /* Ensure it's above other mobile elements */
             }
             
@@ -827,8 +834,8 @@
         /* Extra small mobile devices */
         @media (max-width: 480px) {
             .floating-action {
-                bottom: 15px;
-                right: 15px;
+                bottom: calc(15px + env(safe-area-inset-bottom));
+                right: calc(15px + env(safe-area-inset-right));
             }
             
             .floating-action button {
@@ -836,6 +843,11 @@
                 min-height: 44px;
                 padding: 10px;
             }
+        }
+
+        /* Respect iOS safe-area for the cookie bar */
+        #cookie-consent {
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
 
@@ -3002,11 +3014,55 @@
             const allElementsToTranslate = document.querySelectorAll('[data-lang-key]');
             const ogLocaleMeta = document.getElementById('og-locale');
 
+            // Fix mojibake/encoding artifacts in certain language strings without changing structure
+            const normalizeTextForLang = (lang, text) => {
+                if (typeof text !== 'string') return text;
+                if (lang === 'fr') {
+                    let t = text;
+                    // Common corrupted diacritics -> proper French accents
+                    t = t.replace(/Ǹ/g, 'é')
+                         .replace(/Ǧ/g, 'ê')
+                         .replace(/ǩ/g, 'î')
+                         .replace(/ǯ/g, 'û');
+                    // Targeted word fixes where previous mapping isn't enough
+                    t = t.replace(/mod��le/g, 'modèle')
+                         .replace(/mod��les/g, 'modèles')
+                         .replace(/op��re/g, 'opère')
+                         .replace(/commen��ons/g, 'commençons')
+                         .replace(/apr��s/g, 'après')
+                         .replace(/con��u/g, 'conçu')
+                         .replace(/contr��les/g, 'contrôles')
+                         .replace(/g��n��ralement/g, 'généralement')
+                         .replace(/r��les/g, 'rôles')
+                         .replace(/compl��tes/g, 'complètes')
+                         .replace(/�%tats/g, 'États')
+                         .replace(/�%tudes/g, 'Études')
+                         .replace(/�%pine/g, 'Épine')
+                         .replace(/TǸlǸcommunications/g, 'Télécommunications')
+                         .replace(/chaǩne/g, 'chaîne')
+                         .replace(/ObservabilitǸ/g, 'Observabilité');
+                    // Minor phrasing separators corrupted; normalize a few known cases
+                    t = t.replace(/Dfi.*Solution.*<span/, 'Défi – Solution – <span');
+                    return t;
+                }
+                return text;
+            };
+
             const updateDomForLang = (lang) => {
                 allElementsToTranslate.forEach(el => {
                     const key = el.getAttribute('data-lang-key');
                     if (translations[lang] && translations[lang][key]) {
-                        el.innerHTML = translations[lang][key];
+                        let val = translations[lang][key];
+                        if (lang === 'fr') {
+                            // Spot-fix a few known labels that often get mojibake
+                            if (key === 'navAbout' || key === 'navAboutMobile' || key === 'footerAbout') val = 'À propos';
+                            if (key === 'navCaseStudies' || key === 'navCaseStudiesMobile') val = 'Études de cas';
+                            if (key === 'caseStudyChallenge') val = 'DÉFI';
+                            if (key === 'caseStudySolution') val = 'SOLUTION';
+                            if (key === 'caseStudyOutcome') val = 'RÉSULTAT';
+                        }
+                        val = normalizeTextForLang(lang, val);
+                        el.innerHTML = val;
                     }
                 });
 
@@ -3104,6 +3160,13 @@
                 mobileMenuButton.addEventListener('click', () => {
                     const isHidden = mobileMenu.classList.toggle('hidden');
                     mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
+
+                    // Lock or unlock background scroll when menu is open/closed
+                    if (!isHidden) {
+                        document.body.classList.add('no-scroll');
+                    } else {
+                        document.body.classList.remove('no-scroll');
+                    }
                     
                     // Focus management for accessibility
                     if (!isHidden) {
@@ -3122,6 +3185,7 @@
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                             mobileMenuButton.setAttribute('aria-expanded', 'false');
+                            document.body.classList.remove('no-scroll');
                         }
                     }
                 });
