@@ -178,6 +178,7 @@
             }
         }
     </script>
+    <script>(function(){ try { document.documentElement.classList.add('js'); } catch(e){} })();</script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1013,6 +1014,17 @@
             position: relative;
             z-index: 10;
         }
+
+        /* If JS fails to run, do NOT hide content by default */
+        html:not(.js) .fade-in-section,
+        html:not(.js) .scroll-reveal,
+        html:not(.js) .scroll-reveal-left,
+        html:not(.js) .scroll-reveal-right,
+        html:not(.js) .scroll-reveal-scale {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
         
         /* Fix for disappearing content - more targeted approach */
         .fade-in-section.visible,
@@ -1535,7 +1547,7 @@
             <div class="data-flow"></div>
         </div>
         
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern business technology and innovation background" class="absolute inset-0 -z-10 w-full h-full object-cover" width="2070" height="1380" loading="eager" decoding="async">
         <div class="absolute inset-0 pointer-events-none hero-overlay" aria-hidden="true"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-content relative z-10 flex items-center justify-center min-h-full">
             <div class="text-center w-full">
@@ -4145,19 +4157,18 @@
                     requestAnimationFrame(() => {
                         const scrolled = window.pageYOffset;
                         const rate = scrolled * -0.5;
-                        
-                        parallaxLayers.forEach((layer, index) => {
+                        const layers = document.querySelectorAll('.parallax-layer');
+                        layers.forEach((layer, index) => {
                             const speed = (index + 1) * 0.1;
                             layer.style.transform = `translateY(${rate * speed}px) rotate(${scrolled * 0.01}deg)`;
                         });
-                        
                         ticking = false;
                     });
                     ticking = true;
                 }
             }
             
-            if (parallaxLayers.length > 0) {
+            if (document.querySelectorAll('.parallax-layer').length > 0) {
                 window.addEventListener('scroll', updateParallax, { passive: true });
             }
             
