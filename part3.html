@@ -391,11 +391,20 @@
             status.classList.remove('hidden');
             status.innerHTML = '<span class="text-accent-cyan">Sending request...</span>';
             
-            // Simulate API call
-            setTimeout(() => {
+            const form = e.target;
+            
+            fetch('https://script.google.com/macros/s/AKfycbxAwuPBJWWZ51jXRVtuWCVUNRwf1FdGBzX3PEuOEfR_30eo8rmJcm8AJ-vI5jOR5Ir2/exec', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => {
                 status.innerHTML = '<span class="text-accent-green font-medium">Thank you! We will contact you shortly.</span>';
-                e.target.reset();
-            }, 1500);
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                status.innerHTML = '<span class="text-red-500 font-medium">Oops! Something went wrong. Please try again.</span>';
+            });
         });
 
         // Back to Top Button
