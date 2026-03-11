@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation</title>
+    <meta name="description" content="Expert Microsoft Fabric, Power BI & Azure consulting. Transform data into decisions with AI agents, KPI dashboards & data engineering. 40% faster insights, 30% cycle time reduction.">
+    <meta name="keywords" content="Microsoft Fabric, Power BI, Azure, AI consulting, data transformation, business intelligence, data engineering, machine learning, Brussels, Belgium">
+    <meta name="author" content="BRUXINNOV SRL">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Canonical & Hreflang for SEO -->
+    <link rel="canonical" href="https://bruxinnov.com/">
+    <link rel="alternate" hreflang="x-default" href="https://bruxinnov.com/">
+    <link rel="alternate" hreflang="en" href="https://bruxinnov.com/">
+    <link rel="alternate" hreflang="fr" href="https://bruxinnov.com/?lang=fr">
+    <link rel="alternate" hreflang="nl" href="https://bruxinnov.com/?lang=nl">
+    <link rel="alternate" hreflang="ar" href="https://bruxinnov.com/?lang=ar">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300C9FF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%232ECC71;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%230A192F'/%3E%3Ctext x='50' y='65' font-family='Poppins, sans-serif' font-size='40' font-weight='bold' fill='url(%23grad)' text-anchor='middle'%3EBRUX%3C/text%3E%3C/svg%3E">
+
+    <!-- Preload hero image for LCP -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" fetchpriority="high">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https:;">
+
+    <!-- OpenGraph & Twitter Card Meta Tags for Social Sharing -->
+    <meta property="og:title" content="BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation">
+    <meta property="og:description" content="Expert Microsoft Fabric, Power BI & Azure consulting. Transform data into decisions with AI agents, KPI dashboards & data engineering.">
+    <meta property="og:image" content="https://bruxinnov.com/images/preview-image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://bruxinnov.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BRUXINNOV">
+    <meta property="og:locale" content="en_US" id="og-locale">
+    <meta property="og:street-address" content="Chaussée d’Alsemberg 897">
+    <meta property="og:locality" content="Uccle">
+    <meta property="og:postal-code" content="1160">
+    <meta property="og:country-name" content="Belgium">
+    <meta property="og:phone_number" content="+32 495477770">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@bruxinnov">
+    <meta name="twitter:title" content="BRUXINNOV | Microsoft Fabric & Power BI Consulting | AI Data Transformation">
+    <meta name="twitter:description" content="Expert Microsoft Fabric, Power BI & Azure consulting. Transform data into decisions with AI agents, KPI dashboards & data engineering.">
+    <meta name="twitter:image" content="https://bruxinnov.com/images/preview-image.webp">
+
+    <!-- JSON-LD Schema for Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "BRUXINNOV SRL",
+      "url": "https://bruxinnov.com/",
+      "logo": "https://bruxinnov.com/images/logo.png",
+      "image": "https://bruxinnov.com/images/preview-image.webp",
+      "description": "AI, Data & Digital Transformation Consulting specializing in Microsoft Fabric, Azure, and Power BI solutions",
+      "telephone": "+32 495477770",
+      "email": "info@bruxinnov.com",
+      "taxID": "BE 1002.714.833",
+      "vatID": "BE 1002.714.833",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chaussée d’Alsemberg 897",
+        "addressLocality": "Uccle",
+        "postalCode": "1180",
+        "addressCountry": "BE",
+        "addressRegion": "Brussels"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "50.8171",
+        "longitude": "4.4203"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "priceRange": "$$",
+      "currenciesAccepted": "EUR, USD",
+      "paymentAccepted": "Credit Card, Bank Transfer, Invoice",
+      "sameAs": [
+        "https://www.linkedin.com/company/bruxinnov",
+        "https://www.facebook.com/bruxinnov",
+        "https://www.instagram.com/bruxinnov"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+32 495477770",
+        "email": "info@bruxinnov.com",
+        "areaServed": ["BE","NL","FR","DE","GB","US","CA","AE"],
+        "availableLanguage": ["English", "French", "Dutch", "Arabic"]
+      }],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Data & AI Consulting Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fabric Fast-Start", "description": "Governed Lakehouse and semantic model in 4 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Power BI Executive Dashboards", "description": "KPI model, RLS/OLS and executive dashboards in 3 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Decision Agents", "description": "Pilot an agent with measurable KPI impact in 6 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Self-Service Analytics Accelerator", "description": "Certified datasets, templates and enablement in 3 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BI Governance & Operating Model", "description": "Roles, processes and guardrails in 2 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Engineering Modernization", "description": "Resilient batch/streaming pipelines with observability in 6 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Science Value Sprint", "description": "Proof of predictive uplift with an MLOps path in 4 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Storytelling Bootcamp", "description": "Narrative frameworks and best practices in 2 weeks" } }
+        ]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Do you work remotely across the EU, US and MENA", "acceptedAnswer": { "@type": "Answer", "text": "Yes — remote first with on-site workshops when needed" } },
+        { "@type": "Question", "name": "How do projects start", "acceptedAnswer": { "@type": "Answer", "text": "Discovery → blueprint → pilot → scale, with a demo every Friday" } },
+        { "@type": "Question", "name": "Which Microsoft stack do you support", "acceptedAnswer": { "@type": "Answer", "text": "Fabric, Power BI, Azure Data Factory, Databricks, Azure SQL, Azure OpenAI and Purview" } }
+      ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bruxinnov.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://bruxinnov.com/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://bruxinnov.com/#contact"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'tajawal': ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0A192F',
+                        accent: {
+                            cyan: '#00C9FF',
+                            green: '#2ECC71'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Variables */
+        :root {
+            --primary: #0A192F;
+            --accent-cyan: #00C9FF;
+            --accent-green: #2ECC71;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        /* RTL Support */
+        html[dir="rtl"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        /* Utilities */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .stagger-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in-section.visible .stagger-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Interactive Elements */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-cyan);
+            transform-origin: bottom right;
+            transition: transform 0.2s ease-out;
+        }
+        html[dir="rtl"] .nav-link::after {
+            transform-origin: bottom left;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        html[dir="rtl"] .nav-link:hover::after {
+            transform-origin: bottom right;
+        }
+        
+        .btn-lift {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-lift:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 201, 255, 0.15);
+        }
+        .card-hover {
+            transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #00C9FF, #2ECC71); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #00B4E6, #27AE60); }
+        
+        /* Parallax & Immersive */
+        .parallax-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none;
+        }
+        .parallax-layer { position: absolute; will-change: transform; pointer-events: none; }
+        .parallax-layer-1 {
+            top: -20%; left: -10%; width: 120%; height: 140%;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 201, 255, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(46, 204, 113, 0.03) 0%, transparent 50%);
+            animation: float-1 20s ease-in-out infinite;
+        }
+        .parallax-layer-2 {
+            top: 10%; right: -15%; width: 130%; height: 120%;
+            background: radial-gradient(circle at 80% 30%, rgba(0, 201, 255, 0.02) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 70%, rgba(46, 204, 113, 0.02) 0%, transparent 50%);
+            animation: float-2 25s ease-in-out infinite reverse;
+        }
+        @keyframes float-1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -20px) rotate(1deg); }
+            66% { transform: translate(-20px, 15px) rotate(-1deg); }
+        }
+        @keyframes float-2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-25px, 30px) rotate(-1deg); }
+            66% { transform: translate(20px, -15px) rotate(1deg); }
+        }
+        
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: rgba(0, 201, 255, 0.2); z-index: 10000;
+        }
+        .scroll-progress-bar {
+            height: 100%; background: linear-gradient(90deg, #00C9FF, #2ECC71); width: 0%; transition: width 0.1s ease;
+        }
+        
+        .floating-action {
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000; opacity: 0; transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; visibility: hidden;
+        }
+        html[dir="rtl"] .floating-action { right: auto; left: 30px; }
+        .floating-action.visible { opacity: 1; transform: translateY(0); pointer-events: auto; visibility: visible; }
+        
+        /* Modals */
+        .modal-overlay {
+            display: none; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.show {
+            display: flex; opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary">
+    <div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+    
+    <div class="floating-action">
+        <button id="back-to-top" class="bg-gradient-to-r from-accent-cyan to-accent-green text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-300" aria-label="Back to top">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+        </button>
+    </div>
+
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:start-4 bg-white text-primary px-4 py-2 rounded shadow-md z-50">Skip to content</a>
+
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-40 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="flex items-center text-primary" aria-label="BRUXINNOV Home">
+                        <svg viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#00C9FF" />
+                                    <stop offset="100%" stop-color="#2ECC71" />
+                                </linearGradient>
+                            </defs>
+                            <text x="0" y="24" font-family="Poppins, sans-serif" font-weight="700" font-size="24" letter-spacing="-0.025em">
+                                <tspan fill="currentColor">BRUX</tspan><tspan fill="url(#logoGradient)">INNOV</tspan>
+                            </text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#services" class="nav-link text-primary hover:text-accent-cyan font-medium transition-colors" data-lang-key="navServices">Services</a>
+                    <a href="#about" class="nav-link text-primary hover:text-accent-cyan font-medium transition-colors" data-lang-key="navAbout">About</a>
+                    <a href="#case-studies" class="nav-link text-primary hover:text-accent-cyan font-medium transition-colors" data-lang-key="navCaseStudies">Case Studies</a>
+                    <a href="#insights" class="nav-link text-primary hover:text-accent-cyan font-medium transition-colors" data-lang-key="navInsights">Insights</a>
+                    <a href="#contact" class="px-6 py-2.5 rounded-full gradient-bg text-white font-medium hover:opacity-90 btn-lift shadow-md shadow-cyan-500/20" data-lang-key="navContact">Let's Talk</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="relative group">
+                        <button id="lang-switcher-btn" class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-accent-cyan focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                            <span id="current-lang">EN</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="lang-dropdown" class="absolute end-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+                            <div class="py-2">
+                                <button class="w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent-cyan transition-colors" data-lang="en">English</button>
+                                <button class="w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent-cyan transition-colors" data-lang="ar">العربية</button>
+                                <button class="w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent-cyan transition-colors" data-lang="fr">Français</button>
+                                <button class="w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent-cyan transition-colors" data-lang="nl">Nederlands</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <div class="relative">
+                        <button id="mobile-lang-btn" class="text-sm font-medium text-gray-600"><span id="mobile-current-lang">EN</span></button>
+                    </div>
+                    <button id="mobile-menu-button" class="text-primary hover:text-accent-cyan focus:outline-none p-2" aria-label="Toggle menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-primary hover:text-accent-cyan hover:bg-gray-50 rounded-lg" data-lang-key="navServicesMobile">Services</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-primary hover:text-accent-cyan hover:bg-gray-50 rounded-lg" data-lang-key="navAboutMobile">About</a>
+                <a href="#case-studies" class="block px-3 py-3 text-base font-medium text-primary hover:text-accent-cyan hover:bg-gray-50 rounded-lg" data-lang-key="navCaseStudiesMobile">Case Studies</a>
+                <a href="#insights" class="block px-3 py-3 text-base font-medium text-primary hover:text-accent-cyan hover:bg-gray-50 rounded-lg" data-lang-key="navInsightsMobile">Insights</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-base font-medium text-white gradient-bg rounded-lg text-center shadow-md" data-lang-key="navContactMobile">Let's Talk</a>
+                
+                <div class="border-t border-gray-100 mt-4 pt-4 grid grid-cols-2 gap-2">
+                    <button class="px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg text-center border border-gray-100" data-lang="en">English</button>
+                    <button class="px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg text-center border border-gray-100" data-lang="ar">العربية</button>
+                    <button class="px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg text-center border border-gray-100" data-lang="fr">Français</button>
+                    <button class="px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg text-center border border-gray-100" data-lang="nl">Nederlands</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-primary text-white">
+            <div class="parallax-bg">
+                <div class="parallax-layer parallax-layer-1"></div>
+                <div class="parallax-layer parallax-layer-2"></div>
+            </div>
+            
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80" alt="Data Analytics Background" class="w-full h-full object-cover opacity-20 mix-blend-luminosity">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/90 to-primary"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight" data-lang-key="heroTitle">
+                        Deliver <span class="gradient-text">Microsoft Fabric</span> decision intelligence in weeks, not quarters.
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" data-lang-key="heroSubtitle">
+                        We engineer AI-ready data platforms on Microsoft Fabric and Azure, reducing time-to-insight by 40% and unlocking scalable growth across commercial, operations, and finance.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full gradient-bg text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 btn-lift text-center" data-lang-key="heroBtnTalk">Book a Free Discovery Call</a>
+                        <a href="#case-studies" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-300 btn-lift text-center backdrop-blur-sm" data-lang-key="heroBtnWork">Explore Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
